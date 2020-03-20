@@ -299,7 +299,7 @@ class TopHUD extends Component {
               className={cx(styles.iconButton, {
                 [styles.disabled]: this.state.penDisabled
               })}
-              title={`Pen${this.state.penDisabled ? " Disabled" : ""}`}
+              title={`Pointer${this.state.penDisabled ? " Disabled" : ""}`}
               onClick={this.state.penDisabled ? noop : this.props.onSpawnPen}
             >
               <InlineSVG
