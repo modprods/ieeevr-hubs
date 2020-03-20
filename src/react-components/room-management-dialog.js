@@ -68,12 +68,13 @@ export default class RoomManagementDialog extends Component {
       "Spawn Camera",
       "Spawn Drawing",
       "Pin Objects",
+      "Spawn Emoji",
       "Public"
     ];
     newLines.push(header.join("\t"));
 
     for (const line of lines) {
-      let [
+      const [
         id,
         name,
         description,
@@ -85,6 +86,7 @@ export default class RoomManagementDialog extends Component {
         spawn_camera,
         spawn_drawing,
         pin_objects,
+        spawn_emoji,
         allow_promotion
       ] = line.split("\t");
 
@@ -101,7 +103,8 @@ export default class RoomManagementDialog extends Component {
             spawn_and_move_media: parseTSVBool(spawn_and_move_media),
             spawn_camera: parseTSVBool(spawn_camera),
             spawn_drawing: parseTSVBool(spawn_drawing),
-            pin_objects: parseTSVBool(pin_objects)
+            pin_objects: parseTSVBool(pin_objects),
+            spawn_emoji: parseTSVBool(spawn_emoji)
           },
           room_size: parseTSVInt(room_size),
           allow_promotion: parseTSVBool(allow_promotion)
@@ -133,6 +136,7 @@ export default class RoomManagementDialog extends Component {
         spawn_camera,
         spawn_drawing,
         pin_objects,
+        spawn_emoji,
         allow_promotion
       ];
       newLines.push(newLine.join("\t"));
@@ -168,11 +172,12 @@ export default class RoomManagementDialog extends Component {
       "Spawn Camera",
       "Spawn Drawing",
       "Pin Objects",
+      "Spawn Emoji",
       "Public"
     ];
     lines.push(header.join("\t"));
 
-    for (let { id, name, description, scene_id, user_data, room_size, allow_promotion } of rooms) {
+    for (const { id, name, description, scene_id, user_data, room_size, allow_promotion } of rooms) {
       const groupOrder = user_data && user_data.group_order;
       const roomOrder = user_data && user_data.room_order;
       const line = [
@@ -183,6 +188,7 @@ export default class RoomManagementDialog extends Component {
         groupOrder || "",
         roomOrder || "",
         room_size || "",
+        "false",
         "false",
         "false",
         "false",
