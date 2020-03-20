@@ -221,7 +221,7 @@ AFRAME.registerComponent("pen", {
         this._updateLaser(cursorPose, intersection);
       }
 
-      const penVisible = (this.grabberId !== "left-cursor" && this.grabberId !== "right-cursor") || !intersection;
+      const penVisible = false;
       this._setPenVisible(penVisible);
       this.el.setAttribute("pen", { penVisible: penVisible });
 
@@ -284,6 +284,8 @@ AFRAME.registerComponent("pen", {
       if (paths.switchDrawMode && userinput.get(paths.switchDrawMode)) {
         this.data.drawMode = this.data.drawMode === DRAW_MODE.DEFAULT_3D ? DRAW_MODE.PROJECTION : DRAW_MODE.DEFAULT_3D;
       }
+
+      this.data.drawMode = DRAW_MODE.PROJECTION;
     }
   },
 
@@ -441,11 +443,7 @@ AFRAME.registerComponent("pen", {
   })(),
 
   _startDraw() {
-    this.drawingManager.getDrawing(this).then(drawing => {
-      this.currentDrawing = drawing;
-      this._getNormal(this.normal, this.worldPosition, this.direction);
-      this.currentDrawing.startDraw(this.worldPosition, this.direction, this.normal, this.data.color, this.data.radius);
-    });
+    return;
   },
 
   _endDraw() {
