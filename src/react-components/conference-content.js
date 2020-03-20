@@ -180,6 +180,15 @@ export default function ConferenceContent({ publicRooms, favoritedRooms }) {
               (only join one of the multi-stream rooms on a high end desktop or laptop).
             </p>
             <p>
+              An (R) after a room name below means that room may be recorded as part of an observational study or for
+              documentation purposes. If you&#39;re from the EU, or if you would like to know more about the study,
+              please visit{" "}
+              <a href="http://ieeevr.org/2020/online/study.html" target="_blank" rel="noopener noreferrer">
+                http://ieeevr.org/2020/online/study.html
+              </a>{" "}
+              before you enter the room.
+            </p>
+            <p>
               Finally, please remember that this is a professional event, and you should abide by the{" "}
               <a href="http://ieeevr.org/2020/attend/codeofconduct.html" target="_blank" rel="noopener noreferrer">
                 IEEE Code of Conduct
