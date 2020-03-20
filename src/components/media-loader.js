@@ -395,11 +395,11 @@ AFRAME.registerComponent("media-loader", {
 
       accessibleUrl = accessibleUrl.replace(
         "hubs-ieeevr-hubs-internal-net-proxy.ieeevr2020.workers.dev",
-        configs.RETICULUM_SERVER
+        "ieeevr-assets.ieeevr-hubs-internal.net"
       );
       accessibleUrl = accessibleUrl.replace(
         "hubs-ieeevr-hubs-internal-net-cors-proxy.ieeevr2020.workers.dev",
-        configs.RETICULUM_SERVER
+        "ieeevr-assets.ieeevr-hubs-internal.net"
       );
 
       // if the component creator didn't know the content type, we didn't get it from reticulum, and

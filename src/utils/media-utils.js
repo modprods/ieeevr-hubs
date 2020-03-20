@@ -32,8 +32,14 @@ export const resolveUrl = async (url, quality = null, version = 1, bustCache) =>
   const key = `${url}_${version}`;
   if (!bustCache && resolveUrlCache.has(key)) return resolveUrlCache.get(key);
 
-  url = url.replace("hubs-ieeevr-hubs-internal-net-proxy.ieeevr2020.workers.dev", configs.RETICULUM_SERVER);
-  url = url.replace("hubs-ieeevr-hubs-internal-net-cors-proxy.ieeevr2020.workers.dev", configs.RETICULUM_SERVER);
+  url = url.replace(
+    "hubs-ieeevr-hubs-internal-net-proxy.ieeevr2020.workers.dev",
+    "ieeevr-assets.ieeevr-hubs-internal.net"
+  );
+  url = url.replace(
+    "hubs-ieeevr-hubs-internal-net-cors-proxy.ieeevr2020.workers.dev",
+    "ieeevr-assets.ieeevr-hubs-internal.net"
+  );
 
   const resultPromise = fetch(mediaAPIEndpoint, {
     method: "POST",
