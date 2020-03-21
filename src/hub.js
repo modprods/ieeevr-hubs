@@ -227,7 +227,7 @@ const isTelemetryDisabled = qsTruthy("disable_telemetry");
 const isDebug = qsTruthy("debug");
 
 if (!isBotMode && !isTelemetryDisabled) {
-  registerTelemetry("/hub", "Room Landing Page");
+  registerTelemetry(`/hub${location.pathname}`, `Room: ${document.title}`);
 }
 
 disableiOSZoom();
