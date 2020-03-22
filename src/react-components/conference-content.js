@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
 import configs from "../utils/configs";
 import { createAndRedirectToNewHub } from "../utils/phoenix-utils";
+import loaderStyles from "../assets/stylesheets/loader.scss";
 
 const maxRoomCap = configs.feature("max_room_cap") || 50;
 
@@ -127,7 +128,19 @@ function ConferenceRoomGroup({ group }) {
   );
 }
 
+function Spinner() {
+  return (
+    <div className="loader-wrap loader-mid">
+      <div className="loader">
+        <div className="loader-center" />
+      </div>
+    </div>
+  );
+}
+
 export default function ConferenceContent({ publicRooms, favoritedRooms }) {
+  const groupedPublicRooms = groupFeaturedRooms(publicRooms);
+
   return (
     <main className={styles.conferenceContent}>
       <section className={styles.descriptionContainer}>
@@ -214,7 +227,13 @@ export default function ConferenceContent({ publicRooms, favoritedRooms }) {
           <div className={styles.centered}>
             <h1>Virtual Rooms</h1>
           </div>
-          {groupFeaturedRooms(publicRooms).map(group => <ConferenceRoomGroup key={group.name} group={group} />)}
+          {groupedPublicRooms.length > 0 ? (
+            groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group} />)
+          ) : (
+            <div className={styles.spinnerContainer}>
+              <Spinner />
+            </div>
+          )}
           <button
             className={classNames(styles.joinButton, styles.createRoomButton)}
             onClick={e => {

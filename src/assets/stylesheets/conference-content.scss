@@ -67,6 +67,10 @@
   }
 }
 
+:local(.spinner-container) {
+  padding: 40px 0;
+}
+
 :local(.conference-room-group) {
   display: flex;
   justify-content: space-between;
