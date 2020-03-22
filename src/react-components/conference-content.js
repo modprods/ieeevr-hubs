@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import styles from "../assets/stylesheets/conference-content.scss";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
 import configs from "../utils/configs";
 import { createAndRedirectToNewHub } from "../utils/phoenix-utils";
-import loaderStyles from "../assets/stylesheets/loader.scss";
+import "../assets/stylesheets/loader.scss";
 
 const maxRoomCap = configs.feature("max_room_cap") || 50;
 
@@ -113,19 +114,70 @@ function RoomItem({ room }) {
   );
 }
 
-function ConferenceRoomGroup({ group }) {
-  return (
-    <div className={classNames(styles.card, styles.conferenceRoomGroup)}>
-      <div className={styles.groupLeft}>
-        <h2>{group.name}</h2>
-        {group.description && <p>{group.description}</p>}
-        <ul className={styles.roomList}>{group.rooms.map(room => <RoomItem key={room.id} room={room} />)}</ul>
+class ConferenceRoomGroup extends Component {
+  static propTypes = {
+    group: PropTypes.object
+  };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      open: false
+    };
+  }
+
+  showMore = e => {
+    e.preventDefault();
+    this.setState({ open: true });
+  };
+
+  render() {
+    const { group } = this.props;
+
+    let rooms;
+
+    if (this.state.open) {
+      rooms = group.rooms;
+    } else {
+      rooms = [];
+      let emptyRooms = 0;
+
+      for (let i = 0; i < group.rooms.length; i++) {
+        const room = group.rooms[i];
+
+        if (room.member_count > 0) {
+          rooms.push(room);
+        } else if (emptyRooms < 3) {
+          rooms.push(room);
+          emptyRooms++;
+        }
+      }
+    }
+
+    return (
+      <div className={classNames(styles.card, styles.conferenceRoomGroup)}>
+        <div className={styles.groupLeft}>
+          <h2>{group.name}</h2>
+          {group.description && <p>{group.description}</p>}
+          <ul className={styles.roomList}>
+            {rooms.map(room => <RoomItem key={room.id} room={room} />)}
+            {!this.state.open &&
+              rooms.length !== group.rooms.length && (
+                <li key="show-more">
+                  <a href="#" onClick={this.showMore}>
+                    Show more...
+                  </a>
+                </li>
+              )}
+          </ul>
+        </div>
+        <div className={styles.groupRight}>
+          <img alt={group.name} src={group.thumbnail} />
+        </div>
       </div>
-      <div className={styles.groupRight}>
-        <img alt={group.name} src={group.thumbnail} />
-      </div>
-    </div>
-  );
+    );
+  }
 }
 
 function Spinner() {
