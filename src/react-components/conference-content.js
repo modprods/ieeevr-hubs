@@ -208,6 +208,9 @@ export default function ConferenceContent({ publicRooms, favoritedRooms }) {
           <div className={classNames(styles.card, styles.centered)}>
             <img className={styles.logo} src={configs.image("logo")} />
             <h1>Welcome to IEEEVR 2020 Online</h1>
+            <a className={classNames(styles.joinButton, styles.createRoomButton)} href="#virtual-rooms">
+              Browse Rooms
+            </a>
             <p>
               <b>Step 1:</b> If you are not registered, you cannot attend in Hubs or join the conference Slack. You may
               still watch the twitch streams. Links and information are available at{" "}
@@ -284,7 +287,7 @@ export default function ConferenceContent({ publicRooms, favoritedRooms }) {
                 ))}
               </div>
             )}
-          <div className={styles.centered}>
+          <div className={styles.centered} id="virtual-rooms">
             <h1>Virtual Rooms</h1>
           </div>
           {groupedPublicRooms.length > 0 ? (
