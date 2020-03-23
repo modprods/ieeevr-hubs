@@ -122,8 +122,16 @@ class ConferenceRoomGroup extends Component {
   constructor(props) {
     super(props);
 
+    const groupName = props.group.name;
+
+    let open = true;
+
+    if (groupName.startsWith("Track ") || groupName.startsWith("Three Conference Streams")) {
+      open = false;
+    }
+
     this.state = {
-      open: false
+      open
     };
   }
 
