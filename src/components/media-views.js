@@ -27,7 +27,7 @@ const parseGIF = promisifyWorker(new GIFWorker());
 const isIOS = AFRAME.utils.device.isIOS();
 const isMobileVR = AFRAME.utils.device.isMobileVR();
 const isFirefoxReality = isMobileVR && navigator.userAgent.match(/Firefox/);
-const HLS_TIMEOUT = 10000; // HLS can sometimes fail, we re-try after this duration
+const HLS_TIMEOUT = 30000; // HLS can sometimes fail, we re-try after this duration
 const audioIconTexture = new THREE.TextureLoader().load(audioIcon);
 
 export const VOLUME_LABELS = [];
@@ -702,6 +702,8 @@ AFRAME.registerComponent("media-video", {
             hls.attachMedia(videoEl);
 
             hls.on(HLS.Events.ERROR, function(event, data) {
+              console.error("HLS error", event, data);
+
               if (data.fatal) {
                 switch (data.type) {
                   case HLS.ErrorTypes.NETWORK_ERROR:
