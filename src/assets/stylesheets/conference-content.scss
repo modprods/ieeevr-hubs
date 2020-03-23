@@ -6,6 +6,7 @@
 
   h1 {
     font-size: 32px;
+    margin-bottom: 20px;
   }
 
   h3 {
@@ -39,6 +40,10 @@
   :local(.logo) {
     max-width: 200px;
     margin: 40px 40px 20px 40px;
+  }
+
+  :local(.join-button) {
+    margin-bottom: 20px;
   }
 }
 
