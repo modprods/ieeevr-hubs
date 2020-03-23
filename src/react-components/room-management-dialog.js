@@ -69,6 +69,7 @@ export default class RoomManagementDialog extends Component {
       "Spawn Drawing",
       "Pin Objects",
       "Spawn Emoji",
+      "Allow Flying",
       "Public"
     ];
     newLines.push(header.join("\t"));
@@ -87,6 +88,7 @@ export default class RoomManagementDialog extends Component {
         spawn_drawing,
         pin_objects,
         spawn_emoji,
+        fly,
         allow_promotion
       ] = line.split("\t");
 
@@ -104,7 +106,8 @@ export default class RoomManagementDialog extends Component {
             spawn_camera: parseTSVBool(spawn_camera),
             spawn_drawing: parseTSVBool(spawn_drawing),
             pin_objects: parseTSVBool(pin_objects),
-            spawn_emoji: parseTSVBool(spawn_emoji)
+            spawn_emoji: parseTSVBool(spawn_emoji),
+            fly: parseTSVBool(fly)
           },
           room_size: parseTSVInt(room_size),
           allow_promotion: parseTSVBool(allow_promotion)
@@ -137,6 +140,7 @@ export default class RoomManagementDialog extends Component {
         spawn_drawing,
         pin_objects,
         spawn_emoji,
+        fly,
         allow_promotion
       ];
       newLines.push(newLine.join("\t"));
@@ -173,6 +177,7 @@ export default class RoomManagementDialog extends Component {
       "Spawn Drawing",
       "Pin Objects",
       "Spawn Emoji",
+      "Allow Flying",
       "Public"
     ];
     lines.push(header.join("\t"));
@@ -188,6 +193,7 @@ export default class RoomManagementDialog extends Component {
         groupOrder || "",
         roomOrder || "",
         room_size || "",
+        "false",
         "false",
         "false",
         "false",
