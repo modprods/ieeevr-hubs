@@ -141,7 +141,7 @@
   list-style: none; 
   padding: 0;
   width: 100%;
-  max-width: 420px;
+  max-width: 480px;
 
   li {
     width: 100%;
@@ -153,13 +153,14 @@
     background-color: #F7F9FA;
     white-space: nowrap;
     overflow: hidden;
+    font-size: 14px;
 
     &:not(:first-child) {
       border-top-width: 0;
     }
 
     @media (max-width: 1024px) {
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 
