@@ -11,7 +11,7 @@ import "../assets/stylesheets/loader.scss";
 
 const maxRoomCap = configs.feature("max_room_cap") || 50;
 
-function groupFeaturedRooms(featuredRooms) {
+export function groupFeaturedRooms(featuredRooms) {
   if (!featuredRooms) {
     return [];
   }
@@ -85,6 +85,21 @@ function groupFeaturedRooms(featuredRooms) {
   return groups;
 }
 
+export function makeSlug(name) {
+  let slug = name.toLowerCase();
+
+  // Remove non-word characters
+  slug = slug.replace(/[^a-z0-9\s-_]/gi, "");
+
+  // Reduce to single whitespace
+  slug = slug.replace(/[\s-]+/g, " ");
+
+  // Replace whitespace and underscores with dashes
+  slug = slug.replace(/[\s_]+/g, "-");
+
+  return slug;
+}
+
 function RoomItem({ room }) {
   let canSpectate = true;
   let canJoin = true;
@@ -125,19 +140,6 @@ class ConferenceRoomGroup extends Component {
 
     const groupName = props.group.name;
 
-    let id = groupName;
-
-    id = groupName.toLowerCase();
-
-    // Remove non-word characters
-    id = id.replace(/[^a-z0-9\s-_]/gi, "");
-
-    // Reduce to single whitespace
-    id = id.replace(/[\s-]+/g, " ");
-
-    // Replace whitespace and underscores with dashes
-    id = id.replace(/[\s_]+/g, "-");
-
     let open = true;
 
     if (groupName.startsWith("Track ") || groupName.startsWith("Three Conference Streams")) {
@@ -145,7 +147,7 @@ class ConferenceRoomGroup extends Component {
     }
 
     this.state = {
-      id,
+      id: makeSlug(groupName),
       open
     };
   }

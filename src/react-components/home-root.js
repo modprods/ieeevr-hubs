@@ -30,6 +30,7 @@ import MediaTiles from "./media-tiles";
 
 import RoomManagementDialog from "./room-management-dialog";
 import ConferenceContent from "./conference-content";
+import ShardPage from "./shard-page";
 
 addLocaleData([...en]);
 
@@ -54,7 +55,8 @@ class HomeRoot extends Component {
     showSignIn: PropTypes.bool,
     signInDestination: PropTypes.string,
     signInDestinationUrl: PropTypes.string,
-    signInReason: PropTypes.string
+    signInReason: PropTypes.string,
+    shardId: PropTypes.string
   };
 
   state = {
@@ -172,6 +174,10 @@ class HomeRoot extends Component {
   };
 
   render() {
+    if (this.props.shardId) {
+      return <ShardPage shardId={this.props.shardId} publicRooms={this.props.publicRooms} />;
+    }
+
     const mainContentClassNames = classNames({
       [styles.mainContent]: true,
       [styles.noninteractive]: !!this.state.dialog

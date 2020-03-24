@@ -45,6 +45,7 @@ const remountUI = function() {
       signInDestination={qs.get("sign_in_destination")}
       signInDestinationUrl={qs.get("sign_in_destination_url")}
       signInReason={qs.get("sign_in_reason")}
+      shardId={qs.get("shard_id")}
       hideHero={hideHero}
       showAdmin={showAdmin}
       showCreate={showCreate}
@@ -89,7 +90,7 @@ async function fetchFavoritedRooms() {
 
   const res = await fetchReticulumAuthenticated(
     `/api/v1/media/search?source=favorites&type=rooms&user=${store.credentialsAccountId}`
-  )
+  );
 
   favoritedRooms = res.entries;
 }
@@ -103,7 +104,6 @@ async function fetchPublicRooms() {
   queryParams.set("filter", "public");
 
   while (hasMore) {
-
     const res = await fetchReticulumAuthenticated(`/api/v1/media/search?${queryParams}`);
 
     for (const entry of res.entries) {
@@ -123,10 +123,7 @@ async function fetchPublicRooms() {
 
 // Fetch favorite + public rooms and merge, sorting by member count
 async function fetchFeaturedRooms() {
-  await Promise.all([
-    fetchFavoritedRooms(),
-    fetchPublicRooms()
-  ]);
+  await Promise.all([fetchFavoritedRooms(), fetchPublicRooms()]);
 
   remountUI();
 }
