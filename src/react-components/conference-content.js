@@ -4,6 +4,7 @@ import styles from "../assets/stylesheets/conference-content.scss";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
+import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
 import configs from "../utils/configs";
 import { createAndRedirectToNewHub } from "../utils/phoenix-utils";
 import "../assets/stylesheets/loader.scss";
@@ -124,6 +125,19 @@ class ConferenceRoomGroup extends Component {
 
     const groupName = props.group.name;
 
+    let id = groupName;
+
+    id = groupName.toLowerCase();
+
+    // Remove non-word characters
+    id = id.replace(/[^a-z0-9\s-_]/gi, "");
+
+    // Reduce to single whitespace
+    id = id.replace(/[\s-]+/g, " ");
+
+    // Replace whitespace and underscores with dashes
+    id = id.replace(/[\s_]+/g, "-");
+
     let open = true;
 
     if (groupName.startsWith("Track ") || groupName.startsWith("Three Conference Streams")) {
@@ -131,6 +145,7 @@ class ConferenceRoomGroup extends Component {
     }
 
     this.state = {
+      id,
       open
     };
   }
@@ -164,9 +179,14 @@ class ConferenceRoomGroup extends Component {
     }
 
     return (
-      <div className={classNames(styles.card, styles.conferenceRoomGroup)}>
+      <div id={this.state.id} className={classNames(styles.card, styles.conferenceRoomGroup)}>
         <div className={styles.groupLeft}>
-          <h2>{group.name}</h2>
+          <h2>
+            {group.name}
+            <a href={"#" + this.state.id} className={styles.groupLink}>
+              <FontAwesomeIcon icon={faLink} />
+            </a>
+          </h2>
           {group.description && <p>{group.description}</p>}
           <ul className={styles.roomList}>
             {rooms.map(room => <RoomItem key={room.id} room={room} />)}
