@@ -199,7 +199,11 @@
   }
 
   &:active {
-    background-color: #C11212;;
+    background-color: #C11212;
+  }
+
+  &:visited {
+    background-color: #FF6C6C;
   }
 
   @media (max-width: 1024px) {
@@ -226,6 +230,10 @@
   padding: 10px 20px;
   width: auto;
   cursor: pointer;
+
+  &:visited {
+    background-color: #D11313;
+  }
 
   @media (max-width: 1024px) {
     margin: 20px auto 12px auto;
