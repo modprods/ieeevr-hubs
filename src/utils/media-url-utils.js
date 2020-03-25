@@ -161,7 +161,7 @@ const hubsSceneRegex = /https?:\/\/[^/]+\/scenes\/(\w+)\/?\S*/;
 const hubsAvatarRegex = /https?:\/\/[^/]+\/avatars\/(?<id>\w+)\/?\S*/;
 const hubsRoomRegex = /(https?:\/\/)?[^/]+\/([a-zA-Z0-9]{7})\/?\S*/;
 
-function isShardUrl(url) {
+export function isHubsShardUrl(url) {
   const { searchParams } = new URL(url);
   return searchParams.has("shard_id");
 }
@@ -176,10 +176,11 @@ export const isHubsAvatarUrl = async url => (await isHubsServer(url)) && hubsAva
 export const isLocalHubsAvatarUrl = async url => (await isHubsAvatarUrl(url)) && (await isLocalHubsUrl(url));
 
 export const isHubsRoomUrl = async url =>
-  (await isHubsServer(url)) &&
-  !(await isHubsAvatarUrl(url)) &&
-  !(await isHubsSceneUrl(url)) &&
-  (hubsRoomRegex.test(url) || isShardUrl(url));
+  ((await isHubsServer(url)) &&
+    !(await isHubsAvatarUrl(url)) &&
+    !(await isHubsSceneUrl(url)) &&
+    hubsRoomRegex.test(url)) ||
+  isHubsShardUrl(url);
 
 export const isHubsDestinationUrl = async url =>
   (await isHubsServer(url)) && ((await isHubsSceneUrl(url)) || (await isHubsRoomUrl(url)));
