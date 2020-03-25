@@ -221,7 +221,7 @@ AFRAME.registerComponent("pen", {
         this._updateLaser(cursorPose, intersection);
       }
 
-      const penVisible = false;
+      const penVisible = this.grabberId !== "left-cursor" && this.grabberId !== "right-cursor";
       this._setPenVisible(penVisible);
       this.el.setAttribute("pen", { penVisible: penVisible });
 
