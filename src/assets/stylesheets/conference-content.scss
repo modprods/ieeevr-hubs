@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: #E5E5E5;
 
   h1 {
     font-size: 32px;
@@ -35,7 +34,8 @@
 }
 
 :local(.description-container) {
-  background-color: #7E0E21;
+  background-color: white;
+  color: black;
 
   :local(.logo) {
     max-width: 200px;
@@ -57,13 +57,25 @@
   }
 }
 
+:local(.header) {
+  background-color: rgb(178, 18, 41);
+  color: white;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 60px;
+
+  @media (max-width: 1024px) {
+    padding: 12px;
+  }
+}
+
 :local(.card) {
   border-radius: 4px;
-  background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.125);
   padding: 20px;
   margin: 8px;
   width: 100%;
+  //color: black;
 
   @media (max-width: 1024px) {
     padding: 12px;
@@ -240,4 +252,12 @@
     padding: 8px 12px;
     font-size: 16px;
   }
+}
+
+:local(.thematic-break) {
+  border: 8px solid white;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  width: 100%;
 }

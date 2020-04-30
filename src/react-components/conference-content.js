@@ -270,12 +270,13 @@ export default class ConferenceContent extends Component {
       <main className={styles.conferenceContent}>
         <section className={styles.descriptionContainer}>
           <div className={styles.contentContainer}>
-            <div className={classNames(styles.card, styles.centered)}>
+            <div className={classNames(styles.card, styles.centered, styles.header)}>
               <img className={styles.logo} src={configs.image("logo")} />
-              <h1>Welcome to IEEEVR 2020 Online</h1>
+              <h1>Miami University<br/><span style={{fontSize: "0.6em"}}>2020 Virtual Commencement</span></h1>
               <a className={classNames(styles.joinButton, styles.createRoomButton)} href="#virtual-rooms">
                 Browse Rooms
               </a>
+              <hr className={styles.thematicBreak}/>
               <p>
                 <b>Step 1:</b> If you are not registered, you cannot attend in Hubs or join the conference Slack. You
                 may still watch the twitch streams. Links and information are available at{" "}

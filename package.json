@@ -4,13 +4,13 @@
   "description": "Duck-themed multi-user virtual spaces in WebVR.",
   "main": "src/index.js",
   "license": "MPL-2.0",
-  "homepage": "https://github.com/mozilla/hubs#readme",
+  "homepage": "https://github.com/modprods/ieeevr-hubs#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mozilla/hubs.git"
+    "url": "https://github.com/modprods/ieeevr-hubs.git"
   },
   "bugs": {
-    "url": "https://github.com/mozilla/hubs/issues"
+    "url": "https://github.com/modprods/ieeevr-hubs/issues"
   },
   "scripts": {
     "start": "webpack-dev-server --mode=development",
@@ -50,6 +50,7 @@
     "@fortawesome/react-fontawesome": "^0.1.0",
     "@mozillareality/three-batch-manager": "^0.1.8",
     "@mozillareality/three-particle-emitter": "^0.2.2",
+    "acorn": "^7.1.1",
     "aframe": "github:mozillareality/aframe#hubs/master",
     "aframe-rounded": "^1.0.3",
     "aframe-slice9-component": "^1.0.0",
