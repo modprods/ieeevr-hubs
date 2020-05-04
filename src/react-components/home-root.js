@@ -239,6 +239,7 @@ class HomeRoot extends Component {
                 )}
               </div>
             </div>
+            <div>Banana</div>
             <div className={styles.heroContent} style={{ backgroundImage: configs.image("home_background", true) }}>
               {!this.props.hideHero &&
                 (this.props.featuredRooms && this.props.featuredRooms.length > 0
@@ -279,6 +280,7 @@ class HomeRoot extends Component {
                 </div>
               )}
             </div>
+            <div>Banana 2</div>
 
             <div className={styles.footerContent}>
               <div className={styles.poweredBy}>
