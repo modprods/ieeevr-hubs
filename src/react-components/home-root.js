@@ -413,7 +413,7 @@ class HomeRoot extends Component {
       <div className={styles.heroPanel} key={2}>
         <div className={classNames([mediaBrowserStyles.mediaBrowser, mediaBrowserStyles.mediaBrowserInline])}>
           <div className={classNames([mediaBrowserStyles.box, mediaBrowserStyles.darkened])}>
-            <ConferenceContent publicRooms={this.props.publicRoomsResult}/>
+            <ConferenceContent publicRooms={this.props.featuredRooms}/>
             <MediaTiles
               entries={this.props.featuredRooms}
               handleEntryInfoClicked={this.showRoomInfo}
