@@ -39,7 +39,8 @@
 
   :local(.logo) {
     max-width: 200px;
-    margin: 40px 40px 20px 40px;
+    margin: 0px 0px 0px 0px;
+    align-content: flex-start;
   }
 
   :local(.join-button) {
@@ -150,7 +151,7 @@
 }
 
 :local(.room-list) {
-  list-style: none; 
+  list-style: none;
   padding: 0;
   width: 100%;
   max-width: 480px;
@@ -254,10 +255,29 @@
   }
 }
 
-:local(.thematic-break) {
-  border: 8px solid white;
-  overflow: visible;
-  text-align: center;
-  height: 5px;
-  width: 100%;
+:local(.steps) {
+  dt {
+    color: red;
+    padding-top: 1.8em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin-inline-start: 0;
+    padding-top: 1.2em;
+  }
+
+  :local(.circle) {
+    width: 30px;
+    height: 20px;
+    border-radius: 50%;
+    font-size: 30px;
+    color: #fff;
+    line-height: 20px;
+    text-align: center;
+    background: red;
+    padding-right: 7px;
+    padding-left: 7px;
+    margin-right: 10px;
+  }
 }

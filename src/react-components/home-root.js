@@ -184,41 +184,41 @@ class HomeRoot extends Component {
                 <div className={styles.links}>
                   <IfFeature name="show_whats_new_link">
                     <a href="/whats-new">
-                      <FormattedMessage id="home.whats_new_link" />
+                      <FormattedMessage id="home.whats_new_link"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_source_link">
                     <a href="https://github.com/mozilla/hubs" rel="noreferrer noopener">
-                      <FormattedMessage id="home.source_link" />
+                      <FormattedMessage id="home.source_link"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_community_link">
                     <a href={configs.link("community", "https://discord.gg/wHmY4nd")} rel="noreferrer noopener">
-                      <FormattedMessage id="home.community_link" />
+                      <FormattedMessage id="home.community_link"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="enable_spoke">
                     <a href="/spoke" rel="noreferrer noopener">
-                      <FormattedMessage id="editor-name" />
+                      <FormattedMessage id="editor-name"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_docs_link">
                     <a href={configs.link("docs", "https://hubs.mozilla.com/docs")} rel="noreferrer noopener">
-                      <FormattedMessage id="home.docs_link" />
+                      <FormattedMessage id="home.docs_link"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_cloud">
                     <a href="https://hubs.mozilla.com/cloud" rel="noreferrer noopener">
-                      <FormattedMessage id="home.cloud_link" />
+                      <FormattedMessage id="home.cloud_link"/>
                     </a>
                   </IfFeature>
                   {this.props.showAdmin && (
                     <a href="/admin" rel="noreferrer noopener">
                       <i>
-                        <FontAwesomeIcon icon={faCog} />
+                        <FontAwesomeIcon icon={faCog}/>
                       </i>
                       &nbsp;
-                      <FormattedMessage id="home.admin" />
+                      <FormattedMessage id="home.admin"/>
                     </a>
                   )}
                 </div>
@@ -227,53 +227,52 @@ class HomeRoot extends Component {
                 {this.state.signedIn ? (
                   <div>
                     <span>
-                      <FormattedMessage id="sign-in.as" /> {maskEmail(this.state.email)}
+                      <FormattedMessage id="sign-in.as"/> {maskEmail(this.state.email)}
                     </span>{" "}
                     <a onClick={this.onLinkClicked(this.signOut)}>
-                      <FormattedMessage id="sign-in.out" />
+                      <FormattedMessage id="sign-in.out"/>
                     </a>
                   </div>
                 ) : (
                   <a onClick={this.onLinkClicked(this.showSignInDialog)}>
-                    <FormattedMessage id="sign-in.in" />
+                    <FormattedMessage id="sign-in.in"/>
                   </a>
                 )}
               </div>
             </div>
-            <div>Banana</div>
-            <div className={styles.heroContent} style={{ backgroundImage: configs.image("home_background", true) }}>
+            <div className={styles.heroContent}>
               {!this.props.hideHero &&
-                (this.props.featuredRooms && this.props.featuredRooms.length > 0
-                  ? this.renderFeaturedRoomsHero()
-                  : this.renderNonFeaturedRoomsHero())}
+              (this.props.featuredRooms && this.props.featuredRooms.length > 0
+                ? this.renderFeaturedRoomsHero()
+                : this.renderNonFeaturedRoomsHero())}
               {!this.props.hideHero && (
                 <div className={classNames(styles.heroPanel, styles.rightPanel)}>
                   {showFTUEVideo && (
                     <div className={styles.heroVideo}>
                       <video playsInline muted loop autoPlay>
-                        <source src={homeVideoWebM} type="video/webm" />
-                        <source src={homeVideoMp4} type="video/mp4" />
+                        <source src={homeVideoWebM} type="video/webm"/>
+                        <source src={homeVideoMp4} type="video/mp4"/>
                       </video>
                     </div>
                   )}
                   <div>
                     <div className={styles.secondaryLink}>
                       <a href="/link">
-                        <FormattedMessage id="home.have_code" />
+                        <FormattedMessage id="home.have_code"/>
                       </a>
                     </div>
 
                     <IfFeature name="show_discord_bot_link">
                       <div className={styles.secondaryLink}>
                         <div>
-                          <FormattedMessage id="home.add_to_discord_1" />
+                          <FormattedMessage id="home.add_to_discord_1"/>
                         </div>
-                        <img src={discordLogoSmall} />
+                        <img src={discordLogoSmall}/>
                         <a href="/discord">
-                          <FormattedMessage id="home.add_to_discord_2" />
+                          <FormattedMessage id="home.add_to_discord_2"/>
                         </a>
                         <div>
-                          <FormattedMessage id="home.add_to_discord_3" />
+                          <FormattedMessage id="home.add_to_discord_3"/>
                         </div>
                       </div>
                     </IfFeature>
@@ -281,16 +280,15 @@ class HomeRoot extends Component {
                 </div>
               )}
             </div>
-            <div>Banana 2</div>
 
             <div className={styles.footerContent}>
               <div className={styles.poweredBy}>
                 <UnlessFeature name="hide_powered_by">
                   <span className={styles.prefix}>
-                    <FormattedMessage id="home.powered_by_prefix" />
+                    <FormattedMessage id="home.powered_by_prefix"/>
                   </span>
                   <a className={styles.link} href="https://hubs.mozilla.com/cloud">
-                    <FormattedMessage id="home.powered_by_link" />
+                    <FormattedMessage id="home.powered_by_link"/>
                   </a>
                 </UnlessFeature>
               </div>
@@ -298,7 +296,7 @@ class HomeRoot extends Component {
                 <div className={styles.top}>
                   <IfFeature name="show_join_us_dialog">
                     <a className={styles.link} rel="noopener noreferrer" href="/#/join-us">
-                      <FormattedMessage id="home.join_us" />
+                      <FormattedMessage id="home.join_us"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_newsletter_signup">
@@ -308,13 +306,13 @@ class HomeRoot extends Component {
                       rel="noopener noreferrer"
                       href="http://eepurl.com/gX_fH9"
                     >
-                      <FormattedMessage id="home.subscribe_to_mailing_list" />
+                      <FormattedMessage id="home.subscribe_to_mailing_list"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_issue_report_link">
                     {configs.feature("show_issue_report_dialog") ? (
                       <a className={styles.link} rel="noopener noreferrer" href="/#/report">
-                        <FormattedMessage id="home.report_issue" />
+                        <FormattedMessage id="home.report_issue"/>
                       </a>
                     ) : (
                       <a
@@ -323,7 +321,7 @@ class HomeRoot extends Component {
                         target="_blank"
                         rel="noreferrer noopener"
                       >
-                        <FormattedMessage id="settings.report" />
+                        <FormattedMessage id="settings.report"/>
                       </a>
                     )}
                   </IfFeature>
@@ -334,7 +332,7 @@ class HomeRoot extends Component {
                       rel="noopener noreferrer"
                       href={configs.link("terms_of_use", "https://github.com/mozilla/hubs/blob/master/TERMS.md")}
                     >
-                      <FormattedMessage id="home.terms_of_use" />
+                      <FormattedMessage id="home.terms_of_use"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_privacy">
@@ -344,11 +342,11 @@ class HomeRoot extends Component {
                       rel="noopener noreferrer"
                       href={configs.link("privacy_notice", "https://github.com/mozilla/hubs/blob/master/PRIVACY.md")}
                     >
-                      <FormattedMessage id="home.privacy_notice" />
+                      <FormattedMessage id="home.privacy_notice"/>
                     </a>
                   </IfFeature>
                   <IfFeature name="show_company_logo">
-                    <img className={styles.companyLogo} src={configs.image("company_logo")} />
+                    <img className={styles.companyLogo} src={configs.image("company_logo")}/>
                   </IfFeature>
                 </div>
               </div>
@@ -376,9 +374,9 @@ class HomeRoot extends Component {
         }}
       >
         <i>
-          <FontAwesomeIcon icon={faPlus} />
+          <FontAwesomeIcon icon={faPlus}/>
         </i>
-        <FormattedMessage id={`home.${isMobile ? "mobile" : "desktop"}.add_pwa`} />
+        <FormattedMessage id={`home.${isMobile ? "mobile" : "desktop"}.add_pwa`}/>
       </button>
     );
   }
@@ -392,33 +390,17 @@ class HomeRoot extends Component {
           createAndRedirectToNewHub(null, null, false);
         }}
       >
-        <FormattedMessage id="home.create_a_room" />
+        <FormattedMessage id="home.create_a_room"/>
       </button>
     );
   }
 
   renderFeaturedRoomsHero() {
     return [
-      <div className={styles.heroPanel} key={1}>
-        <div className={styles.container}>
-          <div className={classNames([styles.logo, styles.logoMargin])}>
-            <img src={configs.image("logo")} />
-          </div>
-        </div>
-        <div className={styles.ctaButtons}>
-          {this.props.showCreate && this.renderCreateButton()}
-          {this.renderPwaButton()}
-        </div>
-      </div>,
       <div className={styles.heroPanel} key={2}>
         <div className={classNames([mediaBrowserStyles.mediaBrowser, mediaBrowserStyles.mediaBrowserInline])}>
           <div className={classNames([mediaBrowserStyles.box, mediaBrowserStyles.darkened])}>
             <ConferenceContent publicRooms={this.props.featuredRooms}/>
-            <MediaTiles
-              entries={this.props.featuredRooms}
-              handleEntryInfoClicked={this.showRoomInfo}
-              urlSource="favorites"
-            />
           </div>
         </div>
       </div>
@@ -430,10 +412,10 @@ class HomeRoot extends Component {
       <div className={styles.heroPanel}>
         <div className={styles.container}>
           <div className={styles.logo}>
-            <img src={configs.image("logo")} />
+            <img src={configs.image("logo")}/>
           </div>
           <div className={styles.blurb}>
-            <FormattedMessage id="app-description" />
+            <FormattedMessage id="app-description"/>
           </div>
         </div>
         <div className={styles.ctaButtons}>
