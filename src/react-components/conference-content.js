@@ -181,15 +181,13 @@ class ConferenceRoomGroup extends Component {
     }
 
     return (
-      <div id={this.state.id} className={classNames(styles.card, styles.conferenceRoomGroup)}>
+      <div className={styles.item12}>
         <div className={styles.groupLeft}>
-          <h2>
-            {group.name}
-            <a href={"#" + this.state.id} className={styles.groupLink}>
-              <FontAwesomeIcon icon={faLink}/>
-            </a>
-          </h2>
-          {group.description && <p>{group.description}</p>}
+          {/*{group.name}*/}
+          {/*<a href={"#" + this.state.id} className={styles.groupLink}>*/}
+          {/*  <FontAwesomeIcon icon={faLink}/>*/}
+          {/*</a>*/}
+          {/*{group.description}*/}
           <ul className={styles.roomList}>
             {rooms.map(room => <RoomItem key={room.id} room={room}/>)}
             {!this.state.open &&
@@ -202,11 +200,36 @@ class ConferenceRoomGroup extends Component {
             )}
           </ul>
         </div>
-        <div className={styles.groupRight}>
-          <img alt={group.name} src={group.thumbnail}/>
-        </div>
       </div>
     );
+
+    // ----
+    // <div id={this.state.id} className={classNames(styles.card, styles.conferenceRoomGroup, styles.item12)}>
+    //   <div className={styles.groupLeft}>
+    // {/*<h2>*/}
+    // {/*  {group.name}*/}
+    // {/*  <a href={"#" + this.state.id} className={styles.groupLink}>*/}
+    // {/*    <FontAwesomeIcon icon={faLink}/>*/}
+    // {/*  </a>*/}
+    // {/*</h2>*/}
+    //   {group.description && <p>{group.description}</p>}
+    //   <ul className={styles.roomList}>
+    //     {rooms.map(room => <RoomItem key={room.id} room={room}/>)}
+    //     {!this.state.open &&
+    //     rooms.length !== group.rooms.length && (
+    //       <li key="show-more">
+    //         <a href="#" onClick={this.showMore}>
+    //           Show more...
+    //         </a>
+    //       </li>
+    //     )}
+    //   </ul>
+    // </div>
+    // {/*<div className={styles.groupRight}>*/}
+    // {/*  <img alt={group.name} src={group.thumbnail}/>*/}
+    // {/*</div>*/}
+    // </div>
+
   }
 }
 
@@ -267,13 +290,15 @@ export default class ConferenceContent extends Component {
     const groupedPublicRooms = groupFeaturedRooms(publicRooms);
 
     return (
-      <main className={styles.conferenceContent}>
+      <main>
+        {/*className={styles.conferenceContent}>*/}
         <section className={styles.descriptionContainer}>
           <div className={styles.contentContainer}>
             <div className={classNames(styles.card, styles.header)}>
               <img className={styles.logo} src={configs.image("logo")}/>
-              <div className={classNames(styles.centered)}>
-                <h1>Miami University<br/><span style={{ fontSize: "0.6em" }}>2020 Virtual Commencement</span></h1>
+              <div className={classNames(styles.centered, styles.headercontent)}>
+                <h1>Miami University</h1>
+                <h2>2020 Virtual Commencement</h2>
                 <a className={classNames(styles.joinButton, styles.createRoomButton)} href="#virtual-rooms">
                   Browse Rooms
                 </a>
@@ -333,19 +358,13 @@ export default class ConferenceContent extends Component {
             </div>
           </div>
         </section>
-        <section>
-          <div className={styles.contentContainer}>
-            {favoritedRooms &&
-            favoritedRooms.length > 0 && (
-              <div className={styles.centered}>
-                <h1>Favorite Rooms</h1>
-                {groupFeaturedRooms(favoritedRooms).map(group => (
-                  <ConferenceRoomGroup key={group.name} group={group}/>
-                ))}
-              </div>
-            )}
-            <div className={styles.centered} id="virtual-rooms">
+        <section className={styles.descriptionContainer}>
+          <div className={styles.virtualRooms}>
+            <div className={styles.item2}>
               <h1>Virtual Rooms</h1>
+            </div>
+            <div className={styles.item3}>
+              this is an image
             </div>
             {groupedPublicRooms.length > 0 ? (
               groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
@@ -354,15 +373,36 @@ export default class ConferenceContent extends Component {
                 <Spinner/>
               </div>
             )}
-            <button
-              className={classNames(styles.joinButton, styles.createRoomButton)}
-              onClick={e => {
-                e.preventDefault();
-                createAndRedirectToNewHub(null, null, false);
-              }}
-            >
-              Create Room
-            </button>
+            {/*<div className={styles.contentContainer}>*/}
+            {/*  {favoritedRooms &&*/}
+            {/*  favoritedRooms.length > 0 && (*/}
+            {/*    <div className={styles.centered}>*/}
+            {/*      <h1>Favorite Rooms</h1>*/}
+            {/*      {groupFeaturedRooms(favoritedRooms).map(group => (*/}
+            {/*        <ConferenceRoomGroup key={group.name} group={group}/>*/}
+            {/*      ))}*/}
+            {/*    </div>*/}
+            {/*  )}*/}
+            {/*  <div className={classNames(styles.item2, styles.centered)} id="virtual-rooms">*/}
+            {/*    <h1>Virtual Rooms</h1>*/}
+            {/*  </div>*/}
+            {/*  {groupedPublicRooms.length > 0 ? (*/}
+            {/*    groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)*/}
+            {/*  ) : (*/}
+            {/*    <div className={styles.spinnerContainer}>*/}
+            {/*      <Spinner/>*/}
+            {/*    </div>*/}
+            {/*  )}*/}
+            {/*  <button*/}
+            {/*    className={classNames(styles.joinButton, styles.createRoomButton)}*/}
+            {/*    onClick={e => {*/}
+            {/*      e.preventDefault();*/}
+            {/*      createAndRedirectToNewHub(null, null, false);*/}
+            {/*    }}*/}
+            {/*  >*/}
+            {/*    Create Room*/}
+            {/*  </button>*/}
+            {/*</div>*/}
           </div>
         </section>
       </main>
