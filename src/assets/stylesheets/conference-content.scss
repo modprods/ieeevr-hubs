@@ -5,7 +5,10 @@ $red-dark: #DA132C;
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: white;
+  background-color: lightgray;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-color: blue;
 
   h1 {
     font-size: 32px;
@@ -296,7 +299,7 @@ $red-dark: #DA132C;
   }
 }
 
-:local(.virtualRooms) {
+:local(.virtual-Rooms-Group) {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
@@ -326,4 +329,47 @@ $red-dark: #DA132C;
   :local(.item3) {
     grid-column: 3;
   }
+}
+
+xxdiv {
+  border-radius: 4px;
+  border: 1px solid green;
+}
+
+:local(.description-Container2) {
+  border-radius: 4px;
+  border: 1px solid pink;
+}
+
+:local(.description-Container-Header) {
+  border-radius: 4px;
+  border: 1px solid pink;
+  background-color: $red;
+}
+
+:local(.banner) {
+  border-radius: 4px;
+  border: 1px solid red;
+}
+
+:local(.instructions) {
+  border-radius: 4px;
+  border: 1px solid saddlebrown;
+  background-color: white;
+}
+
+:local(.virtual-Rooms-Section) {
+  border-radius: 4px;
+  border: 1px solid purple;
+}
+
+:local(.virtual-Rooms-Section-Container) {
+  border-radius: 4px;
+  border: 1px solid yellow;
+  background-color: white;
+}
+
+:local(.virtual-Rooms-Section-Header) {
+  border-radius: 4px;
+  border: 1px solid rebeccapurple;
 }

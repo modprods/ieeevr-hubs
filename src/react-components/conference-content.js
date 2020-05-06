@@ -290,13 +290,17 @@ export default class ConferenceContent extends Component {
     const groupedPublicRooms = groupFeaturedRooms(publicRooms);
 
     return (
-      <main>
-        {/*className={styles.conferenceContent}>*/}
-        <section className={styles.descriptionContainer}>
-          <div className={styles.contentContainer}>
-            <div className={classNames(styles.card, styles.header)}>
+      <main className={styles.conferenceContent}>
+        {/*>*/}
+        <section>
+          {/*className={styles.descriptionContainer}>*/}
+          <div className={styles.descriptionContainer2}>
+            {/*// className={styles.contentContainer}>*/}
+            <div className={styles.descriptionContainerHeader}>
+              {/*// className={classNames(styles.card, styles.header)}>*/}
               <img className={styles.logo} src={configs.image("logo")}/>
-              <div className={classNames(styles.centered, styles.headercontent)}>
+              <div className={styles.banner}>
+                {/*// className={classNames(styles.centered, styles.headercontent)}>*/}
                 <h1>Miami University</h1>
                 <h2>2020 Virtual Commencement</h2>
                 <a className={classNames(styles.joinButton, styles.createRoomButton)} href="#virtual-rooms">
@@ -304,7 +308,8 @@ export default class ConferenceContent extends Component {
                 </a>
               </div>
             </div>
-            <div className={classNames(styles.centered, styles.contentContainer, styles.steps)}>
+            <div className={styles.instructions}>
+              {/*className={classNames(styles.centered, styles.contentContainer, styles.steps)}>*/}
               <dl>
                 <dt><span className={classNames(styles.circle)}>1</span>Step One</dt>
                 <dd>If you are not registered, you cannot attend in Hubs or join the conference Slack. You
@@ -358,51 +363,56 @@ export default class ConferenceContent extends Component {
             </div>
           </div>
         </section>
-        <section className={styles.descriptionContainer}>
-          <div className={styles.virtualRooms}>
-            <div className={styles.item2}>
+        <section>
+          {/*className={styles.descriptionContainer}>*/}
+          <div className={styles.virtualRoomsSection}>
+            <div className={styles.virtualRoomsSectionHeader}>
               <h1>Virtual Rooms</h1>
             </div>
-            <div className={styles.item3}>
-              this is an image
-            </div>
-            {groupedPublicRooms.length > 0 ? (
-              groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
-            ) : (
-              <div className={styles.spinnerContainer}>
-                <Spinner/>
+            <div className={styles.virtualRoomsSectionContainer}>
+              <div className={styles.virtualRoomsGroup}>
+                <div className={styles.item3}>
+                  this is an image
+                </div>
+                {groupedPublicRooms.length > 0 ? (
+                  groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
+                ) : (
+                  <div className={styles.spinnerContainer}>
+                    <Spinner/>
+                  </div>
+                )}
+                {/*<div className={styles.contentContainer}>*/}
+                {/*  {favoritedRooms &&*/}
+                {/*  favoritedRooms.length > 0 && (*/}
+                {/*    <div className={styles.centered}>*/}
+                {/*      <h1>Favorite Rooms</h1>*/}
+                {/*      {groupFeaturedRooms(favoritedRooms).map(group => (*/}
+                {/*        <ConferenceRoomGroup key={group.name} group={group}/>*/}
+                {/*      ))}*/}
+                {/*    </div>*/}
+                {/*  )}*/}
+                {/*  <div className={classNames(styles.item2, styles.centered)} id="virtual-rooms">*/}
+                {/*    <h1>Virtual Rooms</h1>*/}
+                {/*  </div>*/}
+                {/*  {groupedPublicRooms.length > 0 ? (*/}
+                {/*    groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)*/}
+                {/*  ) : (*/}
+                {/*    <div className={styles.spinnerContainer}>*/}
+                {/*      <Spinner/>*/}
+                {/*    </div>*/}
+                {/*  )}*/}
+                {/*  <button*/}
+                {/*    className={classNames(styles.joinButton, styles.createRoomButton)}*/}
+                {/*    onClick={e => {*/}
+                {/*      e.preventDefault();*/}
+                {/*      createAndRedirectToNewHub(null, null, false);*/}
+                {/*    }}*/}
+                {/*  >*/}
+                {/*    Create Room*/}
+                {/*  </button>*/}
+                {/*</div>*/}
               </div>
-            )}
-            {/*<div className={styles.contentContainer}>*/}
-            {/*  {favoritedRooms &&*/}
-            {/*  favoritedRooms.length > 0 && (*/}
-            {/*    <div className={styles.centered}>*/}
-            {/*      <h1>Favorite Rooms</h1>*/}
-            {/*      {groupFeaturedRooms(favoritedRooms).map(group => (*/}
-            {/*        <ConferenceRoomGroup key={group.name} group={group}/>*/}
-            {/*      ))}*/}
-            {/*    </div>*/}
-            {/*  )}*/}
-            {/*  <div className={classNames(styles.item2, styles.centered)} id="virtual-rooms">*/}
-            {/*    <h1>Virtual Rooms</h1>*/}
-            {/*  </div>*/}
-            {/*  {groupedPublicRooms.length > 0 ? (*/}
-            {/*    groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)*/}
-            {/*  ) : (*/}
-            {/*    <div className={styles.spinnerContainer}>*/}
-            {/*      <Spinner/>*/}
-            {/*    </div>*/}
-            {/*  )}*/}
-            {/*  <button*/}
-            {/*    className={classNames(styles.joinButton, styles.createRoomButton)}*/}
-            {/*    onClick={e => {*/}
-            {/*      e.preventDefault();*/}
-            {/*      createAndRedirectToNewHub(null, null, false);*/}
-            {/*    }}*/}
-            {/*  >*/}
-            {/*    Create Room*/}
-            {/*  </button>*/}
-            {/*</div>*/}
+            </div>
           </div>
         </section>
       </main>
