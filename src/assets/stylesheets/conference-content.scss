@@ -175,6 +175,7 @@ body {
     border: 1px solid rgba(0, 0, 0, 0.125);
     padding: 8px;
     background-color: #F7F9FA;
+    color: black;
     white-space: nowrap;
     overflow: hidden;
     font-size: 14px;
@@ -185,6 +186,10 @@ body {
 
     @media (max-width: 1024px) {
       font-size: 12px;
+    }
+
+    b {
+      padding-right: 5px;
     }
   }
 
