@@ -313,53 +313,50 @@ export default class ConferenceContent extends Component {
                 {/*className={classNames(styles.centered, styles.contentContainer, styles.steps)}>*/}
                 <dl>
                   <dt><span className={classNames(styles.circle)}>1</span>Step One</dt>
-                  <dd>If you are not registered, you cannot attend in Hubs or join the conference Slack. You
-                    may still watch the twitch streams. Links and information are available at{" "}
-                    <a href="http://ieeevr.org/2020/online/" target="_blank" rel="noopener noreferrer">
-                      http://ieeevr.org/2020/online/
-                    </a>
+                  <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et quam feugiat, suscipit tellus
+                    quis, tempus diam. Duis egestas rhoncus lectus egestas faucibus. Aliquam molestie, dolor faucibus
+                    sodales dictum, risus eros scelerisque eros, vitae sollicitudin tortor turpis eu augue. Phasellus
+                    eget enim mollis, varius libero non, finibus dui. Aenean semper auctor vulputate. Vivamus quis lacus
+                    non sapien auctor venenatis. Cras erat nulla, consectetur sit amet magna eget, volutpat ornare
+                    sapien.
                   </dd>
                   <dt><span className={classNames(styles.circle)}>2</span>Step Two</dt>
-                  <dd>Join the IEEE VR 2020 Slack by entering your registration email{" "}
-                    <a href="https://ieeevr-slack-invite.glitch.me/" target="_blank" rel="noopener noreferrer">
-                      here
-                    </a>.
+                  <dd>Donec tempus augue non lacus consectetur, in ultricies sapien mollis. Donec dapibus aliquam nisl,
+                    in dapibus massa dapibus quis. Pellentesque porta nisl nec velit convallis viverra. Aliquam
+                    eleifend, lectus ut convallis tempus, libero nisi accumsan ante, sed laoreet leo lectus sed sem.
+                    Suspendisse potenti. Nulla ut sagittis purus, in iaculis lectus. In ornare, tellus non ultrices
+                    placerat, quam sem ultricies justo, eu euismod neque sapien ac velit. Ut efficitur id arcu id
+                    hendrerit.
                   </dd>
                   <dt><span className={classNames(styles.circle)}>3</span>Step Three</dt>
-                  <dd>If you have not yet tried Hubs, go to one of the Tutorial rooms below: volunteers will
-                    assist you.{" "}
-                    <a href="http://ieeevr.org/2020/online/" target="_blank" rel="noopener noreferrer">
-                      http://ieeevr.org/2020/online/
-                    </a>{" "}
-                    also has a collection FAQs, links to tutorial videos, and other information you may find useful.
+                  <dd>Nulla enim diam, fermentum sit amet elit quis, vehicula fringilla turpis. Praesent mattis massa
+                    metus, eu pellentesque felis ultrices sed. Sed nec elit sit amet turpis egestas condimentum. Aliquam
+                    vitae elit sed arcu malesuada vestibulum. Proin quis aliquet mi, quis bibendum urna. Morbi convallis
+                    velit ac orci aliquet mollis. Aliquam quis tortor facilisis, finibus lacus ut, congue augue. Nulla
+                    nulla purus, aliquet sed velit in, ullamcorper accumsan mauris. Maecenas et congue dolor, sed
+                    hendrerit nisl. Suspendisse accumsan, turpis eu vulputate tempor, odio eros cursus diam, sit amet
+                    accumsan diam est vitae massa. Nulla venenatis venenatis quam eu laoreet. In ultrices velit lorem.
                   </dd>
                   <dt><span className={classNames(styles.circle)}>4</span>Step four</dt>
-                  <dd>Put on your headphones. Echo and feedback will ruin the experience for everyone!</dd>
+                  <dd>Sed at diam sed lectus luctus elementum. Donec convallis quam a molestie molestie. Nam porta id
+                    leo vitae consequat. Aenean in ullamcorper magna, vel varius est. Cras vestibulum, est vitae
+                    vulputate feugiat, felis ex porta lacus, ut tincidunt lacus nulla ut velit. Ut quis nulla lacus. Nam
+                    condimentum rhoncus nisl eu lacinia. Maecenas tristique finibus ipsum vel dapibus. Donec quis
+                    sagittis ipsum.
+                  </dd>
                   <dt><span className={classNames(styles.circle)}>5</span>Step five</dt>
-                  <dd>Ready to attend a session? Consult the{" "}
-                    <a href="http://ieeevr.org/2020/program/overview.html" target="_blank" rel="noopener noreferrer">
-                      program
-                    </a>{" "}
-                    and the{" "}
-                    <a href="http://ieeevr.org/2020/program/bof.html" target="_blank" rel="noopener noreferrer">
-                      Birds-of-a-Feather/Social Schedule
-                    </a>. The proceedings are also available for download{" "}
-                    <a
-                      href="https://conferences.computer.org/vr-tvcg/2020/#!/home"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      here
-                    </a>{" "}
-                    (Note: Firefox will complain about this link because the server uses an out-of-date version of TLS).
+                  <dd>Nullam suscipit augue ultrices rutrum porttitor. Quisque feugiat, dui ut consectetur scelerisque,
+                    tortor nulla vestibulum leo, quis sodales ante ipsum eu ligula. Cras quis arcu mauris. Donec
+                    hendrerit mi facilisis vehicula dapibus. Curabitur non purus lacinia, ornare orci id, lacinia sem.
+                    Etiam facilisis lacus at orci varius, at pharetra leo porta. Vivamus sem ipsum, pretium quis
+                    volutpat eget, gravida in metus. Fusce ac egestas nunc, vel cursus magna.
                   </dd>
                   <dt><span className={classNames(styles.circle)}>6</span>Step six</dt>
-                  <dd>For BOFs, go to the room linked from the BOF schedule. For the regular program, choose
-                    one of the rooms for your track below. You can see how many people are in a room, and how many it
-                    holds;
-                    if you are on a lower powered device or slow internet connection, consider joining one of the
-                    smaller
-                    rooms (only join one of the multi-stream rooms on a high end desktop or laptop).
+                  <dd>Ut a bibendum tortor. Integer varius nisl at feugiat aliquet. Donec a dui nec tellus sagittis
+                    dictum. Curabitur vitae mauris velit. Nunc elementum porttitor finibus. Ut elementum at lorem luctus
+                    semper. Nam et lacus non nibh imperdiet interdum. In pulvinar massa aliquet erat ullamcorper
+                    placerat. Morbi non risus vel libero malesuada consectetur. Mauris volutpat tellus ut nisl luctus,
+                    at suscipit quam dictum. Cras id elementum neque.
                   </dd>
                 </dl>
               </div>
