@@ -309,57 +309,60 @@ export default class ConferenceContent extends Component {
               </div>
             </div>
             <div className={styles.instructions}>
-              {/*className={classNames(styles.centered, styles.contentContainer, styles.steps)}>*/}
-              <dl>
-                <dt><span className={classNames(styles.circle)}>1</span>Step One</dt>
-                <dd>If you are not registered, you cannot attend in Hubs or join the conference Slack. You
-                  may still watch the twitch streams. Links and information are available at{" "}
-                  <a href="http://ieeevr.org/2020/online/" target="_blank" rel="noopener noreferrer">
-                    http://ieeevr.org/2020/online/
-                  </a>
-                </dd>
-                <dt><span className={classNames(styles.circle)}>2</span>Step Two</dt>
-                <dd>Join the IEEE VR 2020 Slack by entering your registration email{" "}
-                  <a href="https://ieeevr-slack-invite.glitch.me/" target="_blank" rel="noopener noreferrer">
-                    here
-                  </a>.
-                </dd>
-                <dt><span className={classNames(styles.circle)}>3</span>Step Three</dt>
-                <dd>If you have not yet tried Hubs, go to one of the Tutorial rooms below: volunteers will
-                  assist you.{" "}
-                  <a href="http://ieeevr.org/2020/online/" target="_blank" rel="noopener noreferrer">
-                    http://ieeevr.org/2020/online/
-                  </a>{" "}
-                  also has a collection FAQs, links to tutorial videos, and other information you may find useful.
-                </dd>
-                <dt><span className={classNames(styles.circle)}>4</span>Step four</dt>
-                <dd>Put on your headphones. Echo and feedback will ruin the experience for everyone!</dd>
-                <dt><span className={classNames(styles.circle)}>5</span>Step five</dt>
-                <dd>Ready to attend a session? Consult the{" "}
-                  <a href="http://ieeevr.org/2020/program/overview.html" target="_blank" rel="noopener noreferrer">
-                    program
-                  </a>{" "}
-                  and the{" "}
-                  <a href="http://ieeevr.org/2020/program/bof.html" target="_blank" rel="noopener noreferrer">
-                    Birds-of-a-Feather/Social Schedule
-                  </a>. The proceedings are also available for download{" "}
-                  <a
-                    href="https://conferences.computer.org/vr-tvcg/2020/#!/home"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    here
-                  </a>{" "}
-                  (Note: Firefox will complain about this link because the server uses an out-of-date version of TLS).
-                </dd>
-                <dt><span className={classNames(styles.circle)}>6</span>Step six</dt>
-                <dd>For BOFs, go to the room linked from the BOF schedule. For the regular program, choose
-                  one of the rooms for your track below. You can see how many people are in a room, and how many it
-                  holds;
-                  if you are on a lower powered device or slow internet connection, consider joining one of the smaller
-                  rooms (only join one of the multi-stream rooms on a high end desktop or laptop).
-                </dd>
-              </dl>
+              <div className={styles.steps}>
+                {/*className={classNames(styles.centered, styles.contentContainer, styles.steps)}>*/}
+                <dl>
+                  <dt><span className={classNames(styles.circle)}>1</span>Step One</dt>
+                  <dd>If you are not registered, you cannot attend in Hubs or join the conference Slack. You
+                    may still watch the twitch streams. Links and information are available at{" "}
+                    <a href="http://ieeevr.org/2020/online/" target="_blank" rel="noopener noreferrer">
+                      http://ieeevr.org/2020/online/
+                    </a>
+                  </dd>
+                  <dt><span className={classNames(styles.circle)}>2</span>Step Two</dt>
+                  <dd>Join the IEEE VR 2020 Slack by entering your registration email{" "}
+                    <a href="https://ieeevr-slack-invite.glitch.me/" target="_blank" rel="noopener noreferrer">
+                      here
+                    </a>.
+                  </dd>
+                  <dt><span className={classNames(styles.circle)}>3</span>Step Three</dt>
+                  <dd>If you have not yet tried Hubs, go to one of the Tutorial rooms below: volunteers will
+                    assist you.{" "}
+                    <a href="http://ieeevr.org/2020/online/" target="_blank" rel="noopener noreferrer">
+                      http://ieeevr.org/2020/online/
+                    </a>{" "}
+                    also has a collection FAQs, links to tutorial videos, and other information you may find useful.
+                  </dd>
+                  <dt><span className={classNames(styles.circle)}>4</span>Step four</dt>
+                  <dd>Put on your headphones. Echo and feedback will ruin the experience for everyone!</dd>
+                  <dt><span className={classNames(styles.circle)}>5</span>Step five</dt>
+                  <dd>Ready to attend a session? Consult the{" "}
+                    <a href="http://ieeevr.org/2020/program/overview.html" target="_blank" rel="noopener noreferrer">
+                      program
+                    </a>{" "}
+                    and the{" "}
+                    <a href="http://ieeevr.org/2020/program/bof.html" target="_blank" rel="noopener noreferrer">
+                      Birds-of-a-Feather/Social Schedule
+                    </a>. The proceedings are also available for download{" "}
+                    <a
+                      href="https://conferences.computer.org/vr-tvcg/2020/#!/home"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      here
+                    </a>{" "}
+                    (Note: Firefox will complain about this link because the server uses an out-of-date version of TLS).
+                  </dd>
+                  <dt><span className={classNames(styles.circle)}>6</span>Step six</dt>
+                  <dd>For BOFs, go to the room linked from the BOF schedule. For the regular program, choose
+                    one of the rooms for your track below. You can see how many people are in a room, and how many it
+                    holds;
+                    if you are on a lower powered device or slow internet connection, consider joining one of the
+                    smaller
+                    rooms (only join one of the multi-stream rooms on a high end desktop or laptop).
+                  </dd>
+                </dl>
+              </div>
             </div>
           </div>
         </section>

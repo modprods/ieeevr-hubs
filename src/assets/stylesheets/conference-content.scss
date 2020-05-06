@@ -1,5 +1,10 @@
 $red: #C41230;
 $red-dark: #DA132C;
+$gray: #EBEBEB;
+
+body {
+  background-color: $gray;
+}
 
 :local(.conference-content) {
   display: flex;
@@ -7,8 +12,7 @@ $red-dark: #DA132C;
   flex: 1;
   background-color: lightgray;
   border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-color: blue;
+  //border: 1px solid blue;
 
   h1 {
     font-size: 32px;
@@ -262,30 +266,40 @@ $red-dark: #DA132C;
   }
 }
 
-:local(.steps) {
-  dt {
-    color: $red;
-    padding-top: 1.8em;
-    text-transform: uppercase;
-  }
+:local(.instructions) {
+  border-radius: 4px;
+  border: 1px solid saddlebrown;
+  background-color: white;
 
-  dd {
-    margin-inline-start: 0;
-    padding-top: 1.2em;
-  }
+  :local(.steps) {
+    margin-left: 60px;
+    margin-right: 60px;
+    dt {
+      color: $red;
+      padding-top: 1.8em;
+      text-transform: uppercase;
+    }
 
-  :local(.circle) {
-    width: 30px;
-    height: 20px;
-    border-radius: 50%;
-    font-size: 30px;
-    color: #fff;
-    line-height: 20px;
-    text-align: center;
-    background: $red-dark;
-    padding-right: 7px;
-    padding-left: 7px;
-    margin-right: 10px;
+    dd {
+      margin-inline-start: 0;
+      padding-top: 1.2em;
+      margin-left: 45px;
+      margin-right: 45px;
+    }
+
+    :local(.circle) {
+      width: 30px;
+      height: 20px;
+      border-radius: 50%;
+      font-size: 30px;
+      color: #fff;
+      line-height: 20px;
+      text-align: center;
+      background: $red-dark;
+      padding-right: 7px;
+      padding-left: 7px;
+      margin-right: 10px;
+    }
   }
 }
 
@@ -338,38 +352,55 @@ xxdiv {
 
 :local(.description-Container2) {
   border-radius: 4px;
-  border: 1px solid pink;
+  //border: 1px solid pink;
+
+  background-color: white;
+  color: black;
+
+  :local(.logo) {
+    max-width: 200px;
+    margin: 20px 20px 20px 20px;
+    align-content: flex-start;
+  }
+
+  :local(.join-button) {
+    margin-bottom: 20px;
+  }
 }
 
 :local(.description-Container-Header) {
   border-radius: 4px;
-  border: 1px solid pink;
+  //border: 1px solid pink;
   background-color: $red;
 }
 
 :local(.banner) {
   border-radius: 4px;
-  border: 1px solid red;
-}
-
-:local(.instructions) {
-  border-radius: 4px;
-  border: 1px solid saddlebrown;
+  //border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-right: 380px;
+  margin-left: 180px;
   background-color: white;
 }
 
 :local(.virtual-Rooms-Section) {
   border-radius: 4px;
-  border: 1px solid purple;
+  //border: 1px solid purple;
 }
 
 :local(.virtual-Rooms-Section-Container) {
   border-radius: 4px;
-  border: 1px solid yellow;
+  border: 1px solid saddlebrown;
   background-color: white;
 }
 
 :local(.virtual-Rooms-Section-Header) {
+  display: flex;
   border-radius: 4px;
-  border: 1px solid rebeccapurple;
+  //border: 1px solid rebeccapurple;
+  justify-content: center;
+  background-color: $gray;
 }
