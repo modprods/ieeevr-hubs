@@ -44,20 +44,20 @@ body {
   align-items: center;
 }
 
-:local(.description-container) {
-  background-color: white;
-  color: black;
-
-  :local(.logo) {
-    max-width: 200px;
-    margin: 0px 0px 0px 0px;
-    align-content: flex-start;
-  }
-
-  :local(.join-button) {
-    margin-bottom: 20px;
-  }
-}
+//:local(.description-container) {
+//  background-color: white;
+//  color: black;
+//
+//  :local(.logo) {
+//    max-width: 200px;
+//    margin: 0px 0px 0px 0px;
+//    align-content: flex-start;
+//  }
+//
+//  :local(.join-button) {
+//    margin-bottom: 20px;
+//  }
+//}
 
 :local(.content-container) {
   max-width: 960px;
@@ -207,44 +207,6 @@ body {
   }
 }
 
-:local(.join-button) {
-  display: inline-block;
-  margin: 0 0 0 12px;
-  text-decoration: none;
-  width: 80px;
-  text-align: center;
-  padding: 4px 0;
-  color: white;
-  border-radius: 4px;
-  background-color: #D11313;
-
-  &:hover {
-    background-color: #E81515;
-  }
-
-  &:active {
-    background-color: #C11212;
-  }
-
-  &:visited {
-    background-color: #FF6C6C;
-  }
-
-  @media (max-width: 1024px) {
-    width: 60px;
-  }
-}
-
-:local(.join-button-disabled) {
-  color: black;
-  background-color: #909090;
-  cursor: default;
-
-  &:hover, &:active {
-    background-color: #909090;
-  }
-}
-
 :local(.create-room-button) {
   display: block;
   border: none;
@@ -351,11 +313,19 @@ xxdiv {
 }
 
 :local(.description-Container2) {
-  border-radius: 4px;
+  border-radius: 1px;
   //border: 1px solid pink;
 
   background-color: white;
   color: black;
+
+  h1 {
+    margin-top: 40px;
+  }
+
+  h2 {
+    margin-top: 30px;
+  }
 
   :local(.logo) {
     max-width: 200px;
@@ -364,7 +334,41 @@ xxdiv {
   }
 
   :local(.join-button) {
-    margin-bottom: 20px;
+    display: inline-block;
+    margin: 20px 0 0 12px;
+    text-decoration: none;
+    width: 120px;
+    text-align: center;
+    padding: 4px 0;
+    color: white;
+    background-color: $red-dark;
+    box-shadow: 8px 6px $red;
+
+    &:hover {
+      background-color: #E81515;
+    }
+
+    &:active {
+      background-color: #C11212;
+    }
+
+    &:visited {
+      background-color: #FF6C6C;
+    }
+
+    @media (max-width: 1024px) {
+      width: 60px;
+    }
+  }
+
+  :local(.join-button-disabled) {
+    color: black;
+    background-color: #909090;
+    cursor: default;
+
+    &:hover, &:active {
+      background-color: #909090;
+    }
   }
 }
 
@@ -372,6 +376,7 @@ xxdiv {
   border-radius: 4px;
   //border: 1px solid pink;
   background-color: $red;
+  background-image: url('../images/MiamiGraduationSamplePhoto2_small.png');
 }
 
 :local(.banner) {
@@ -381,8 +386,9 @@ xxdiv {
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-  margin-right: 380px;
-  margin-left: 180px;
+  padding-bottom: 10px;
+  margin-right: 200px;
+  margin-left: 200px;
   background-color: white;
 }
 

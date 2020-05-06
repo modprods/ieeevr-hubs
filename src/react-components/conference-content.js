@@ -303,7 +303,7 @@ export default class ConferenceContent extends Component {
                 {/*// className={classNames(styles.centered, styles.headercontent)}>*/}
                 <h1>Miami University</h1>
                 <h2>2020 Virtual Commencement</h2>
-                <a className={classNames(styles.joinButton, styles.createRoomButton)} href="#virtual-rooms">
+                <a className={classNames(styles.joinButton)} href="#virtual-rooms">
                   Browse Rooms
                 </a>
               </div>
@@ -368,7 +368,7 @@ export default class ConferenceContent extends Component {
         </section>
         <section>
           {/*className={styles.descriptionContainer}>*/}
-          <div className={styles.virtualRoomsSection}>
+          <div id="virtual-rooms" className={styles.virtualRoomsSection}>
             <div className={styles.virtualRoomsSectionHeader}>
               <h1>Virtual Rooms</h1>
             </div>
