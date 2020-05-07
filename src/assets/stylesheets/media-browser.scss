@@ -13,7 +13,7 @@
   display: flex;
   pointer-events: auto;
   z-index: 10;
-  background-color: var(--full-panel-background-color);
+  background-color: var(--home-background-color);
   overflow-x: hidden;
   overflow-y: scroll;
 
@@ -559,7 +559,7 @@
 
 :local(.media-browser-inline) {
   position: relative;
-  background-color: var(--home-media-panel-background-color);
+  background-color: var(--home-background-color);
   width: 100%;
   padding: 12px;
   padding-top: 20px;

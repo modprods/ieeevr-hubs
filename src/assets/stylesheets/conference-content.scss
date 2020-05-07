@@ -2,17 +2,33 @@ $red: #C41230;
 $red-dark: #DA132C;
 $gray: #EBEBEB;
 
-body {
-  background-color: $gray;
-}
+$home-background-color: var(--home-background-color, $gray);
+$text-field-text-color:  var(--text-field-text-color, black);
+$text-field-background-color: var(--text-field-background-color, white);
+
+// Client-specific values and not from Theme set on the server
+$link-button-highlight-color: #E81515;
+$link-button-hover-color: red;
+$link-button-active-background-color: #C11212;
+$link-button-active-color: red;
+$link-button-disabled-color: red;
+$link-button-visited-color: red;
+$link-button-box-shadow-background-color: darkred;
+$steps-circle-background: red;
+$steps-circle-heading-background: red;
+$panel-border-color: var(--hud-dropdown-border-color);
+
+//body {
+//  background-color: $home-background-color;
+//}
 
 :local(.conference-content) {
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: lightgray;
+  background-color: $text-field-background-color;
   border-radius: 4px;
-  //border: 1px solid blue;
+  border: 1px solid $panel-border-color;
 
   h1 {
     font-size: 32px;
@@ -174,8 +190,8 @@ body {
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.125);
     padding: 8px;
-    background-color: #F7F9FA;
-    color: black;
+    background-color: $text-field-background-color;
+    color: $text-field-text-color;
     white-space: nowrap;
     overflow: hidden;
     font-size: 14px;
@@ -194,7 +210,7 @@ body {
   }
 
   :local(.room-title) {
-    color: black;
+    color: $text-field-text-color;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -223,7 +239,7 @@ body {
   cursor: pointer;
 
   &:visited {
-    background-color: #D11313;
+    background-color: $link-button-visited-color;
   }
 
   @media (max-width: 1024px) {
@@ -235,14 +251,14 @@ body {
 
 :local(.instructions) {
   border-radius: 4px;
-  border: 1px solid saddlebrown;
-  background-color: white;
+  //border: 1px solid $panel-border-color;
+  background-color: $text-field-background-color;
 
   :local(.steps) {
     margin-left: 60px;
     margin-right: 60px;
     dt {
-      color: $red;
+      color: $steps-circle-heading-background;
       padding-top: 1.8em;
       text-transform: uppercase;
     }
@@ -259,10 +275,10 @@ body {
       height: 20px;
       border-radius: 50%;
       font-size: 30px;
-      color: #fff;
+      color: $text-field-text-color;
       line-height: 20px;
       text-align: center;
-      background: $red-dark;
+      background: $steps-circle-background;
       padding-right: 7px;
       padding-left: 7px;
       margin-right: 10px;
@@ -289,7 +305,7 @@ body {
   //margin: 0 auto;
   margin-left: 40px;
   padding: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  //border: 1px solid $panel-border-color;
 
   @media (max-width: 1024px) {
     padding: 12px;
@@ -312,17 +328,12 @@ body {
   }
 }
 
-xxdiv {
-  border-radius: 4px;
-  border: 1px solid green;
-}
-
 :local(.description-Container2) {
   border-radius: 1px;
-  //border: 1px solid pink;
+  //border: 1px solid $panel-border-color;
 
-  background-color: white;
-  color: black;
+  background-color: $text-field-background-color;
+  color: $text-field-text-color;
 
   h1 {
     margin-top: 40px;
@@ -345,20 +356,20 @@ xxdiv {
     width: 120px;
     text-align: center;
     padding: 4px 0;
-    color: white;
-    background-color: $red-dark;
-    box-shadow: 8px 6px $red;
+    color: $text-field-text-color;
+    background-color: $link-button-active-background-color;
+    box-shadow: 8px 6px $link-button-box-shadow-background-color;
 
     &:hover {
-      background-color: #E81515;
+      background-color: $link-button-hover-color;
     }
 
     &:active {
-      background-color: #C11212;
+      background-color: $link-button-active-color;
     }
 
     &:visited {
-      background-color: #FF6C6C;
+      background-color: $link-button-visited-color;
     }
 
     @media (max-width: 1024px) {
@@ -394,7 +405,7 @@ xxdiv {
   padding-bottom: 10px;
   margin-right: 200px;
   margin-left: 200px;
-  background-color: white;
+  background-color: $text-field-background-color;
 }
 
 :local(.virtual-Rooms-Section) {
@@ -404,8 +415,8 @@ xxdiv {
 
 :local(.virtual-Rooms-Section-Container) {
   border-radius: 4px;
-  border: 1px solid saddlebrown;
-  background-color: white;
+  //border: 1px solid $panel-border-color;
+  background-color: $text-field-background-color;
 }
 
 :local(.virtual-Rooms-Section-Header) {
@@ -413,9 +424,9 @@ xxdiv {
   border-radius: 4px;
   //border: 1px solid rebeccapurple;
   justify-content: center;
-  background-color: $gray;
+  background-color: $text-field-background-color;
 
   h1 {
-    color: black;
+    color: $text-field-text-color;
   }
 }
