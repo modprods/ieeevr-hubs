@@ -371,16 +371,20 @@ export default class ConferenceContent extends Component {
             </div>
             <div className={styles.virtualRoomsSectionContainer}>
               <div className={styles.virtualRoomsGroup}>
-                <div className={styles.item3}>
-                  this is an image
+                <div className={styles.item12}>
+                  <h2>Virtual Commencement Rooms</h2>
+                  {groupedPublicRooms.length > 0 ? (
+                    groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
+                  ) : (
+                    <div className={styles.spinnerContainer}>
+                      <Spinner/>
+                    </div>
+                  )}
                 </div>
-                {groupedPublicRooms.length > 0 ? (
-                  groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
-                ) : (
-                  <div className={styles.spinnerContainer}>
-                    <Spinner/>
-                  </div>
-                )}
+                <div className={styles.item3}>
+                  <img src={"../assets/images/Room_Screenshot.png"} width={"250px"} height={"150px"}/>
+                </div>
+
                 {/*<div className={styles.contentContainer}>*/}
                 {/*  {favoritedRooms &&*/}
                 {/*  favoritedRooms.length > 0 && (*/}
