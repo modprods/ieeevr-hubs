@@ -201,7 +201,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: lightgray;
+    background-color: var(--home-background-color, white);
   }
   :local(.cta-buttons) {
     display: flex;
