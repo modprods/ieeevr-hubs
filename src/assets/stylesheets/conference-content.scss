@@ -1,5 +1,5 @@
-$red: #C41230;
-$red-dark: #DA132C;
+$red: #E53E4B;
+$red-dark: #521215;
 $gray: #EBEBEB;
 
 $home-background-color: var(--home-background-color, $gray);
@@ -8,14 +8,15 @@ $text-field-background-color: var(--text-field-background-color, white);
 
 // Client-specific values and not from Theme set on the server
 $link-button-highlight-color: #E81515;
-$link-button-hover-color: red;
+$link-button-hover-color: $red;
 $link-button-active-background-color: #C11212;
-$link-button-active-color: red;
-$link-button-disabled-color: red;
-$link-button-visited-color: red;
-$link-button-box-shadow-background-color: darkred;
-$steps-circle-background: red;
-$steps-circle-heading-background: red;
+$link-button-active-color: $red;
+$link-button-disabled-color: $red;
+$link-button-visited-color: $red;
+$link-button-box-shadow-background-color: $red-dark;
+$steps-circle-background: $red;
+$steps-circle-heading-background: $red;
+$header-title-text-color: $red;
 $panel-border-color: var(--hud-dropdown-border-color);
 
 //body {
@@ -353,7 +354,7 @@ $panel-border-color: var(--hud-dropdown-border-color);
     display: inline-block;
     margin: 20px 0 0 12px;
     text-decoration: none;
-    width: 120px;
+    width: 150px;
     text-align: center;
     padding: 4px 0;
     color: $text-field-text-color;
@@ -389,6 +390,7 @@ $panel-border-color: var(--hud-dropdown-border-color);
 }
 
 :local(.description-Container-Header) {
+  min-height: 500px;
   border-radius: 4px;
   //border: 1px solid pink;
   background-color: $text-field-background-color;
@@ -396,13 +398,14 @@ $panel-border-color: var(--hud-dropdown-border-color);
 }
 
 :local(.banner) {
+  min-height: 300px;
   border-radius: 4px;
   border: 1px solid red;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 20px;
   margin-right: 200px;
   margin-left: 200px;
   background-color: $text-field-background-color;
@@ -421,10 +424,10 @@ $panel-border-color: var(--hud-dropdown-border-color);
 
 :local(.virtual-Rooms-Section-Header) {
   display: flex;
-  border-radius: 4px;
+  //border-radius: 4px;
   //border: 1px solid rebeccapurple;
   justify-content: center;
-  background-color: $text-field-background-color;
+  background-color: $home-background-color;
 
   h1 {
     color: $text-field-text-color;
