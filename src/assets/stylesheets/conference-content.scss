@@ -16,6 +16,7 @@ $link-button-visited-color: $red;
 $link-button-box-shadow-background-color: $red-dark;
 $steps-circle-background: $red;
 $steps-circle-heading-background: $red;
+$steps-circle-text-color: white;
 $header-title-text-color: $red;
 $panel-border-color: var(--hud-dropdown-border-color);
 
@@ -272,16 +273,14 @@ $panel-border-color: var(--hud-dropdown-border-color);
     }
 
     :local(.circle) {
-      width: 30px;
-      height: 20px;
-      border-radius: 50%;
+      border-radius: 80%;
       font-size: 30px;
-      color: $text-field-text-color;
+      color: $steps-circle-text-color;
       line-height: 20px;
       text-align: center;
       background: $steps-circle-background;
-      padding-right: 7px;
-      padding-left: 7px;
+      padding-right: 12px;
+      padding-left: 12px;
       margin-right: 10px;
     }
   }
