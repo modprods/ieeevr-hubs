@@ -296,16 +296,18 @@ export default class ConferenceContent extends Component {
           {/*className={styles.descriptionContainer}>*/}
           <div className={styles.descriptionContainer2}>
             {/*// className={styles.contentContainer}>*/}
-            <div className={styles.descriptionContainerHeader}>
-              {/*// className={classNames(styles.card, styles.header)}>*/}
-              <img className={styles.logo} src={configs.image("logo")}/>
-              <div className={styles.banner}>
-                {/*// className={classNames(styles.centered, styles.headercontent)}>*/}
-                <h1>Miami University</h1>
-                <h2>2020 Virtual Commencement</h2>
-                <a href="#virtual-rooms" className={classNames(styles.browseButton)}>
-                  Browse Rooms &nbsp;&nbsp;&nbsp;<span style={{ fontSize: "1.5em" }}> ⪢</span>
-                </a>
+            <div className={styles.redWrapper}>
+              <div className={styles.descriptionContainerHeader}>
+                {/*// className={classNames(styles.card, styles.header)}>*/}
+                <img className={styles.logo} src={configs.image("logo")}/>
+                <div className={styles.banner}>
+                  {/*// className={classNames(styles.centered, styles.headercontent)}>*/}
+                  <h1>Miami University</h1>
+                  <h2>2020 Virtual Commencement</h2>
+                  <a href="#virtual-rooms" className={classNames(styles.browseButton)}>
+                    Browse Rooms &nbsp;&nbsp;&nbsp;<span style={{ fontSize: "1.5em" }}> ⪢</span>
+                  </a>
+                </div>
               </div>
             </div>
             <div className={styles.instructions}>
