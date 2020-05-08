@@ -22,11 +22,31 @@ $panel-border-color: var(--hud-dropdown-border-color);
 $buttons-text-color: white;
 $banner-background-color: $red;
 
-//body {
-//  background-color: $home-background-color;
-//}
+@font-face {
+  font-family: "Freight Bold";
+  src: url("../fonts/Freight/GarageFonts-FreightDispProBold.otf");
+}
+
+@font-face {
+  font-family: "GothamLight";
+  src: url("../fonts/Gotham/Gotham-XLight.otf")
+}
+
+h1, h2, h3, h4, h5 h6 {
+  font-family: "Freight Bold";
+}
+h1 {
+  font-size: 50px;
+}
+h2 {
+  font-size: 35px;
+}
+h3 {
+  font-size: 25px;
+}
 
 :local(.conference-content) {
+  font-family: GothamLight, Serif;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -35,7 +55,6 @@ $banner-background-color: $red;
   border: 1px solid $panel-border-color;
 
   h1 {
-    font-size: 32px;
     margin-bottom: 20px;
   }
 
@@ -64,122 +83,9 @@ $banner-background-color: $red;
   align-items: center;
 }
 
-//:local(.description-container) {
-//  background-color: white;
-//  color: black;
-//
-//  :local(.logo) {
-//    max-width: 200px;
-//    margin: 0px 0px 0px 0px;
-//    align-content: flex-start;
-//  }
-//
-//  :local(.join-button) {
-//    margin-bottom: 20px;
-//  }
-//}
-
-//:local(.content-container) {
-//  max-width: 960px;
-//  margin: 0 auto;
-//  padding: 60px;
-//
-//  @media (max-width: 1024px) {
-//    padding: 12px;
-//  }
-//}
-
-//:local(.header) {
-//  background-color: $red;
-//  color: white;
-//  max-width: 960px;
-//  margin: 0 auto;
-//  padding: 60px;
-//
-//  @media (max-width: 1024px) {
-//    padding: 12px;
-//  }
-//}
-
-//:local(.card) {
-//  border-radius: 4px;
-//  border: 1px solid rgba(0, 0, 0, 0.125);
-//  padding: 20px;
-//  margin: 8px;
-//  width: 100%;
-//  //color: black;
-//
-//  @media (max-width: 1024px) {
-//    padding: 12px;
-//    text-align: center;
-//    width: auto;
-//  }
-//}
-
 :local(.spinner-container) {
   padding: 40px 0;
 }
-
-//:local(.conference-room-group) {
-//  display: flex;
-//  justify-content: space-between;
-//  padding: 2px;
-//
-//  :local(.group-left) {
-//    width: 100%;
-//  }
-//
-//  :local(.group-right) {
-//    margin-left: 12px;
-//  }
-//
-//  h2 {
-//    margin-top: 0;
-//  }
-//
-//  :local(.group-link) {
-//    margin-left: 6px;
-//    font-size: 12px;
-//    color: #444;
-//    vertical-align: middle;
-//
-//    :hover {
-//      color: #666;
-//    }
-//  }
-//
-//  img {
-//    max-width: 240px;
-//    border-radius: 4px;
-//  }
-//
-//  @media (max-width: 1024px) {
-//    flex-direction: column;
-//    flex-flow: column-reverse;
-//    align-items: center;
-//    padding: 8px;
-//
-//    :local(.group-left) {
-//      display: flex;
-//      flex-direction: column;
-//      align-items: center;
-//      padding: 4px 8px 0 8px;
-//    }
-//
-//    :local(.group-right) {
-//      padding: 4px 8px 0 8px;
-//      margin-left: 0;
-//    }
-//
-//    img {
-//      max-width: 100%;
-//    }
-//
-//    :local(.room-list) {
-//      max-width: 100%;
-//    }
-//  }
-//}
 
 :local(.room-list) {
   list-style: none;
@@ -288,16 +194,6 @@ $banner-background-color: $red;
   }
 }
 
-//:local(.headercontent) {
-//  background-color: white;
-//  color: $red;
-//
-//  h1 {
-//    font-size: 2em;
-//    margin-bottom: 20px;
-//  }
-//}
-
 :local(.virtual-Rooms-Group) {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -343,6 +239,7 @@ $banner-background-color: $red;
 
 :local(.description-Container2) {
   border-radius: 1px;
+  max-width: 840px;
   //border: 1px solid $panel-border-color;
 
   background-color: $text-field-background-color;

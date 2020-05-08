@@ -375,7 +375,8 @@ module.exports = async (env, argv) => {
         {
           test: /\.(glsl|frag|vert)$/,
           use: { loader: "raw-loader" }
-        }
+        },
+        { test: /\.(otf)$/, loader: "url-loader?limit=100000" }
       ]
     },
 
