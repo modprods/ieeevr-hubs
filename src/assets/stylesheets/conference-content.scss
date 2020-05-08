@@ -1,4 +1,4 @@
-$red: #E53E4B;
+$red: #C41230;
 $red-dark: #521215;
 $gray: #EBEBEB;
 
@@ -13,7 +13,7 @@ $link-button-active-background-color: $red;
 $link-button-active-color: $red;
 $link-button-disabled-color: $red;
 $link-button-visited-color: $red;
-$link-button-box-shadow-background-color: $red-dark;
+$link-button-box-shadow-background-color: #cab1ad;
 $steps-circle-background: $red;
 $steps-circle-heading-background: $red;
 $steps-circle-text-color: white;
@@ -33,16 +33,25 @@ $banner-background-color: $red;
 }
 
 h1, h2, h3, h4, h5 h6 {
-  font-family: "Freight Bold";
+  font-family: 'Freight Bold';
 }
 h1 {
   font-size: 50px;
+  @media (max-width: 1024px) {
+    font-size: 30px;
+  }
 }
 h2 {
   font-size: 35px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
 }
 h3 {
   font-size: 25px;
+  @media (max-width: 1024px) {
+    font-size: 15px;
+  }
 }
 
 :local(.conference-content) {
@@ -239,7 +248,7 @@ h3 {
 
 :local(.description-Container2) {
   border-radius: 1px;
-  max-width: 840px;
+  max-width: 870px;
   //border: 1px solid $panel-border-color;
 
   background-color: $text-field-background-color;
@@ -255,20 +264,21 @@ h3 {
 
   :local(.logo) {
     max-width: 200px;
-    margin: 20px 20px 20px 20px;
+    margin-top: 20px;
+    margin-left: 20px;
     align-content: flex-start;
   }
 
   :local(.join-button) {
     display: inline-block;
-    margin: 20px 0 0 12px;
+    margin: 20px 20px 0 12px;
     text-decoration: none;
-    width: 220px;
+    width: 270px;
     text-align: center;
     padding: 4px 0;
     color: $buttons-text-color;
     background-color: $link-button-active-background-color;
-    box-shadow: 8px 6px $link-button-active-background-color;
+    box-shadow: 2px 2px $link-button-box-shadow-background-color;
     border: 2px solid $buttons-text-color;
     text-transform: uppercase;
 
@@ -284,8 +294,9 @@ h3 {
       background-color: $link-button-visited-color;
     }
 
-    @media (max-width: 1024px) {
-      width: 60px;
+    @media (max-width: 840px) {
+      width: 100px;
+      box-shadow: none;
     }
   }
 
@@ -302,6 +313,7 @@ h3 {
 
 :local(.description-Container-Header) {
   min-height: 500px;
+  max-width: 870px;
   background-color: $banner-background-color;
   background-image: url('../images/MiamiGraduationPhotoClipped.png');
   background-position-x: right;
