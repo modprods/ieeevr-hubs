@@ -7,9 +7,9 @@ $text-field-text-color:  var(--text-field-text-color, black);
 $text-field-background-color: var(--text-field-background-color, white);
 
 // Client-specific values and not from Theme set on the server
-$link-button-highlight-color: #E81515;
+$link-button-highlight-color: $red;
 $link-button-hover-color: $red;
-$link-button-active-background-color: #C11212;
+$link-button-active-background-color: $red;
 $link-button-active-color: $red;
 $link-button-disabled-color: $red;
 $link-button-visited-color: $red;
@@ -19,6 +19,7 @@ $steps-circle-heading-background: $red;
 $steps-circle-text-color: white;
 $header-title-text-color: $red;
 $panel-border-color: var(--hud-dropdown-border-color);
+$buttons-text-color: white;
 
 //body {
 //  background-color: $home-background-color;
@@ -364,12 +365,14 @@ $panel-border-color: var(--hud-dropdown-border-color);
     display: inline-block;
     margin: 20px 0 0 12px;
     text-decoration: none;
-    width: 150px;
+    width: 220px;
     text-align: center;
     padding: 4px 0;
-    color: $text-field-text-color;
+    color: $buttons-text-color;
     background-color: $link-button-active-background-color;
-    box-shadow: 8px 6px $link-button-box-shadow-background-color;
+    box-shadow: 8px 6px $link-button-active-background-color;
+    border: 2px solid $buttons-text-color;
+    text-transform: uppercase;
 
     &:hover {
       background-color: $link-button-hover-color;
