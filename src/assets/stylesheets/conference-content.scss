@@ -145,6 +145,15 @@ h3 {
       font-size: 12px;
     }
   }
+
+  a {
+    color: $steps-circle-text-color;
+    background-color: $steps-circle-background;
+    padding: 4px 16px;
+    margin: 2px;
+    text-decoration: none;
+    border-radius: 4px;
+  }
 }
 
 :local(.create-room-button) {
@@ -269,7 +278,7 @@ h3 {
     align-content: flex-start;
   }
 
-  :local(.join-button) {
+  :local(.browse-button) {
     display: inline-block;
     margin: 20px 20px 0 12px;
     text-decoration: none;

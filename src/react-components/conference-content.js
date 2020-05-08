@@ -303,7 +303,7 @@ export default class ConferenceContent extends Component {
                 {/*// className={classNames(styles.centered, styles.headercontent)}>*/}
                 <h1>Miami University</h1>
                 <h2>2020 Virtual Commencement</h2>
-                <a href="#virtual-rooms" className={classNames(styles.joinButton)}>
+                <a href="#virtual-rooms" className={classNames(styles.browseButton)}>
                   Browse Rooms &nbsp;&nbsp;&nbsp;<span style={{ fontSize: "1.5em" }}> ⪢</span>
                 </a>
               </div>
