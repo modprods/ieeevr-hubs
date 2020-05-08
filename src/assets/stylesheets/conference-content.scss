@@ -20,6 +20,7 @@ $steps-circle-text-color: white;
 $header-title-text-color: $red;
 $panel-border-color: var(--hud-dropdown-border-color);
 $buttons-text-color: white;
+$banner-background-color: $red;
 
 //body {
 //  background-color: $home-background-color;
@@ -404,10 +405,10 @@ $buttons-text-color: white;
 
 :local(.description-Container-Header) {
   min-height: 500px;
-  border-radius: 4px;
-  //border: 1px solid pink;
-  background-color: $text-field-background-color;
-  background-image: url('../images/MiamiGraduationSamplePhoto2_small.png');
+  background-color: $banner-background-color;
+  background-image: url('../images/MiamiGraduationPhotoClipped.png');
+  background-position-x: right;
+  background-repeat: repeat-y;
 }
 
 :local(.banner) {
