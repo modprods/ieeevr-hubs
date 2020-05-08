@@ -2,7 +2,7 @@ $red: #C41230;
 $red-dark: #521215;
 $gray: #EBEBEB;
 
-$home-background-color: var(--home-background-color, $gray);
+$home-background-color: $red; //var(--home-background-color, $gray);
 $text-field-text-color:  var(--text-field-text-color, black);
 $text-field-background-color: var(--text-field-background-color, white);
 
@@ -22,6 +22,10 @@ $panel-border-color: var(--hud-dropdown-border-color);
 $buttons-text-color: white;
 $banner-background-color: $red;
 $room-list-background-color: #F7F9FA;
+
+body {
+  background-color: $home-background-color;
+}
 
 @font-face {
   font-family: "Freight Bold";
@@ -62,7 +66,7 @@ h3 {
   flex: 1;
   background-color: $text-field-background-color;
   border-radius: 4px;
-  border: 1px solid $panel-border-color;
+  //border: 1px solid $panel-border-color;
 
   h1 {
     margin-bottom: 20px;
@@ -199,6 +203,7 @@ h3 {
       padding-top: 1.2em;
       margin-left: 45px;
       margin-right: 45px;
+      color: $text-field-text-color;
     }
 
     :local(.circle) {
@@ -267,7 +272,6 @@ h3 {
 
   background-color: $text-field-background-color;
   color: $header-title-text-color;
-  text-transform: uppercase;
 
   h1 {
     margin-top: 40px;
@@ -379,6 +383,6 @@ h3 {
   background-color: $home-background-color;
 
   h1 {
-    color: $text-field-text-color;
+    color: $text-field-background-color;
   }
 }
