@@ -28,17 +28,17 @@ body {
 }
 
 @font-face {
-  font-family: "Freight Bold";
-  src: url("../fonts/Freight/GarageFonts-FreightDispProBold.otf");
+  font-family: "Freight Light";
+  src: url("../fonts/Freight/GarageFonts-FreightDispProLight.otf");
 }
 
 @font-face {
-  font-family: "GothamLight";
-  src: url("../fonts/Gotham/Gotham-XLight.otf")
+  font-family: "GothamBold";
+  src: url("../fonts/Gotham/Gotham-Bold.otf")
 }
 
 h1, h2, h3, h4, h5 h6 {
-  font-family: 'Freight Bold';
+  font-family: 'GothamBold', Serif;
 }
 h1 {
   font-size: 50px;
@@ -60,12 +60,13 @@ h3 {
 }
 
 :local(.conference-content) {
-  font-family: GothamLight, Serif;
+  font-family: 'Freight Light', Serif;
   display: flex;
   flex-direction: column;
   flex: 1;
   background-color: $text-field-background-color;
   border-radius: 4px;
+  max-width: 880px;
   //border: 1px solid $panel-border-color;
 
   h1 {
@@ -172,6 +173,7 @@ h3 {
   padding: 10px 20px;
   width: auto;
   cursor: pointer;
+  font-family: 'GothamBold', Serif;
 
   &:visited {
     background-color: $link-button-visited-color;
@@ -196,6 +198,7 @@ h3 {
       color: $steps-circle-heading-background;
       padding-top: 1.8em;
       text-transform: uppercase;
+      font-family: 'GothamBold', Serif;
     }
 
     dd {
@@ -227,11 +230,8 @@ h3 {
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   align-content: center;
-  //max-width: 960px;
-  //margin: 0 auto;
   margin-left: 20px;
   padding: 20px;
-  //border: 1px solid $panel-border-color;
 
   @media (max-width: 1024px) {
     padding: 12px;
@@ -256,20 +256,13 @@ h3 {
     justify-self: center;
     align-self: start;
     margin: 10px;
-    //min-width: 50px;
-    //min-height: 150px;
-    //margin-left: 20px;
 
     background-color: $text-field-background-color;
-    //background-image: url('../images/Room_Screenshot.png');
   }
 }
 
 :local(.description-Container2) {
   border-radius: 1px;
-  max-width: 870px;
-  //border: 1px solid $panel-border-color;
-
   background-color: $text-field-background-color;
   color: $header-title-text-color;
 
@@ -300,6 +293,7 @@ h3 {
     box-shadow: 2px 2px $link-button-box-shadow-background-color;
     border: 2px solid $buttons-text-color;
     text-transform: uppercase;
+    font-family: 'GothamBold', Serif;
 
     &:hover {
       background-color: $link-button-hover-color;
@@ -342,8 +336,8 @@ h3 {
 }
 
 :local(.description-Container-Header) {
-  min-height: 500px;
-  max-width: 870px;
+  min-height: 520px;
+  width: 100%;
   background-color: $banner-background-color;
   background-image: url('../images/MiamiGraduationPhotoClipped.png');
   background-position-x: right;
@@ -351,7 +345,7 @@ h3 {
 }
 
 :local(.banner) {
-  min-height: 300px;
+  min-height: 320px;
   border-radius: 4px;
   border: 1px solid red;
   display: flex;
