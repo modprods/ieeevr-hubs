@@ -370,7 +370,7 @@ export default class ConferenceContent extends Component {
 
                 <div className={classNames(styles.virtualIntro)}>
                   <div className="intro-text">
-                    <h2>Virtual Rooms</h2>
+                    <h2 id="virtual-rooms">Virtual Rooms</h2>
                     <p>Short intro paragraph here lore ipsum dolar sit amet, mea omnis dicam eu, qui ex nonumes neglegentur. Ad est altera quidam fastidi.</p>
                   </div>
                   <img src={"../assets/images/room-screenshot.png"} width={"200px"} height="115px"/>
