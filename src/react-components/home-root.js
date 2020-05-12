@@ -255,7 +255,7 @@ class HomeRoot extends Component {
                       </video>
                     </div>
                   )}
-                  <div>
+                  <div style={{margin: "10px 0 20px", fontSize: '20px'}}>
                     <div className={styles.secondaryLink}>
                       <a href="/link">
                         <FormattedMessage id="home.have_code"/>

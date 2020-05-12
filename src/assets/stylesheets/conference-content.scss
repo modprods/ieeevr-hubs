@@ -59,15 +59,20 @@ h3 {
   }
 }
 
+hr {
+  background-color: #E3E3E3;
+  height: 2px;
+  border: 0;
+}
+
 :local(.conference-content) {
   font-family: 'Freight Light', Serif;
   display: flex;
   flex-direction: column;
   flex: 1;
   background-color: $text-field-background-color;
-  border-radius: 4px;
   max-width: 880px;
-  //border: 1px solid $panel-border-color;
+  margin-bottom: 30px;
 
   h1 {
     margin-bottom: 20px;
@@ -116,16 +121,13 @@ h3 {
     justify-content: space-between;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.125);
-    padding: 8px;
+    border-top: 0;
+    padding: 16px;
     background-color: $room-list-background-color;
     color: $text-field-text-color;
     white-space: nowrap;
     overflow: hidden;
     font-size: 14px;
-
-    &:not(:first-child) {
-      border-top-width: 0;
-    }
 
     @media (max-width: 1024px) {
       font-size: 12px;
@@ -142,6 +144,7 @@ h3 {
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0 8px 0 0;
+    font-size: 16px;
   }
 
   svg {
@@ -157,10 +160,12 @@ h3 {
   a {
     color: $steps-circle-text-color;
     background-color: $steps-circle-background;
-    padding: 4px 16px;
+    padding: 6px 30px;
     margin: 2px;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
   }
 }
 
@@ -186,41 +191,74 @@ h3 {
   }
 }
 
+.rooms > :first-child {
+  ul {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+  }
+}
+
 :local(.instructions) {
   border-radius: 4px;
   //border: 1px solid $panel-border-color;
   background-color: $text-field-background-color;
+  font-family: 'Lato', sans-serif;
 
   :local(.steps) {
-    margin-left: 60px;
-    margin-right: 60px;
+    margin: 80px 100px;
     dt {
       color: $steps-circle-heading-background;
-      padding-top: 1.8em;
       text-transform: uppercase;
       font-family: 'GothamBold', Serif;
     }
 
+    :local(.step-heading) {
+      font-size: 24px;
+    }
+
     dd {
       margin-inline-start: 0;
-      padding-top: 1.2em;
-      margin-left: 45px;
-      margin-right: 45px;
       color: $text-field-text-color;
+      margin: 0 0 60px 65px;
+      font-size: 18px;
+      line-height: 1.5;
     }
 
     :local(.circle) {
-      width: 35px;
-      height: 35px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      font-size: 1.5em;
-      line-height: 38px;
+      font-size: 24px;
+      line-height: 52px;
       text-align: center;
       display: inline-block;
       font-weight: 100;
-      margin-right: 10px;
+      margin-right: 15px;
       color: $steps-circle-text-color;
       background: $steps-circle-background;
+    }
+  }
+}
+
+:local(.virtual-intro) {
+  margin-top: 50px;
+  color: var(--text-field-text-color, black);
+  display: flex;
+  margin-bottom: 20px;
+
+  p {
+    line-height: 1.3;
+    font-size: 18px;
+    margin-top: 0;
+  }
+
+  div.intro-text {
+    max-width: 480px;
+    padding-right: 30px;
+
+    h2 {
+      margin: 0 0 10px 0;
+      font-weight: normal;
+      font-size: 30px;
     }
   }
 }
@@ -272,28 +310,44 @@ h3 {
 
   h2 {
     margin-top: 30px;
+    margin-bottom: 50px;
   }
 
   :local(.logo) {
-    max-width: 200px;
+    max-width: 220px;
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: -16px;
     align-content: flex-start;
+  }
+
+  :local(.browse-button-wrap) {
+    position: relative;
+    margin-bottom: 10px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: 3px solid $link-button-active-background-color;
+      left: 8px;
+      top: 8px;
+    }
   }
 
   :local(.browse-button) {
     display: inline-block;
-    margin: 20px 20px 0 12px;
     text-decoration: none;
-    width: 270px;
-    text-align: center;
-    padding: 4px 0;
+    width: 400px;
+    padding: 22px;
     color: $buttons-text-color;
     background-color: $link-button-active-background-color;
-    box-shadow: 2px 2px $link-button-box-shadow-background-color;
-    border: 2px solid $buttons-text-color;
     text-transform: uppercase;
     font-family: 'GothamBold', Serif;
+    position: relative;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
 
     &:hover {
       background-color: $link-button-hover-color;
@@ -306,6 +360,7 @@ h3 {
     &:visited {
       background-color: $link-button-visited-color;
     }
+
 
     @media (max-width: 840px) {
       width: 100px;
@@ -326,17 +381,12 @@ h3 {
 
 :local(.redWrapper) {
   background-color: $red;
-  //width: 100vmax;
-  //margin-left: -100vw;
-  //position: relative;
-  //z-index: -10;
-  //position: absolute;
   left: 0;
   right: 0;
 }
 
 :local(.description-Container-Header) {
-  min-height: 520px;
+  min-height: 710px;
   width: 100%;
   background-color: $banner-background-color;
   background-image: url('../images/MiamiGraduationPhotoClipped.png');
@@ -346,16 +396,29 @@ h3 {
 
 :local(.banner) {
   min-height: 320px;
-  border-radius: 4px;
-  border: 1px solid red;
+  border: 1px solid #707070;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
-  margin-right: 160px;
-  margin-left: 160px;
+  margin-right: 140px;
+  margin-left: 140px;
   background-color: $text-field-background-color;
+  padding: 60px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  h1 {
+    letter-spacing: 1.76px;
+    font-size: 44px;
+    margin-top: 0;
+  }
+  h2 {
+    letter-spacing: 1.6px;
+    font-size: 32px;
+  }
 }
 
 :local(.virtual-Rooms-Section) {

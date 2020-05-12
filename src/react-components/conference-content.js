@@ -299,14 +299,19 @@ export default class ConferenceContent extends Component {
             <div className={styles.redWrapper}>
               <div className={styles.descriptionContainerHeader}>
                 {/*// className={classNames(styles.card, styles.header)}>*/}
-                <img className={styles.logo} src={configs.image("logo")}/>
+                <img className={styles.logo} src={configs.image("company_logo")}/>
                 <div className={styles.banner}>
                   {/*// className={classNames(styles.centered, styles.headercontent)}>*/}
                   <h1>Miami University</h1>
                   <h2>2020 Virtual <br/> Commencement</h2>
-                  <a href="#virtual-rooms" className={classNames(styles.browseButton)}>
-                    Browse Rooms &nbsp;&nbsp;&nbsp;<span style={{ fontSize: "1.5em" }}> ⪢</span>
-                  </a>
+                  <div className={styles.browseButtonWrap}>
+                    <a href="#virtual-rooms" className={classNames(styles.browseButton)}>
+                      <span>Browse Rooms</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -314,77 +319,73 @@ export default class ConferenceContent extends Component {
               <div className={styles.steps}>
                 {/*className={classNames(styles.centered, styles.contentContainer, styles.steps)}>*/}
                 <dl>
-                  <dt><span className={classNames(styles.circle)}>1</span>Step One</dt>
+                  <dt>
+                    <span className={classNames(styles.circle)}>1</span>
+                    <span className={classNames(styles.stepHeading)}>Step One</span>
+                  </dt>
                   <dd>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi et quam feugiat, suscipit tellus
-                    quis, tempus diam. Duis egestas rhoncus lectus egestas faucibus. Aliquam molestie, dolor faucibus
-                    sodales dictum, risus eros scelerisque eros, vitae sollicitudin tortor turpis eu augue. Phasellus
-                    eget enim mollis, varius libero non, finibus dui. Aenean semper auctor vulputate. Vivamus quis lacus
-                    non sapien auctor venenatis. Cras erat nulla, consectetur sit amet magna eget, volutpat ornare
-                    sapien.
+                    quis, tempus diam. Duis egestas rhoncus lectus egestas faucibus.
                   </dd>
-                  <dt><span className={classNames(styles.circle)}>2</span>Step Two</dt>
+                  <dt>
+                    <span className={classNames(styles.circle)}>2</span>
+                    <span className={classNames(styles.stepHeading)}>Step Two</span>
+                  </dt>
                   <dd>Donec tempus augue non lacus consectetur, in ultricies sapien mollis. Donec dapibus aliquam nisl,
-                    in dapibus massa dapibus quis. Pellentesque porta nisl nec velit convallis viverra. Aliquam
-                    eleifend, lectus ut convallis tempus, libero nisi accumsan ante, sed laoreet leo lectus sed sem.
-                    Suspendisse potenti. Nulla ut sagittis purus, in iaculis lectus. In ornare, tellus non ultrices
-                    placerat, quam sem ultricies justo, eu euismod neque sapien ac velit. Ut efficitur id arcu id
-                    hendrerit.
+                    in dapibus massa dapibus quis. Pellentesque porta nisl nec velit convallis viverra.
                   </dd>
-                  <dt><span className={classNames(styles.circle)}>3</span>Step Three</dt>
+                  <dt>
+                    <span className={classNames(styles.circle)}>3</span>
+                    <span className={classNames(styles.stepHeading)}>Step Three</span>
+                  </dt>
                   <dd>Nulla enim diam, fermentum sit amet elit quis, vehicula fringilla turpis. Praesent mattis massa
                     metus, eu pellentesque felis ultrices sed. Sed nec elit sit amet turpis egestas condimentum. Aliquam
-                    vitae elit sed arcu malesuada vestibulum. Proin quis aliquet mi, quis bibendum urna. Morbi convallis
-                    velit ac orci aliquet mollis. Aliquam quis tortor facilisis, finibus lacus ut, congue augue. Nulla
-                    nulla purus, aliquet sed velit in, ullamcorper accumsan mauris. Maecenas et congue dolor, sed
-                    hendrerit nisl. Suspendisse accumsan, turpis eu vulputate tempor, odio eros cursus diam, sit amet
-                    accumsan diam est vitae massa. Nulla venenatis venenatis quam eu laoreet. In ultrices velit lorem.
+                    vitae elit sed arcu malesuada vestibulum. Proin quis aliquet mi, quis bibendum urna.
                   </dd>
-                  <dt><span className={classNames(styles.circle)}>4</span>Step four</dt>
+                  <dt>
+                    <span className={classNames(styles.circle)}>4</span>
+                    <span className={classNames(styles.stepHeading)}>Step Four</span>
+                  </dt>
                   <dd>Sed at diam sed lectus luctus elementum. Donec convallis quam a molestie molestie. Nam porta id
                     leo vitae consequat. Aenean in ullamcorper magna, vel varius est. Cras vestibulum, est vitae
-                    vulputate feugiat, felis ex porta lacus, ut tincidunt lacus nulla ut velit. Ut quis nulla lacus. Nam
-                    condimentum rhoncus nisl eu lacinia. Maecenas tristique finibus ipsum vel dapibus. Donec quis
-                    sagittis ipsum.
+                    vulputate feugiat, felis ex porta lacus, ut tincidunt lacus nulla ut velit.
                   </dd>
-                  <dt><span className={classNames(styles.circle)}>5</span>Step five</dt>
+                  <dt>
+                    <span className={classNames(styles.circle)}>5</span>
+                    <span className={classNames(styles.stepHeading)}>Step Five</span>
+                  </dt>
                   <dd>Nullam suscipit augue ultrices rutrum porttitor. Quisque feugiat, dui ut consectetur scelerisque,
-                    tortor nulla vestibulum leo, quis sodales ante ipsum eu ligula. Cras quis arcu mauris. Donec
-                    hendrerit mi facilisis vehicula dapibus. Curabitur non purus lacinia, ornare orci id, lacinia sem.
-                    Etiam facilisis lacus at orci varius, at pharetra leo porta. Vivamus sem ipsum, pretium quis
-                    volutpat eget, gravida in metus. Fusce ac egestas nunc, vel cursus magna.
+                    tortor nulla vestibulum leo, quis sodales ante ipsum eu ligula. Cras quis arcu mauris.
                   </dd>
-                  <dt><span className={classNames(styles.circle)}>6</span>Step six</dt>
+                  <dt>
+                    <span className={classNames(styles.circle)}>6</span>
+                    <span className={classNames(styles.stepHeading)}>Step Six</span>
+                  </dt>
                   <dd>Ut a bibendum tortor. Integer varius nisl at feugiat aliquet. Donec a dui nec tellus sagittis
                     dictum. Curabitur vitae mauris velit. Nunc elementum porttitor finibus. Ut elementum at lorem luctus
-                    semper. Nam et lacus non nibh imperdiet interdum. In pulvinar massa aliquet erat ullamcorper
-                    placerat. Morbi non risus vel libero malesuada consectetur. Mauris volutpat tellus ut nisl luctus,
-                    at suscipit quam dictum. Cras id elementum neque.
+                    semper.
                   </dd>
                 </dl>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section>
-          {/*className={styles.descriptionContainer}>*/}
-          <div id="virtual-rooms" className={styles.virtualRoomsSection}>
-            <div className={styles.virtualRoomsSectionHeader}>
-              <h1>Virtual Rooms</h1>
-            </div>
-            <div className={styles.virtualRoomsSectionContainer}>
-              <div className={styles.virtualRoomsGroup}>
-                <div className={styles.item12}>
-                  <h2>Virtual Commencement Rooms</h2>
-                  {groupedPublicRooms.length > 0 ? (
-                    groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
-                  ) : (
-                    <div className={styles.spinnerContainer}>
-                      <Spinner/>
-                    </div>
-                  )}
+
+                <hr />
+
+                <div className={classNames(styles.virtualIntro)}>
+                  <div className="intro-text">
+                    <h2>Virtual Rooms</h2>
+                    <p>Short intro paragraph here lore ipsum dolar sit amet, mea omnis dicam eu, qui ex nonumes neglegentur. Ad est altera quidam fastidi.</p>
+                  </div>
+                  <img src={"../assets/images/room-screenshot.png"} width={"200px"} height="115px"/>
                 </div>
-                <div className={styles.item3}>
-                  <img src={"../assets/images/Room_Screenshot.png"} width={"250px"} height={"150px"}/>
+
+                <div className="rooms">
+                  {
+                    groupedPublicRooms.length > 0 ? (
+                      groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
+                    ) : (
+                      <div className={styles.spinnerContainer}>
+                        <Spinner/>
+                      </div>
+                    )
+                  }
                 </div>
 
                 {/*<div className={styles.contentContainer}>*/}
