@@ -299,7 +299,7 @@ export default class ConferenceContent extends Component {
             <div className={styles.redWrapper}>
               <div className={styles.descriptionContainerHeader}>
                 {/*// className={classNames(styles.card, styles.header)}>*/}
-                <img className={styles.logo} src={configs.image("company_logo")}/>
+                <img className={styles.logo} src={"../assets/images/company-logo-white-2x.png"}/>
                 <div className={styles.banner}>
                   {/*// className={classNames(styles.centered, styles.headercontent)}>*/}
                   <h1>Miami University</h1>
@@ -307,7 +307,7 @@ export default class ConferenceContent extends Component {
                   <div className={styles.browseButtonWrap}>
                     <a href="#virtual-rooms" className={classNames(styles.browseButton)}>
                       <span>Browse Rooms</span>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round">
                         <polyline points="9 18 15 12 9 6"></polyline>
                       </svg>
                     </a>
