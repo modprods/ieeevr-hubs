@@ -338,7 +338,7 @@ export default class ConferenceContent extends Component {
                     <span className={classNames(styles.stepHeading)}>Find a Room</span>
                   </dt>
                   <dd>
-                    <p>You can experience commencement in <b>any</b> of the identical virtual rooms. Each room can hold up to 20 people.
+                    <p>You can experience commencement in <b>any of the identical virtual rooms</b>. Each room can hold up to 20 people.
                     Think of these as different sections of the same auditorium.
                     All of the rooms will see the same content, but you will only be able to interact with people in the same room as you.</p>
                     <p>To choose a room, scroll to the bottom of the page where you will see a list of rooms and how many people are in each (out of the 20 person max).
@@ -350,10 +350,12 @@ export default class ConferenceContent extends Component {
                     <span className={classNames(styles.stepHeading)}>Logging onto the virtual rooms</span>
                   </dt>
                   <dd>
-                    <p>Once you’ve clicked <b>Join</b>, you will be asked to enter your Miami University <b>unique ID email address</b> to log in.
+                    <p>Once you’ve clicked "<b>Join</b>", you will be asked to enter your Miami University <b>unique ID email address</b> to log in.
                     You will receive an email with the subject <b>"Your Miami University Virtual Commencement Sign-In Link"</b> that will contain a login link.
                     Clicking the login link will open a new browser tab/window where you should get a message saying <b>"Email Verified"</b>.
                     You can then close the verification tab tab/window and navigate back to the virtual room tab and click <b>"Enter Room"</b>.
+                    </p>
+                    <p>By entering this virtual environment, you acknowledge that you have read, understood, and agreed to abide by the <u><b>Virtual Commencement Code of Conduct</b></u>.
                     </p>
                   </dd>
                   <dt>
@@ -372,8 +374,8 @@ export default class ConferenceContent extends Component {
                   </dt>
                   <dd>
                     <p>Once you have created a name and chosen an avatar, click <b>"Enter on Screen"</b> (or <b>"Connect VR Headset"</b> for VR headset users).
-                      You will then be asked to grant mic permissions. To grant mic permissions, click <b>Allow</b>,
-                      (Clicking <b>Block</b> will prevent you from using your microphone to communicate to others in the room) then click <b>"Next"</b>.
+                      You will then be asked to grant mic permissions. To grant mic permissions, click <b>"Allow"</b>,
+                      (Clicking <b>"Block"</b> will prevent you from using your microphone to communicate to others in the room) then click <b>"Next"</b>.
                       If you have multiple microphones, this screen will allow you to choose which one to use.
                       If you don’t know what to select, simply continue with Default. If your microphone is working,
                       you should see a blue level indicator inside the microphone icon when you speak.
@@ -387,9 +389,19 @@ export default class ConferenceContent extends Component {
                   <dd>
                     <p>Once you are in a  virtual room, use the controls below to move around the room</p>
                     <ul>
-                      <li>To walk, use <b>WASD keyboard controls</b> like you would a first person game. (W moves forward, A moves left, S moves backward, D moves right.)</li>
-                      <li>To move faster, hold down <b>SHIFT</b> as you move.</li>
-                      <li>To look left, right, up and down, <b>CLICK AND DRAG</b> using the <b>LEFT MOUSE BUTTON.</b></li>
+                      <li>Laptop / Desktop Controls:
+                        <ul>
+                        <li>To walk, use <b>WASD keyboard controls</b> like you would a first person game. (<b>W</b> moves forward, <b>A</b> moves left, <b>S</b> moves backward, <b>D</b> moves right.)</li>
+                        <li>To move faster, hold down <b>SHIFT</b> as you move.</li>
+                        <li>To look left, right, up and down, <b>CLICK AND DRAG</b> using the <b>LEFT MOUSE BUTTON.</b></li>
+                        </ul>
+                      </li>
+                      <li>Mobile Controls:
+                      <ul>
+                        <li>To walk, use two fingers to <b>MAKE A PINCH OPEN GESTURE</b></li>
+                        <li>To look left, right, up, and down, <b>SWIPE AROUND</b> the screen with <b>ONE FINGER</b></li>
+                      </ul>
+                        </li>
                     </ul>
                   </dd>
                   <dt>
@@ -397,12 +409,18 @@ export default class ConferenceContent extends Component {
                     <span className={classNames(styles.stepHeading)}>Communicating and Interacting with others</span>
                   </dt>
                   <dd>
-                    <p><b>Please Note:</b> <i>The ceremony includes a live text or audio chat feature. We recommend using the text chat feature to ensure the most accessible experience for all participants.</i></p>
+                    <p><b>Please Note:</b> The ceremony includes a live text or audio chat feature. We recommend using the text chat feature to ensure the most accessible experience for all participants.</p>
                     <p>Once inside a room, you can communicate with other individuals as if you were in a real space.
-                      To talk to others via text chat, type in the translucent text bar at the bottom of the screen and press <b>ENTER</b>.
+                      To talk to others via text chat, type in the translucent text bar at the bottom of the screen and press the <b>"ENTER KEY"</b>.
                       Your message will then be displayed in the main chat window to the rest of the room. 
                     </p>
-                    <p>To Adjust the volume of the video, hover your mouse over the middle screen and click on the <b>"+" and "-" buttons</b></p>
+                    <ul>
+                      <li>To Adjust the volume of the video, hover your mouse over the middle screen and click on the <b>"+" and "-" buttons</b>
+                      </li>
+                      <li>To adjust your Name and Avatar Preferences (and additional settings), click on the Menu button in the top left corner of your window.
+                      </li>
+                    </ul>
+                    
                   </dd>
                   <dt>
                     <span className={classNames(styles.circle)}>8</span>
@@ -419,12 +437,11 @@ export default class ConferenceContent extends Component {
                   </dt>
                   <dd>
                     <p>If you are having trouble, try refreshing the page and re-entering the room.
-                      If you are still having trouble, you can chat with us in the bottom right corner of the page,
-                      or by emailing <a href="mailto:support@subvrsive.com">support@subvrsive.com</a>
+                      If you are still having trouble, you can chat with us at <a href="https://subvrsive.com/miami-university">subvrsive.com/miami-university</a> or
+                       by emailing <a href="mailto:support@subvrsive.com">support@subvrsive.com</a>
                     </p>
-                    <p>Faculty and Staff will be present in the virtual rooms to moderate the experience.
-                      To report inappropriate behavior, or misconduct, email <a href="mailto:eventconduct@subvrsive.com">eventconduct@subvrsive.com</a> and include
-                      the full display name of the person causing a problem as well as the name of the room where the issue is taking place. 
+                    <p>With sign in, all users agree to abide by the <u><b>Virtual Commencement Code of Conduct</b></u>. Report any violations of the Code of Student Conduct
+                      to the Office of Community Standards at CommunityStandards@Miamioh.edu. This includes conduct that is defamatory, harassing or discriminatory, obscene, or is inciting or facilitating violence including threats of violence or harm and intimidation. 
                     </p>
                   </dd>
                 </dl>
@@ -433,8 +450,8 @@ export default class ConferenceContent extends Component {
 
                 <div className={classNames(styles.virtualIntro)}>
                   <div className="intro-text">
-                    <h2 id="virtual-rooms">Virtual Rooms</h2>
-                    <p>Join one of the following rooms.</p>
+                    <h2 id="virtual-rooms">Virtual Commencement Rooms</h2>
+                    <p>Click <b>“Join”</b> to enter a room. If a room says <b>“Spectate”</b>, that room is full and you should choose a different room.</p>
                   </div>
                   <img src={"../assets/images/room-screenshot.png"} width={"200px"} height="115px"/>
                 </div>
