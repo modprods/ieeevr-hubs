@@ -108,13 +108,41 @@ async function fetchFeaturedRooms() {
   const [favoriteRoomsResult4, publicRoomsResult4] = await Promise.all([
     authChannel.signedIn
       ? fetchReticulumAuthenticated(
-      `/api/v1/media/search?source=favorites&type=rooms&user=${store.credentialsAccountId}`
-      )
+          `/api/v1/media/search?source=favorites&type=rooms&user=${store.credentialsAccountId}`
+        )
       : Promise.resolve({ entries: [] }),
     fetchReticulumAuthenticated("/api/v1/media/search?source=rooms&filter=public&cursor=4")
   ]);
-  const entries = [...publicRoomsResult.entries, ...publicRoomsResult2.entries, ...favoriteRoomsResult.entries, ...favoriteRoomsResult2.entries,
-    ...publicRoomsResult3.entries, ...publicRoomsResult4.entries, ...favoriteRoomsResult3.entries, ...favoriteRoomsResult4.entries];
+  const [favoriteRoomsResult5, publicRoomsResult5] = await Promise.all([
+    authChannel.signedIn
+      ? fetchReticulumAuthenticated(
+          `/api/v1/media/search?source=favorites&type=rooms&user=${store.credentialsAccountId}`
+        )
+      : Promise.resolve({ entries: [] }),
+    fetchReticulumAuthenticated("/api/v1/media/search?source=rooms&filter=public&cursor=5")
+  ]);
+  const [favoriteRoomsResult6, publicRoomsResult6] = await Promise.all([
+    authChannel.signedIn
+      ? fetchReticulumAuthenticated(
+          `/api/v1/media/search?source=favorites&type=rooms&user=${store.credentialsAccountId}`
+        )
+      : Promise.resolve({ entries: [] }),
+    fetchReticulumAuthenticated("/api/v1/media/search?source=rooms&filter=public&cursor=5")
+  ]);
+  const entries = [
+    ...publicRoomsResult.entries,
+    ...publicRoomsResult2.entries,
+    ...publicRoomsResult3.entries,
+    ...publicRoomsResult4.entries,
+    ...publicRoomsResult5.entries,
+    ...publicRoomsResult6.entries,
+    ...favoriteRoomsResult.entries,
+    ...favoriteRoomsResult2.entries,
+    ...favoriteRoomsResult3.entries,
+    ...favoriteRoomsResult4.entries,
+    ...favoriteRoomsResult5.entries,
+    ...favoriteRoomsResult6.entries
+  ];
   const ids = entries.map(h => h.id);
   featuredRooms = entries.filter((h, i) => ids.lastIndexOf(h.id) === i).sort((a, b) => b.member_count - a.member_count);
   remountUI();
