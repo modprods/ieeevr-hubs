@@ -103,7 +103,7 @@ async function fetchFeaturedRooms() {
       `/api/v1/media/search?source=favorites&type=rooms&user=${store.credentialsAccountId}`
       )
       : Promise.resolve({ entries: [] }),
-    fetchReticulumAuthenticated("/api/v1/media/search?source=rooms&filter=public&cursor=2")
+    fetchReticulumAuthenticated("/api/v1/media/search?source=rooms&filter=public&cursor=3")
   ]);
   const [favoriteRoomsResult4, publicRoomsResult4] = await Promise.all([
     authChannel.signedIn
@@ -111,7 +111,7 @@ async function fetchFeaturedRooms() {
       `/api/v1/media/search?source=favorites&type=rooms&user=${store.credentialsAccountId}`
       )
       : Promise.resolve({ entries: [] }),
-    fetchReticulumAuthenticated("/api/v1/media/search?source=rooms&filter=public&cursor=2")
+    fetchReticulumAuthenticated("/api/v1/media/search?source=rooms&filter=public&cursor=4")
   ]);
   const entries = [...publicRoomsResult.entries, ...publicRoomsResult2.entries, ...favoriteRoomsResult.entries, ...favoriteRoomsResult2.entries,
     ...publicRoomsResult3.entries, ...publicRoomsResult4.entries, ...favoriteRoomsResult3.entries, ...favoriteRoomsResult4.entries];
