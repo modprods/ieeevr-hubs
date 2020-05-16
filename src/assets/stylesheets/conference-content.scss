@@ -127,6 +127,10 @@ hr {
     overflow: hidden;
     font-size: 14px;
 
+    p {
+      max-width: 200px;
+    }
+
     @media (max-width: 1024px) {
       font-size: 12px;
     }
