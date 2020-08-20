@@ -14,7 +14,7 @@ pkg_build_deps=(
 )
 
 pkg_deps=(
-    core/aws-cli # AWS cli used for run hook when uploading to S3
+    core/aws-cli/1.16.118/20190305224525 # AWS cli used for run hook when uploading to S3
 )
 
 do_build() {
@@ -22,9 +22,6 @@ do_build() {
 
   # main client
   npm ci --verbose --no-progress
-  npm rebuild node-sass # HACK sometimes node-sass build fails
-  npm rebuild node-sass # HACK sometimes node-sass build fails
-  npm rebuild node-sass # HACK sometimes node-sass build fails
 
   # We inject a random token into the build for the base assets path
   export BASE_ASSETS_PATH="$(echo "base_assets_path" | sha256sum | cut -d' ' -f1)/" # HACK need a trailing slash so webpack'ed semantics line up
@@ -35,9 +32,6 @@ do_build() {
   # admin
   cd admin
   npm ci --verbose --no-progress
-  npm rebuild node-sass # HACK sometimes node-sass build fails
-  npm rebuild node-sass # HACK sometimes node-sass build fails
-  npm rebuild node-sass # HACK sometimes node-sass build fails
 
   npm run build
   cp -R dist/* ../dist # it will get packaged with the rest of the stuff, below

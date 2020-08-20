@@ -24,7 +24,7 @@ import "aframe-slice9-component";
 import "./utils/threejs-positional-audio-updatematrixworld";
 import "./utils/threejs-world-update";
 import patchThreeAllocations from "./utils/threejs-allocation-patches";
-import { detectOS } from "detect-browser";
+import { detectOS, detect } from "detect-browser";
 import {
   getReticulumFetchUrl,
   getReticulumMeta,
@@ -36,6 +36,7 @@ import nextTick from "./utils/next-tick";
 import { addAnimationComponents } from "./utils/animation";
 import { authorizeOrSanitizeMessage } from "./utils/permissions-utils";
 import Cookies from "js-cookie";
+import "./naf-dialog-adapter";
 
 import "./components/scene-components";
 import "./components/scale-in-screen-space";
@@ -74,7 +75,7 @@ import "./components/media-views";
 import "./components/avatar-volume-controls";
 import "./components/pinch-to-move";
 import "./components/pitch-yaw-rotator";
-import "./components/position-at-box-shape-border";
+import "./components/position-at-border";
 import "./components/pinnable";
 import "./components/pin-networked-object-button";
 import "./components/mirror-media-button";
@@ -112,6 +113,7 @@ import "./components/billboard";
 import "./components/periodic-full-syncs";
 import "./components/inspect-button";
 import "./components/set-max-resolution";
+import "./components/avatar-audio-source";
 import { sets as userinputSets } from "./systems/userinput/sets";
 
 import ReactDOM from "react-dom";
@@ -157,6 +159,7 @@ import { SOUND_CHAT_MESSAGE } from "./systems/sound-effects-system";
 import "./gltf-component-mappings";
 
 import { App } from "./App";
+import { platformUnsupported } from "./support";
 
 window.APP = new App();
 window.APP.RENDER_ORDER = {
@@ -165,6 +168,7 @@ window.APP.RENDER_ORDER = {
   CURSOR: 3
 };
 const store = window.APP.store;
+store.update({ preferences: { shouldPromptForRefresh: undefined } }); // Clear flag that prompts for refresh from preference screen
 const mediaSearchStore = window.APP.mediaSearchStore;
 const OAUTH_FLOW_PERMS_TOKEN_KEY = "ret-oauth-flow-perms-token";
 const NOISY_OCCUPANT_COUNT = 12; // Above this # of occupants, we stop posting join/leaves/renames
@@ -231,11 +235,6 @@ if (!isBotMode && !isTelemetryDisabled) {
 
 disableiOSZoom();
 detectConcurrentLoad();
-
-function getPlatformUnsupportedReason() {
-  if (typeof RTCDataChannelEvent === "undefined") return "no_data_channels";
-  return null;
-}
 
 function setupLobbyCamera() {
   const camera = document.getElementById("scene-preview-node");
@@ -317,18 +316,31 @@ function remountUI(props) {
 
 function setupPeerConnectionConfig(adapter, host, turn) {
   const forceTurn = qs.get("force_turn");
+  const forceTcp = qs.get("force_tcp");
   const peerConnectionConfig = {};
 
   if (turn && turn.enabled) {
-    const iceServers = turn.transports.map(ts => {
-      return { urls: `turns:${host}:${ts.port}?transport=tcp`, username: turn.username, credential: turn.credential };
+    const iceServers = [];
+
+    turn.transports.forEach(ts => {
+      // Try both TURN DTLS and TCP/TLS
+      if (!forceTcp) {
+        iceServers.push({ urls: `turns:${host}:${ts.port}`, username: turn.username, credential: turn.credential });
+      }
+
+      iceServers.push({
+        urls: `turns:${host}:${ts.port}?transport=tcp`,
+        username: turn.username,
+        credential: turn.credential
+      });
     });
 
     iceServers.push({ urls: "stun:stun1.l.google.com:19302" });
 
     peerConnectionConfig.iceServers = iceServers;
+    peerConnectionConfig.iceTransportPolicy = "all";
 
-    if (forceTurn) {
+    if (forceTurn || forceTcp) {
       peerConnectionConfig.iceTransportPolicy = "relay";
     }
   } else {
@@ -478,7 +490,6 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
   }
 
   const hub = data.hubs[0];
-
   let embedToken = hub.embed_token;
 
   if (!embedToken) {
@@ -523,18 +534,34 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
   const objectsScene = document.querySelector("#objects-scene");
   const objectsUrl = getReticulumFetchUrl(`/${hub.hub_id}/objects.gltf`);
   const objectsEl = document.createElement("a-entity");
-  objectsEl.setAttribute("gltf-model-plus", { src: objectsUrl, useCache: false, inflate: true });
 
-  if (!isBotMode) {
-    objectsScene.appendChild(objectsEl);
-  }
+  scene.addEventListener("adapter-ready", () => {
+    // Append objects once adapter is ready since ownership may be taken.
+    objectsEl.setAttribute("gltf-model-plus", { src: objectsUrl, useCache: false, inflate: true });
 
+    if (!isBotMode) {
+      objectsScene.appendChild(objectsEl);
+    }
+  });
+
+  // TODO Remove this once transition completed.
   // Wait for scene objects to load before connecting, so there is no race condition on network state.
   const connectToScene = async () => {
+    let adapter = "janus";
+
+    try {
+      // Meta endpoint exists only on dialog
+      await fetch(`https://${hub.host}:${hub.port}/meta`);
+      adapter = "dialog";
+    } catch (e) {
+      // Ignore, set to janus.
+    }
+
     scene.setAttribute("networked-scene", {
       room: hub.hub_id,
       serverURL: `wss://${hub.host}:${hub.port}`,
-      debug: !!isDebug
+      debug: !!isDebug,
+      adapter
     });
 
     while (!scene.components["networked-scene"] || !scene.components["networked-scene"].data) await nextTick();
@@ -638,7 +665,9 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
         });
     };
 
+    window.APP.hub = hub;
     updateUIForHub(hub, hubChannel);
+    scene.emit("hub_updated", { hub });
 
     if (!isEmbed) {
       loadEnvironmentAndConnect();
@@ -653,19 +682,19 @@ function handleHubChannelJoined(entryManager, hubChannel, messageDispatch, data)
     }
   };
 
-  if (!isBotMode) {
-    objectsEl.addEventListener("model-loaded", async el => {
-      if (el.target !== objectsEl) return;
-      connectToScene();
-    });
-  } else {
-    connectToScene();
-  }
+  connectToScene();
 }
 
 async function runBotMode(scene, entryManager) {
   const noop = () => {};
-  scene.renderer = { setAnimationLoop: noop, render: noop };
+  const alwaysFalse = () => false;
+  scene.renderer = {
+    setAnimationLoop: noop,
+    render: noop,
+    shadowMap: {},
+    vr: { isPresenting: alwaysFalse },
+    setSize: noop
+  };
 
   while (!NAF.connection.isConnected()) await nextTick();
   entryManager.enterSceneWhenLoaded(new MediaStream(), false);
@@ -688,26 +717,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   warmSerializeElement();
 
-  if (!window.WebAssembly) {
-    remountUI({ showWebAssemblyDialog: true });
+  if (platformUnsupported()) {
     return;
   }
 
-  // Some apps like Twitter, Discord and Facebook on Android and iOS open links in
-  // their own embedded preview browsers.
-  //
-  // On iOS this WebView does not have a mediaDevices API at all, but in Android apps
-  // like Facebook, the browser pretends to have a mediaDevices, but never actually
-  // prompts the user for device access. So, we show a dialog that tells users to open
-  // the room in an actual browser like Safari, Chrome or Firefox.
-  //
-  // Facebook Mobile Browser on Android has a userAgent like this:
-  // Mozilla/5.0 (Linux; Android 9; SM-G950U1 Build/PPR1.180610.011; wv) AppleWebKit/537.36 (KHTML, like Gecko)
-  // Version/4.0 Chrome/80.0.3987.149 Mobile Safari/537.36 [FB_IAB/FB4A;FBAV/262.0.0.34.117;]
   const detectedOS = detectOS(navigator.userAgent);
-  if ((detectedOS === "iOS" && !navigator.mediaDevices) || /\bfb_iab\b/i.test(navigator.userAgent)) {
-    remountUI({ showInAppBrowserDialog: true });
-    return;
+  const browser = detect();
+  // HACK - it seems if we don't initialize the mic track up-front, voices can drop out on iOS
+  // safari when initializing it later.
+  if (["iOS", "Mac OS"].includes(detectedOS) && ["safari", "ios"].includes(browser.name)) {
+    try {
+      await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch (e) {
+      remountUI({ showSafariMicDialog: true });
+      return;
+    }
   }
 
   const defaultRoomId = configs.feature("default_room_id");
@@ -744,7 +768,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const scene = document.querySelector("a-scene");
-  scene.setAttribute("shadow", { enabled: window.APP.quality !== "low" }); // Disable shadows on low quality
   scene.renderer.debug.checkShaderErrors = false;
 
   // HACK - Trigger initial batch preparation with an invisible object
@@ -1000,9 +1023,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     remountUI({ roomUnavailableReason: "left" });
   });
 
-  scene.addEventListener("camera_toggled", () => remountUI({}));
-
-  scene.addEventListener("camera_removed", () => remountUI({}));
+  const updateCameraUI = function(e) {
+    if (e.detail !== "camera") return;
+    remountUI({});
+  };
+  scene.addEventListener("stateadded", updateCameraUI);
+  scene.addEventListener("stateremoved", updateCameraUI);
 
   scene.addEventListener("hub_closed", () => {
     scene.exitVR();
@@ -1012,14 +1038,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   scene.addEventListener("action_camera_recording_started", () => hubChannel.beginRecording());
   scene.addEventListener("action_camera_recording_ended", () => hubChannel.endRecording());
-
-  const platformUnsupportedReason = getPlatformUnsupportedReason();
-
-  if (platformUnsupportedReason) {
-    remountUI({ platformUnsupportedReason });
-    entryManager.exitScene();
-    return;
-  }
 
   if (qs.get("required_version") && process.env.BUILD_VERSION) {
     const buildNumber = process.env.BUILD_VERSION.split(" ", 1)[0]; // e.g. "123 (abcd5678)"
@@ -1050,7 +1068,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (isMobileVR) {
       remountUI({ availableVREntryTypes, forcedVREntryType: "vr", checkingForDeviceAvailability: false });
 
-      if (/Oculus/.test(navigator.userAgent)) {
+      if (/Oculus/.test(navigator.userAgent) && "getVRDisplays" in navigator) {
         // HACK - The polyfill reports Cardboard as the primary VR display on startup out ahead of
         // Oculus Go on Oculus Browser 5.5.0 beta. This display is cached by A-Frame,
         // so we need to resolve that and get the real VRDisplay before entering as well.
@@ -1085,14 +1103,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   environmentScene.addEventListener("model-loaded", onFirstEnvironmentLoad);
 
-  environmentScene.addEventListener("model-loaded", () => {
+  environmentScene.addEventListener("model-loaded", ({ detail: { model } }) => {
     if (!scene.is("entered")) {
       setupLobbyCamera();
     }
 
     // This will be run every time the environment is changed (including the first load.)
     remountUI({ environmentSceneLoaded: true });
-    scene.emit("environment-scene-loaded");
+    scene.emit("environment-scene-loaded", model);
 
     // Re-bind the teleporter controls collision meshes in case the scene changed.
     document.querySelectorAll("a-entity[teleporter]").forEach(x => x.components["teleporter"].queryCollisionEntities());
@@ -1150,7 +1168,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       context: {
         mobile: isMobile || isMobileVR,
         embed: isEmbed
-      }
+      },
+      hub_invite_id: qs.get("hub_invite_id")
     };
 
     if (isMobileVR) {
@@ -1273,6 +1292,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (isInitialJoin) {
         store.addEventListener("profilechanged", hubChannel.sendProfileUpdate.bind(hubChannel));
 
+        const requestedOccupants = [];
+
+        const requestOccupants = async (sessionIds, state) => {
+          requestedOccupants.length = 0;
+          for (let i = 0; i < sessionIds.length; i++) {
+            const sessionId = sessionIds[i];
+            if (sessionId !== NAF.clientId && state[sessionId].metas[0].presence === "room") {
+              requestedOccupants.push(sessionId);
+            }
+          }
+
+          while (!NAF.connection.isConnected()) await nextTick();
+          NAF.connection.adapter.syncOccupants(requestedOccupants);
+        };
+
         hubChannel.presence.onSync(() => {
           const presence = hubChannel.presence;
 
@@ -1282,7 +1316,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             entryDisallowed: !hubChannel.canEnterRoom(uiProps.hub)
           });
 
-          const occupantCount = Object.entries(presence.state).length;
+          const sessionIds = Object.getOwnPropertyNames(presence.state);
+          const occupantCount = sessionIds.length;
           vrHudPresenceCount.setAttribute("text", "value", occupantCount.toString());
 
           if (occupantCount > 1) {
@@ -1290,6 +1325,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           } else {
             scene.removeState("copresent");
           }
+
+          requestOccupants(sessionIds, presence.state);
 
           // HACK - Set a flag on the presence object indicating if the initial sync has completed,
           // which is used to determine if we should fire join/leave messages into the presence log.
@@ -1392,7 +1429,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       scene.addEventListener("adapter-ready", async ({ detail: adapter }) => {
         // HUGE HACK Safari does not like it if the first peer seen does not immediately
         // send audio over its media stream. Otherwise, the stream doesn't work and stays
-        // silent. (Though subsequent peers work fine.)
+        // silent. (Though subsequent peers work fine.) This only affects naf janus adapter
+        // not mediasoup.
         //
         // This hooks up a simple audio pipeline to push a short tone over the WebRTC
         // media stream as its created to mitigate this Safari bug.
@@ -1405,16 +1443,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         // other user joins. If a user is in the room and Safari user joins,
         // then Safari can fail to receive audio from a single peer (it does not seem
         // to be related to silence, but may be a factor.)
-        const ctx = THREE.AudioContext.getContext();
-        const oscillator = ctx.createOscillator();
-        const gain = ctx.createGain();
-        gain.gain.setValueAtTime(0.01, ctx.currentTime);
-        const dest = ctx.createMediaStreamDestination();
-        oscillator.connect(gain);
-        gain.connect(dest);
-        oscillator.start();
-        const stream = dest.stream;
-        const track = stream.getAudioTracks()[0];
+        let track, oscillator, stream;
+
+        // TODO remove after dialog
+        if (adapter.type !== "dialog") {
+          console.log("Using Janus SFU");
+          const ctx = THREE.AudioContext.getContext();
+          oscillator = ctx.createOscillator();
+          const gain = ctx.createGain();
+          gain.gain.setValueAtTime(0.01, ctx.currentTime);
+          const dest = ctx.createMediaStreamDestination();
+          oscillator.connect(gain);
+          gain.connect(dest);
+          oscillator.start();
+          const stream = dest.stream;
+          track = stream.getAudioTracks()[0];
+        }
+
         adapter.setClientId(socket.params().session_id);
         adapter.setJoinToken(data.perms_token);
         setupPeerConnectionConfig(adapter, janusHost, janusTurn);
@@ -1426,16 +1471,23 @@ document.addEventListener("DOMContentLoaded", async () => {
         scene.addEventListener(
           "didConnectToNetworkedScene",
           () => {
-            oscillator.stop();
-            track.enabled = false;
+            if (oscillator) {
+              oscillator.stop();
+            }
+
+            if (track) {
+              track.enabled = false;
+            }
           },
           { once: true }
         );
 
-        await adapter.setLocalMediaStream(stream);
+        if (stream) {
+          await adapter.setLocalMediaStream(stream);
+        }
       });
-      subscriptions.setHubChannel(hubChannel);
 
+      subscriptions.setHubChannel(hubChannel);
       subscriptions.setSubscribed(data.subscriptions.web_push);
 
       remountUI({
@@ -1505,6 +1557,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const hub = hubs[0];
     const userInfo = hubChannel.presence.state[session_id];
 
+    window.APP.hub = hub;
     updateUIForHub(hub, hubChannel);
 
     if (stale_fields.includes("scene")) {
@@ -1549,6 +1602,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (hub.entry_mode === "deny") {
       scene.emit("hub_closed");
     }
+
+    scene.emit("hub_updated", { hub });
   });
 
   hubPhxChannel.on("permissions_updated", () => hubChannel.fetchPermissions());

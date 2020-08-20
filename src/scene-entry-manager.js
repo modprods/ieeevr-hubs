@@ -43,6 +43,8 @@ export default class SceneEntryManager {
     this.whenSceneLoaded(() => {
       this.rightCursorController.components["cursor-controller"].enabled = false;
       this.leftCursorController.components["cursor-controller"].enabled = false;
+
+      this._setupBlocking();
     });
   };
 
@@ -53,7 +55,7 @@ export default class SceneEntryManager {
   enterScene = async (mediaStream, enterInVR, muteOnEntry) => {
     document.getElementById("viewing-camera").removeAttribute("scene-preview-camera");
 
-    if (isDebug) {
+    if (isDebug && NAF.connection.adapter.session) {
       NAF.connection.adapter.session.options.verbose = true;
     }
 
@@ -64,7 +66,7 @@ export default class SceneEntryManager {
 
       // HACK - A-Frame calls getVRDisplays at module load, we want to do it here to
       // force gamepads to become live.
-      navigator.getVRDisplays();
+      "getVRDisplays" in navigator && navigator.getVRDisplays();
 
       await exit2DInterstitialAndEnterVR(true);
     }
@@ -77,7 +79,6 @@ export default class SceneEntryManager {
     }
 
     this._setupPlayerRig();
-    this._setupBlocking();
     this._setupKicking();
     this._setupMedia(mediaStream);
     this._setupCamera();
@@ -91,6 +92,7 @@ export default class SceneEntryManager {
     if (isBotMode) {
       this._runBot(mediaStream);
       this.scene.addState("entered");
+      this.hubChannel.sendEnteredEvent();
       return;
     }
 
@@ -107,7 +109,7 @@ export default class SceneEntryManager {
 
     // Delay sending entry event telemetry until VR display is presenting.
     (async () => {
-      while (enterInVR && !(await navigator.getVRDisplays()).find(d => d.isPresenting)) {
+      while (enterInVR && !this.scene.renderer.vr.isPresenting()) {
         await nextTick();
       }
 
@@ -417,6 +419,12 @@ export default class SceneEntryManager {
 
       if (videoTracks.length > 0) {
         newStream.getVideoTracks().forEach(track => mediaStream.addTrack(track));
+
+        if (newStream && newStream.getAudioTracks().length > 0) {
+          const audioSystem = this.scene.systems["hubs-systems"].audioSystem;
+          audioSystem.addStreamToOutboundAudio("screenshare", newStream);
+        }
+
         await NAF.connection.adapter.setLocalMediaStream(mediaStream);
         currentVideoShareEntity = spawnMediaInfrontOfPlayer(mediaStream, undefined);
 
@@ -430,13 +438,30 @@ export default class SceneEntryManager {
     };
 
     this.scene.addEventListener("action_share_camera", () => {
-      shareVideoMediaStream({
+      const constraints = {
         video: {
-          mediaSource: "camera",
           width: isIOS ? { max: 1280 } : { max: 1280, ideal: 720 },
           frameRate: 30
         }
-      });
+        //TODO: Capture audio from camera?
+      };
+
+      // check preferences
+      const store = window.APP.store;
+      const preferredCamera = store.state.preferences.preferredCamera || "default";
+      switch (preferredCamera) {
+        case "default":
+          constraints.video.mediaSource = "camera";
+          break;
+        case "user":
+        case "environment":
+          constraints.video.facingMode = preferredCamera;
+          break;
+        default:
+          constraints.video.deviceId = preferredCamera;
+          break;
+      }
+      shareVideoMediaStream(constraints);
     });
 
     this.scene.addEventListener("action_share_screen", () => {
@@ -449,7 +474,11 @@ export default class SceneEntryManager {
             height: 720,
             frameRate: 30
           },
-          audio: true
+          audio: {
+            echoCancellation: window.APP.store.state.preferences.disableEchoCancellation === true ? false : true,
+            noiseSuppression: window.APP.store.state.preferences.disableNoiseSuppression === true ? false : true,
+            autoGainControl: window.APP.store.state.preferences.disableAutoGainControl === true ? false : true
+          }
         },
         true
       );
@@ -465,8 +494,12 @@ export default class SceneEntryManager {
       }
 
       for (const track of mediaStream.getVideoTracks()) {
+        track.stop(); // Stop video track to remove the "Stop screen sharing" bar right away.
         mediaStream.removeTrack(track);
       }
+
+      const audioSystem = this.scene.systems["hubs-systems"].audioSystem;
+      audioSystem.removeStreamFromOutboundAudio("screenshare");
 
       await NAF.connection.adapter.setLocalMediaStream(mediaStream);
       currentVideoShareEntity = null;
@@ -506,7 +539,6 @@ export default class SceneEntryManager {
 
       if (myCamera) {
         myCamera.parentNode.removeChild(myCamera);
-        this.scene.removeState("camera");
       } else {
         const entity = document.createElement("a-entity");
         entity.setAttribute("networked", { template: "#interactable-camera" });
@@ -515,11 +547,7 @@ export default class SceneEntryManager {
           offset: { x: 0, y: 0, z: -1.5 }
         });
         this.scene.appendChild(entity);
-        this.scene.addState("camera");
       }
-
-      // Need to wait a frame so camera is registered with system.
-      setTimeout(() => this.scene.emit("camera_toggled"));
     });
 
     this.scene.addEventListener("photo_taken", e => this.hubChannel.sendMessage({ src: e.detail }, "photo"));

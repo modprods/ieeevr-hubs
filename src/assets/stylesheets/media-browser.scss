@@ -558,6 +558,10 @@
 }
 
 :local(.media-browser-inline) {
+  :local(.body) {
+    width: 100%;
+  }
+
   position: relative;
   background-color: #C41230;  // var(--home-background-color); // #C41230;
   width: 100%;

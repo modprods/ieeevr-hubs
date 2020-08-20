@@ -4,6 +4,30 @@ const oneScale = new THREE.Vector3(1, 1, 1);
 const identity = new THREE.Matrix4();
 identity.identity();
 
+/**
+With this patch you must make sure to follow these rules or very strange things will happen.
+- If you modify an object's position, rotation, quaternion, or scale you MUST set matrixNeedsUpdate.
+- If you modify an object's matrix
+      you MUST decompose() back onto its position, quaternion and scale and
+      you MUST set matrixWorldNeedsUpdate (or matrixNeedsUpdate, but the former is more correct).
+      (applyMatrix() and updateMatrix() handle this for you)
+- If you modify an object's matrixWorld
+      you MUST make sure it has previously been modified so that it is not using its parent matrix as its own,
+      you MUST update its local matrix,
+      you MUST update its position/quaternion/scale, and
+      you MUST set childrenNeedMatrixWorldUpdate.
+      (setMatrixWorld() handles all of this for you)
+- Before you read an object's matrix you MUST call updateMatrix() or updateMatrices().
+- Before you read an object's matrixWorld you MUST call updateMatrices().
+      (getWorldPosition, getWorldOrientation and getWorldScale handle this for you)
+- Do not set matrixIsModified yourself; You could accidentally overwrite a shared parent matrixWorld.
+- Note updateMatrix, updateMatrixWorld, updateWorldMatrix, updateMatrices, setMatrixWorld,
+      matrixNeedsUpdate, matrixWorldNeedsUpdate, and matrixIsModified are all different things.
+      Most already exist in ThreeJS but some have been added here.
+      Double check you are using the one you intend to.
+      Be on the lookout for compatibility issues with third party libraries.
+*/
+
 // Patch animation system
 const bindingSetters = THREE.PropertyBinding.prototype.SetterByBindingTypeAndVersioning;
 const Versioning = THREE.PropertyBinding.prototype.Versioning;
@@ -92,6 +116,19 @@ THREE.Object3D.prototype.applyMatrix = function() {
   handleMatrixModification(this);
 };
 
+// Updates this function to use updateMatrices(). In general our code should prefer calling updateMatrices() directly,
+// patching this for compatibility upstream, namely with Box3.expandToObject and Object3D.attach
+THREE.Object3D.prototype.updateWorldMatrix = function(updateParents, updateChildren) {
+  this.updateMatrices(false, false, !updateParents);
+  if (updateChildren) {
+    const children = this.children;
+    for (let i = 0, l = children.length; i < l; i++) {
+      children[i].updateMatrixWorld(false, false);
+    }
+    if (this.childrenNeedMatrixWorldUpdate) this.childrenNeedMatrixWorldUpdate = false;
+  }
+};
+
 // By the end of this function this.matrix reflects the updated local matrix
 // and this.matrixWorld reflects the updated world matrix, taking into account
 // parent matrices.
@@ -123,6 +160,7 @@ THREE.Object3D.prototype.updateMatrices = function(forceLocalUpdate, forceWorldU
     this.matrixWorldNeedsUpdate = true;
     this.cachedMatrixWorld = this.matrixWorld;
   } else if (this.matrixNeedsUpdate || this.matrixAutoUpdate || forceLocalUpdate) {
+    // updateMatrix() sets matrixWorldNeedsUpdate = true
     this.updateMatrix();
     if (this.matrixNeedsUpdate) this.matrixNeedsUpdate = false;
   }
