@@ -2,21 +2,13 @@ import React, { useContext, useEffect } from "react";
 import { FormattedMessage, addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
 import classNames from "classnames";
-import configs from "../../utils/configs";
-import IfFeature from "../if-feature";
 import { Page } from "../layout/Page";
-import { CreateRoomButton } from "./CreateRoomButton";
-import { PWAButton } from "./PWAButton";
-import { useFavoriteRooms } from "./useFavoriteRooms";
 import { usePublicRooms } from "./usePublicRooms";
 import styles from "./HomePage.scss";
 import customStyles from "../../assets/stylesheets/conference-content.scss";
-import discordLogoUrl from "../../assets/images/discord-logo-small.png";
 import { AuthContext } from "../auth/AuthContext";
 import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
-import { MediaGrid } from "./MediaGrid";
-import { RoomTile } from "./RoomTile";
-import ConferenceRoomGroup from "./ConferenceRoomGroup";
+import { RoomList } from "./RoomList";
 
 addLocaleData([...en]);
 
@@ -97,12 +89,8 @@ export function groupFeaturedRooms(featuredRooms) {
 export function CustomHomePage() {
   const auth = useContext(AuthContext);
 
-  const { results: favoriteRooms } = useFavoriteRooms();
   const { results: publicRooms } = usePublicRooms();
-
-  const featuredRooms = Array.from(new Set([...favoriteRooms, ...publicRooms])).sort(
-    (a, b) => b.member_count - a.member_count
-  );
+  const groupedPublicRooms = groupFeaturedRooms(publicRooms);
 
   useEffect(() => {
     const qs = new URLSearchParams(location.search);
@@ -123,24 +111,8 @@ export function CustomHomePage() {
     }
   }, []);
 
-  const canCreateRooms = !configs.feature("disable_room_creation") || auth.isAdmin;
-
-  const pageStyle = { backgroundImage: configs.image("home_background", true) };
-
-  const logoUrl = configs.image("logo");
-
-  const showDescription = featuredRooms.length === 0;
-
-  const logoStyles = classNames(styles.logoContainer, {
-    [styles.centerLogo]: !showDescription
-  });
-
-  const groupedPublicRooms = groupFeaturedRooms(publicRooms);
   return (
-    <main>
-
-
-
+    <Page>
       <section>
         <div className={customStyles.descriptionContainer2}>
           <div className={customStyles.redWrapper}>
@@ -264,7 +236,6 @@ export function CustomHomePage() {
                     <li>To adjust your Name and Avatar Preferences (and additional settings), click on the Menu button in the top left corner of your window.
                     </li>
                   </ul>
-
                 </dd>
                 <dt>
                   <span className={classNames(customStyles.circle)}>8</span>
@@ -289,27 +260,19 @@ export function CustomHomePage() {
                   </p>
                 </dd>
               </dl>
-
               <hr />
-
-              <div className={classNames(customStyles.virtualIntro)}>
-                <div className="intro-text">
-                  <h2 id="virtual-rooms">Virtual Commencement Rooms</h2>
-                  <p>Click <b>“Join”</b> to enter a room. If a room says <b>“Spectate”</b>, that room is full and you should choose a different room.</p>
+                <div className={classNames(customStyles.virtualIntro)}>
+                  <div className="intro-text">
+                    <h2 id="virtual-rooms">Virtual Commencement Rooms</h2>
+                    <p>Click <b>“Join”</b> to enter a room. If a room says <b>“Spectate”</b>, that room is full and you should choose a different room.</p>
+                  </div>
+                  <img src={"../../assets/images/room-screenshot.png"} width={"200px"} height="115px"/>
                 </div>
-                <img src={"../../assets/images/room-screenshot.png"} width={"200px"} height="115px"/>
-              </div>
-
-              <div className="rooms">
-              {
-                  groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
-              }
-              </div>
-
+                <RoomList rooms={groupedPublicRooms}/>
             </div>
           </div>
         </div>
       </section>
-    </main>
+    </Page>
   );
 }
