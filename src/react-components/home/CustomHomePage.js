@@ -10,93 +10,88 @@ import { PWAButton } from "./PWAButton";
 import { useFavoriteRooms } from "./useFavoriteRooms";
 import { usePublicRooms } from "./usePublicRooms";
 import styles from "./HomePage.scss";
-import customeStyles from "../../assets/stylesheets/conference-content.scss";
+import customStyles from "../../assets/stylesheets/conference-content.scss";
 import discordLogoUrl from "../../assets/images/discord-logo-small.png";
 import { AuthContext } from "../auth/AuthContext";
 import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { MediaGrid } from "./MediaGrid";
 import { RoomTile } from "./RoomTile";
+import ConferenceRoomGroup from "./ConferenceRoomGroup";
 
 addLocaleData([...en]);
 
-class ConferenceRoomGroup extends Component {
-  static propTypes = {
-    group: PropTypes.object
-  };
-
-  constructor(props) {
-    super(props);
-
-    const groupName = props.group.name;
-
-    let open = true;
-
-    if (groupName.startsWith("Track ") || groupName.startsWith("Three Conference Streams")) {
-      open = false;
-    }
-
-    this.state = {
-      id: makeSlug(groupName),
-      open
-    };
+export function groupFeaturedRooms(featuredRooms) {
+  if (!featuredRooms) {
+    return [];
   }
 
-  showMore = e => {
-    e.preventDefault();
-    this.setState({ open: true });
-  };
+  let groups = [];
 
-  render() {
-    const { group } = this.props;
+  for (const room of featuredRooms) {
+    const parts = room.name.split(" | ");
 
-    let rooms;
+    if (parts.length === 2) {
+      const [groupName, roomName] = parts;
 
-    if (this.state.open) {
-      rooms = group.rooms;
-    } else {
-      rooms = [];
-      let emptyRooms = 0;
+      let group = groups.find(g => g.name === groupName);
 
-      for (let i = 0; i < group.rooms.length; i++) {
-        const room = group.rooms[i];
-
-        if (room.member_count > 0) {
-          rooms.push(room);
-        } else if (emptyRooms < 3) {
-          rooms.push(room);
-          emptyRooms++;
-        }
+      if (group) {
+        group.rooms.push({ ...room, name: roomName });
+      } else {
+        groups.push({
+          name: groupName,
+          rooms: [{ ...room, name: roomName }],
+          user_data: room.user_data
+        });
       }
+    } else {
+      groups.push({
+        name: room.name,
+        rooms: [room],
+        user_data: room.user_data
+      });
+    }
+  }
+
+  groups = groups.sort((a, b) => {
+    if (a.user_data && a.user_data.group_order !== undefined && b.user_data && b.user_data.group_order !== undefined) {
+      return a.user_data.group_order - b.user_data.group_order;
     }
 
-    return (
-      <div className={customeStyles.item12}>
-        <div className={customeStyles.groupLeft}>
-          <ul className={customeStyles.roomList}>
-            {rooms.map(room => <RoomItem key={room.id} room={room}/>)}
-            {!this.state.open &&
-            rooms.length !== group.rooms.length && (
-              <li key="show-more">
-                <a href="#" onClick={this.showMore}>
-                  Show more...
-                </a>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
-    );
-  }
-}
+    if (a.user_data && a.user_data.group_order !== undefined) {
+      return -1;
+    }
 
-function Spinner() {
-  return (
-    <div className="loader-wrap loader-mid">
-      <div className="loader">
-        <div className="loader-center"/>
-      </div>
-    </div>
-  );
+    if (b.user_data && b.user_data.group_order !== undefined) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  for (const group of groups) {
+    group.rooms = group.rooms.sort((a, b) => {
+      if (a.user_data && a.user_data.room_order !== undefined && b.user_data && b.user_data.room_order !== undefined) {
+        return a.user_data.room_order - b.user_data.room_order;
+      }
+
+      if (a.user_data && a.user_data.room_order !== undefined) {
+        return -1;
+      }
+
+      if (b.user_data && b.user_data.room_order !== undefined) {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    const mainRoom = group.rooms[0];
+    group.description = mainRoom.description;
+    group.thumbnail = mainRoom.images && mainRoom.images.preview && mainRoom.images.preview.url;
+  }
+
+  return groups;
 }
 
 export function CustomHomePage() {
@@ -140,17 +135,21 @@ export function CustomHomePage() {
     [styles.centerLogo]: !showDescription
   });
 
+  const groupedPublicRooms = groupFeaturedRooms(publicRooms);
   return (
-    <main className={customeStyles.conferenceContent}>
+    <main>
+
+
+
       <section>
-        <div className={customeStyles.descriptionContainer2}>
-          <div className={customeStyles.redWrapper}>
-            <div className={customeStyles.descriptionContainerHeader}>
-              <img className={customeStyles.logo} src={"../assets/images/company-logo-white-2x.png"}/>
-              <div className={customeStyles.banner}>
+        <div className={customStyles.descriptionContainer2}>
+          <div className={customStyles.redWrapper}>
+            <div className={customStyles.descriptionContainerHeader}>
+              <img className={customStyles.logo} src={"../../assets/images/company-logo-white-2x.png"}/>
+              <div className={customStyles.banner}>
                 <h1>2020 Virtual <br/> Commencement</h1>
-                <div className={customeStyles.browseButtonWrap}>
-                  <a href="#virtual-rooms" className={classNames(customeStyles.browseButton)}>
+                <div className={customStyles.browseButtonWrap}>
+                  <a href="#virtual-rooms" className={classNames(customStyles.browseButton)}>
                     <span>Browse Rooms</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round">
                       <polyline points="9 18 15 12 9 6"></polyline>
@@ -160,12 +159,12 @@ export function CustomHomePage() {
               </div>
             </div>
           </div>
-          <div className={customeStyles.instructions}>
-            <div className={customeStyles.steps}>
+          <div className={customStyles.instructions}>
+            <div className={customStyles.steps}>
               <dl>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>1</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Before you get started</span>
+                  <span className={classNames(customStyles.circle)}>1</span>
+                  <span className={classNames(customStyles.stepHeading)}>Before you get started</span>
                 </dt>
                 <dd>
                   <ul>
@@ -179,8 +178,8 @@ export function CustomHomePage() {
                   <p>While the virtual rooms work with most devices and web browsers, including Google Chrome and Safari, using low-powered devices such as mobile phones, tablets, and laptops (2015 and older) may impact your experience.</p>
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>2</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Find a Room</span>
+                  <span className={classNames(customStyles.circle)}>2</span>
+                  <span className={classNames(customStyles.stepHeading)}>Find a Room</span>
                 </dt>
                 <dd>
                   <p>You can experience commencement in <b>any of the identical virtual rooms</b>. Each room can hold up to 20 people.
@@ -191,8 +190,8 @@ export function CustomHomePage() {
                     Once you’ve decided on a room, click <b>"Join"</b> to enter.</p>
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>3</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Logging onto the virtual rooms</span>
+                  <span className={classNames(customStyles.circle)}>3</span>
+                  <span className={classNames(customStyles.stepHeading)}>Logging onto the virtual rooms</span>
                 </dt>
                 <dd>
                   <p>Once you’ve clicked "<b>Join</b>", you will be asked to enter your Miami University <b>unique ID email address</b> to log in.
@@ -204,8 +203,8 @@ export function CustomHomePage() {
                   </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>4</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Creating a Name and Choosing an Avatar</span>
+                  <span className={classNames(customStyles.circle)}>4</span>
+                  <span className={classNames(customStyles.stepHeading)}>Creating a Name and Choosing an Avatar</span>
                 </dt>
                 <dd>
                   <p>Once inside your room, you will be asked to enter your name and choose your avatar, both of which will be visible to others in the room.
@@ -214,8 +213,8 @@ export function CustomHomePage() {
                   </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>5</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Setting up Communication Settings</span>
+                  <span className={classNames(customStyles.circle)}>5</span>
+                  <span className={classNames(customStyles.stepHeading)}>Setting up Communication Settings</span>
                 </dt>
                 <dd>
                   <p>Once you have created a name and chosen an avatar, click <b>"Enter on Screen"</b> (or <b>"Connect VR Headset"</b> for VR headset users).
@@ -228,8 +227,8 @@ export function CustomHomePage() {
                   </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>6</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Moving Around the virtual space</span>
+                  <span className={classNames(customStyles.circle)}>6</span>
+                  <span className={classNames(customStyles.stepHeading)}>Moving Around the virtual space</span>
                 </dt>
                 <dd>
                   <p>Once you are in a  virtual room, use the controls below to move around the room</p>
@@ -250,8 +249,8 @@ export function CustomHomePage() {
                   </ul>
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>7</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Communicating and Interacting with others</span>
+                  <span className={classNames(customStyles.circle)}>7</span>
+                  <span className={classNames(customStyles.stepHeading)}>Communicating and Interacting with others</span>
                 </dt>
                 <dd>
                   <p><b>Please Note:</b> The ceremony includes a live text or audio chat feature. We recommend using the text chat feature to ensure the most accessible experience for all participants.</p>
@@ -268,8 +267,8 @@ export function CustomHomePage() {
 
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>8</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Changing and Leaving Rooms</span>
+                  <span className={classNames(customStyles.circle)}>8</span>
+                  <span className={classNames(customStyles.stepHeading)}>Changing and Leaving Rooms</span>
                 </dt>
                 <dd>
                   <p>To move to a different room, simply navigate back to this page, by either hitting the back button,
@@ -277,8 +276,8 @@ export function CustomHomePage() {
                   <p>To leave a room, simply close the tab or window in your browser. </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customeStyles.circle)}>9</span>
-                  <span className={classNames(customeStyles.stepHeading)}>Support and Reporting Misconduct</span>
+                  <span className={classNames(customStyles.circle)}>9</span>
+                  <span className={classNames(customStyles.stepHeading)}>Support and Reporting Misconduct</span>
                 </dt>
                 <dd>
                   <p>If you are having trouble, try refreshing the page and re-entering the room.
@@ -293,25 +292,20 @@ export function CustomHomePage() {
 
               <hr />
 
-              <div className={classNames(customeStyles.virtualIntro)}>
+              <div className={classNames(customStyles.virtualIntro)}>
                 <div className="intro-text">
                   <h2 id="virtual-rooms">Virtual Commencement Rooms</h2>
                   <p>Click <b>“Join”</b> to enter a room. If a room says <b>“Spectate”</b>, that room is full and you should choose a different room.</p>
                 </div>
-                <img src={"../assets/images/room-screenshot.png"} width={"200px"} height="115px"/>
+                <img src={"../../assets/images/room-screenshot.png"} width={"200px"} height="115px"/>
               </div>
 
               <div className="rooms">
-                {
-                  groupedPublicRooms.length > 0 ? (
-                    groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
-                  ) : (
-                    <div className={customeStyles.spinnerContainer}>
-                      <Spinner/>
-                    </div>
-                  )
-                }
+              {
+                  groupedPublicRooms.map(group => <ConferenceRoomGroup key={group.name} group={group}/>)
+              }
               </div>
+
             </div>
           </div>
         </div>
