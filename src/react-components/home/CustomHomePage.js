@@ -9,88 +9,15 @@ import customStyles from "../../assets/stylesheets/conference-content.scss";
 import { AuthContext } from "../auth/AuthContext";
 import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { RoomList } from "./RoomList";
+import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 
 addLocaleData([...en]);
-
-export function groupFeaturedRooms(featuredRooms) {
-  if (!featuredRooms) {
-    return [];
-  }
-
-  let groups = [];
-
-  for (const room of featuredRooms) {
-    const parts = room.name.split(" | ");
-
-    if (parts.length === 2) {
-      const [groupName, roomName] = parts;
-
-      let group = groups.find(g => g.name === groupName);
-
-      if (group) {
-        group.rooms.push({ ...room, name: roomName });
-      } else {
-        groups.push({
-          name: groupName,
-          rooms: [{ ...room, name: roomName }],
-          user_data: room.user_data
-        });
-      }
-    } else {
-      groups.push({
-        name: room.name,
-        rooms: [room],
-        user_data: room.user_data
-      });
-    }
-  }
-
-  groups = groups.sort((a, b) => {
-    if (a.user_data && a.user_data.group_order !== undefined && b.user_data && b.user_data.group_order !== undefined) {
-      return a.user_data.group_order - b.user_data.group_order;
-    }
-
-    if (a.user_data && a.user_data.group_order !== undefined) {
-      return -1;
-    }
-
-    if (b.user_data && b.user_data.group_order !== undefined) {
-      return 1;
-    }
-
-    return 0;
-  });
-
-  for (const group of groups) {
-    group.rooms = group.rooms.sort((a, b) => {
-      if (a.user_data && a.user_data.room_order !== undefined && b.user_data && b.user_data.room_order !== undefined) {
-        return a.user_data.room_order - b.user_data.room_order;
-      }
-
-      if (a.user_data && a.user_data.room_order !== undefined) {
-        return -1;
-      }
-
-      if (b.user_data && b.user_data.room_order !== undefined) {
-        return 1;
-      }
-
-      return 0;
-    });
-
-    const mainRoom = group.rooms[0];
-    group.description = mainRoom.description;
-    group.thumbnail = mainRoom.images && mainRoom.images.preview && mainRoom.images.preview.url;
-  }
-
-  return groups;
-}
 
 export function CustomHomePage() {
   const auth = useContext(AuthContext);
 
   const { results: publicRooms } = usePublicRooms();
-  const groupedPublicRooms = groupFeaturedRooms(publicRooms);
+  const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
 
   useEffect(() => {
     const qs = new URLSearchParams(location.search);
@@ -112,7 +39,7 @@ export function CustomHomePage() {
   }, []);
 
   return (
-    <Page>
+    <main className={customStyles.conferenceContent}>
       <section>
         <div className={customStyles.descriptionContainer2}>
           <div className={customStyles.redWrapper}>
@@ -121,7 +48,7 @@ export function CustomHomePage() {
               <div className={customStyles.banner}>
                 <h1>2020 Virtual <br/> Commencement</h1>
                 <div className={customStyles.browseButtonWrap}>
-                  <a href="#virtual-rooms" className={classNames(customStyles.browseButton)}>
+                  <a href="#virtual-rooms" className={customStyles.browseButton}>
                     <span>Browse Rooms</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round">
                       <polyline points="9 18 15 12 9 6"></polyline>
@@ -135,8 +62,8 @@ export function CustomHomePage() {
             <div className={customStyles.steps}>
               <dl>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>1</span>
-                  <span className={classNames(customStyles.stepHeading)}>Before you get started</span>
+                  <span className={customStyles.circle}>1</span>
+                  <span className={customStyles.stepHeading}>Before you get started</span>
                 </dt>
                 <dd>
                   <ul>
@@ -150,8 +77,8 @@ export function CustomHomePage() {
                   <p>While the virtual rooms work with most devices and web browsers, including Google Chrome and Safari, using low-powered devices such as mobile phones, tablets, and laptops (2015 and older) may impact your experience.</p>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>2</span>
-                  <span className={classNames(customStyles.stepHeading)}>Find a Room</span>
+                  <span className={customStyles.circle}>2</span>
+                  <span className={customStyles.stepHeading}>Find a Room</span>
                 </dt>
                 <dd>
                   <p>You can experience commencement in <b>any of the identical virtual rooms</b>. Each room can hold up to 20 people.
@@ -162,8 +89,8 @@ export function CustomHomePage() {
                     Once you’ve decided on a room, click <b>"Join"</b> to enter.</p>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>3</span>
-                  <span className={classNames(customStyles.stepHeading)}>Logging onto the virtual rooms</span>
+                  <span className={customStyles.circle}>3</span>
+                  <span className={customStyles.stepHeading}>Logging onto the virtual rooms</span>
                 </dt>
                 <dd>
                   <p>Once you’ve clicked "<b>Join</b>", you will be asked to enter your Miami University <b>unique ID email address</b> to log in.
@@ -175,8 +102,8 @@ export function CustomHomePage() {
                   </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>4</span>
-                  <span className={classNames(customStyles.stepHeading)}>Creating a Name and Choosing an Avatar</span>
+                  <span className={customStyles.circle}>4</span>
+                  <span className={customStyles.stepHeading}>Creating a Name and Choosing an Avatar</span>
                 </dt>
                 <dd>
                   <p>Once inside your room, you will be asked to enter your name and choose your avatar, both of which will be visible to others in the room.
@@ -185,8 +112,8 @@ export function CustomHomePage() {
                   </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>5</span>
-                  <span className={classNames(customStyles.stepHeading)}>Setting up Communication Settings</span>
+                  <span className={customStyles.circle}>5</span>
+                  <span className={customStyles.stepHeading}>Setting up Communication Settings</span>
                 </dt>
                 <dd>
                   <p>Once you have created a name and chosen an avatar, click <b>"Enter on Screen"</b> (or <b>"Connect VR Headset"</b> for VR headset users).
@@ -199,8 +126,8 @@ export function CustomHomePage() {
                   </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>6</span>
-                  <span className={classNames(customStyles.stepHeading)}>Moving Around the virtual space</span>
+                  <span className={customStyles.circle}>6</span>
+                  <span className={customStyles.stepHeading}>Moving Around the virtual space</span>
                 </dt>
                 <dd>
                   <p>Once you are in a  virtual room, use the controls below to move around the room</p>
@@ -221,8 +148,8 @@ export function CustomHomePage() {
                   </ul>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>7</span>
-                  <span className={classNames(customStyles.stepHeading)}>Communicating and Interacting with others</span>
+                  <span className={customStyles.circle}>7</span>
+                  <span className={customStyles.stepHeading}>Communicating and Interacting with others</span>
                 </dt>
                 <dd>
                   <p><b>Please Note:</b> The ceremony includes a live text or audio chat feature. We recommend using the text chat feature to ensure the most accessible experience for all participants.</p>
@@ -238,8 +165,8 @@ export function CustomHomePage() {
                   </ul>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>8</span>
-                  <span className={classNames(customStyles.stepHeading)}>Changing and Leaving Rooms</span>
+                  <span className={customStyles.circle}>8</span>
+                  <span className={customStyles.stepHeading}>Changing and Leaving Rooms</span>
                 </dt>
                 <dd>
                   <p>To move to a different room, simply navigate back to this page, by either hitting the back button,
@@ -247,8 +174,8 @@ export function CustomHomePage() {
                   <p>To leave a room, simply close the tab or window in your browser. </p>
                 </dd>
                 <dt>
-                  <span className={classNames(customStyles.circle)}>9</span>
-                  <span className={classNames(customStyles.stepHeading)}>Support and Reporting Misconduct</span>
+                  <span className={customStyles.circle}>9</span>
+                  <span className={customStyles.stepHeading}>Support and Reporting Misconduct</span>
                 </dt>
                 <dd>
                   <p>If you are having trouble, try refreshing the page and re-entering the room.
@@ -261,7 +188,7 @@ export function CustomHomePage() {
                 </dd>
               </dl>
               <hr />
-                <div className={classNames(customStyles.virtualIntro)}>
+                <div className={customStyles.virtualIntro}>
                   <div className="intro-text">
                     <h2 id="virtual-rooms">Virtual Commencement Rooms</h2>
                     <p>Click <b>“Join”</b> to enter a room. If a room says <b>“Spectate”</b>, that room is full and you should choose a different room.</p>
@@ -273,6 +200,6 @@ export function CustomHomePage() {
           </div>
         </div>
       </section>
-    </Page>
+    </main>
   );
 }

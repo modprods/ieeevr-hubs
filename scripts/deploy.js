@@ -33,6 +33,7 @@ const getTs = (() => {
   };
 
   const res = await fetch(`https://${host}/api/ita/configs/hubs`, { headers });
+  console.log(`Fetching https://${host}/api/ita/configs/hubs`);
   const hubsConfigs = await res.json();
   const buildEnv = {};
   for (const [k, v] of Object.entries(hubsConfigs.general)) {
@@ -60,6 +61,7 @@ const getTs = (() => {
   step.text = "Building Client.";
 
   await new Promise((resolve, reject) => {
+    console.log("Building client npm ci");
     exec("npm ci", {}, err => {
       if (err) reject(err);
       resolve();
@@ -67,6 +69,7 @@ const getTs = (() => {
   });
 
   await new Promise((resolve, reject) => {
+    console.log("Building client npm build");
     exec("npm run build", { env }, err => {
       if (err) reject(err);
       resolve();
@@ -76,6 +79,7 @@ const getTs = (() => {
   step.text = "Building Admin Console.";
 
   await new Promise((resolve, reject) => {
+    console.log("Building admin npm ci");
     exec("npm ci", { cwd: "./admin" }, err => {
       if (err) reject(err);
       resolve();
@@ -83,6 +87,7 @@ const getTs = (() => {
   });
 
   await new Promise((resolve, reject) => {
+    console.log("Building admin npm build");
     exec("npm run build", { cwd: "./admin", env }, err => {
       if (err) reject(err);
       resolve();
@@ -100,8 +105,11 @@ const getTs = (() => {
     });
   });
   step.text = "Preparing Deploy.";
+  console.log("Preparing Deploy");
 
   step.text = "Packaging Build.";
+  console.log("Packaging Build");
+
   tar.c({ sync: true, gzip: true, C: path.join(__dirname, "..", "dist"), file: "_build.tar.gz" }, ["."]);
   step.text = `Uploading Build ${buildEnv.BUILD_VERSION}.`;
 
@@ -132,6 +140,7 @@ const getTs = (() => {
   unlinkSync("_build.tar.gz");
 
   step.text = "Build uploaded, deploying.";
+  console.log("Build Uploaded, deploying");
 
   // Wait for S3 flush, kind of a hack.
   await new Promise(res => setTimeout(res, 5000));
@@ -143,6 +152,7 @@ const getTs = (() => {
   });
 
   step.text = `Deployed to ${host}.`;
+  console.log("Deployed");
   step.succeed();
   process.exit(0);
 })();
