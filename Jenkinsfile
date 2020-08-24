@@ -25,5 +25,11 @@ pipeline {
         sh 'npm ci'
       }
     }
+
+    stage('test') {
+      steps {
+        sh 'npm run testjest'
+      }
+    }
   }
 }
