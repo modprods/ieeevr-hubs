@@ -1,4 +1,4 @@
-const groupFeaturedRooms = require('../react-components/misc/groupFeaturedRooms');
+const GroupFeaturedRooms = require('../react-components/misc/GroupFeaturedRooms.js');
 
 test('TEST', () => {
   // Add tests in here/
