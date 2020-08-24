@@ -17,69 +17,11 @@ def shellString(s) {
 pipeline {
   agent any
 
-  options {
-    ansiColor('xterm')
-  }
-
   stages {
-    stage('pre-build') {
-      steps {
-        sh 'rm -rf ./dist ./tmp'
-      }
-    }
-
     stage('build') {
       steps {
-        script {
-          def baseAssetsPath = env.BASE_ASSETS_PATH
-          def shortlinkDomain = env.SHORTLINK_DOMAIN
-          def targetS3Bucket = env.TARGET_S3_BUCKET
-          def sentryDsn = env.SENTRY_DSN
-          def gaTrackingId = env.GA_TRACKING_ID
-          def smokeURL = env.SMOKE_URL
-          def reticulumServer = env.RETICULUM_SERVER
-          def thumbnailServer = env.THUMBNAIL_SERVER
-          def corsProxyServer = env.CORS_PROXY_SERVER
-          def nonCorsProxyDomains = env.NON_CORS_PROXY_DOMAINS
-          def slackURL = env.SLACK_URL
-
-          def habCommand = "/bin/bash scripts/hab-build-and-push.sh \\\"${baseAssetsPath}\\\" \\\"${shortlinkDomain}\\\" \\\"${reticulumServer}\\\" \\\"${thumbnailServer}\\\" \\\"${corsProxyServer}\\\" \\\"${nonCorsProxyDomains}\\\" \\\"${targetS3Bucket}\\\" \\\"${sentryDsn}\\\" \\\"${gaTrackingId}\\\" \\\"${env.BUILD_NUMBER}\\\" \\\"${env.GIT_COMMIT}\\\""
-          sh "/usr/bin/script --return -c ${shellString(habCommand)} /dev/null"
-
-          def s = $/eval 'ls -rt results/*.hart | head -n 1'/$
-          def hart = sh(returnStdout: true, script: "${s}").trim()
-          s = $/eval 'tail -n +6 ${hart} | xzcat | tar tf - | grep IDENT'/$
-          def identPath = sh(returnStdout: true, script: "${s}").trim()
-          s = $/eval 'tail -n +6 ${hart} | xzcat | tar xf - "${identPath}" -O'/$
-          def packageIdent = sh(returnStdout: true, script: "${s}").trim()
-          def packageTimeVersion = packageIdent.tokenize('/')[3]
-          def (major, minor, version) = packageIdent.tokenize('/')[2].tokenize('.')
-          def hubsVersion = "${major}.${minor}.${version}.${packageTimeVersion}"
-
-          def gitMessage = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'[%an] %s'").trim()
-          def gitSha = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-          def text = (
-            "*<http://localhost:8080/job/${env.JOB_NAME}/${env.BUILD_NUMBER}|#${env.BUILD_NUMBER}>* *${env.JOB_NAME}* " +
-            "<https://github.com/mozilla/hubs/commit/$gitSha|$gitSha> ${hubsVersion} " +
-            "Hubs: ```${gitSha} ${gitMessage}```\n" +
-            "<${smokeURL}?required_version=${hubsVersion}|Smoke Test> - to push:\n" +
-            "`/mr hubs deploy ${hubsVersion} s3://${targetS3Bucket}`"
-          )
-          def payload = 'payload=' + JsonOutput.toJson([
-            text      : text,
-            channel   : "#mr-builds",
-            username  : "buildbot",
-            icon_emoji: ":gift:"
-          ])
-          sh "curl -X POST --data-urlencode ${shellString(payload)} ${slackURL}"
-        }
+        sh 'npm install'
       }
     }
   }
-
-  post {
-     always {
-       deleteDir()
-     }
-   }
 }
