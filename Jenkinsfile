@@ -17,12 +17,12 @@ def shellString(s) {
 pipeline {
   agent any
 
-  tools {nodejs "node"}
-  
+  tools {nodejs "nodejs"}
+
   stages {
     stage('build') {
       steps {
-        sh 'npm install'
+        sh 'npm ci'
       }
     }
   }
