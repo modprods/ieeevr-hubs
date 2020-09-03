@@ -1,0 +1,56 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.rocket {
+    margin-bottom: 5%;
+}
+
+.logo {
+    margin-bottom: 2%;
+}
+
+.loading_progress{
+    font-family: 'Helvetica Neue', Arial;
+    font-size: 20px;
+    color:white;
+    margin-bottom: 5%;
+}
+
+.animated_bars {
+    max-width: 64px;
+    max-height: 81px;
+    margin-bottom: 2%;
+}
+
+@keyframes move_bg{
+	0% {
+		background-position-x: 0%;
+	}
+	100% {
+		background-position-x: -100%;
+	}
+}
+
+.loading_starfield{
+    animation-name: move_bg;
+	animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+	top:0px;
+	position: absolute;
+	height: 100%;
+    width:100%;
+	background-image: url("../assets/Starfield.png");
+	background-repeat: repeat;
+	background-size: 50%;
+	z-index: -1;
+	opacity: 0.5;
+}
