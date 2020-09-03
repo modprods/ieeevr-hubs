@@ -65,7 +65,7 @@ export function CustomHomePage() {
                     Help
                 </button>
 
-                <button class="header_button blue_button">
+                <button class="header_button blue_button" onClick={(e) => router.push('/')}>
                     Event Home
                 </button>
             </div>
@@ -210,7 +210,7 @@ export function CustomHomePage() {
             <div class="flex_vertical">
                 <h1>Need Help Accessing the VR World?</h1>
                 <h1 class="h1_subtitle">Click below for full instructions.</h1>
-                <button class="blue_button help_button_bottom">Help</button>
+                <button class="blue_button help_button_bottom" onClick={(e) => router.push('/help')}>Help</button>
             </div>
             <div class="back_to_top_container flex_vertical flex_center_vertically">
               <div class="flex_vertical flex_center_vertically" onClick={scrollToTop}>

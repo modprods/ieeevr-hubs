@@ -59,7 +59,7 @@ export function CustomHelpPage() {
               <img class="header_logo" src="./assets/Logo.svg" />
               <img />
               <div class="growing_div"></div>
-              <button class="header_button transparent_header_button">
+              <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
                   Help
               </button>
               <button class="header_button blue_button" onClick={(e) => router.push('/')}>

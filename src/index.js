@@ -12,6 +12,7 @@ import { lang, messages } from "./utils/i18n";
 //import "./assets/stylesheets/globals.scss";
 import { AuthContextProvider } from "./react-components/auth/AuthContext";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ScrollToTop from './react-components/misc/ScrollToTop';
 
 registerTelemetry("/home", "Hubs Home Page");
 
@@ -23,14 +24,16 @@ function Root() {
     <IntlProvider locale={lang} messages={messages}>
       <AuthContextProvider store={store}>
         <Router>
-          <Switch>
-            <Route exact path="/">
-              <CustomHomePage />
-            </Route>
-            <Route path="/help">
-              <CustomHelpPage />
-            </Route>
-          </Switch>
+          <ScrollToTop>
+            <Switch>
+              <Route exact path="/">
+                <CustomHomePage />
+              </Route>
+              <Route path="/help">
+                <CustomHelpPage />
+              </Route>
+            </Switch>
+          </ScrollToTop>
         </Router>
       </AuthContextProvider>
     </IntlProvider>
