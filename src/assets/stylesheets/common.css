@@ -148,7 +148,7 @@ h3 {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	background-image: url("../assets/Starfield.png");
+	background-image: url("../images/Starfield.png");
 	background-repeat: repeat;
 	background-size: 75%;
 	z-index: -1;

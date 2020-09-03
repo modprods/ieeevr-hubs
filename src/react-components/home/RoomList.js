@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 import customStyles from "../../assets/stylesheets/conference-content.scss";
 import ConferenceRoomGroup from "./ConferenceRoomGroup";
 import { Loader } from "../misc/Loader";
-import './stylesheets/common.css';
-import './stylesheets/help.css';
-import './stylesheets/home.css';
+import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/help.css';
+import '../../assets/stylesheets/home.css';
 
 export function RoomList({rooms, ...rest}) {
   console.log(rooms);

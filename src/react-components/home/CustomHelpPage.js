@@ -10,8 +10,8 @@ import { AuthContext } from "../auth/AuthContext";
 import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
-import './stylesheets/common.css';
-import './stylesheets/help.css';
+import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/help.css';
 import { useRouter } from "../misc/RouteHelper"
 
 addLocaleData([...en]);
@@ -55,7 +55,7 @@ export function CustomHelpPage() {
       <div class="starfield"></div>
       <div class="flex_vertical">
           <div class="header flex_horizontal">
-              <img class="header_logo" src="./assets/Logo.svg" />
+              <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
               <img />
               <div class="growing_div"></div>
               <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
@@ -213,7 +213,7 @@ export function CustomHelpPage() {
           {/* Back to top */}
           <div class="back_to_top_container flex_vertical flex_center_vertically">
             <div class="flex_vertical flex_center_vertically" onClick={scrollToTop}>
-              <img src="./assets/ArrowUp.svg" />
+              <img src={"../../assets/images/ArrowUp.svg"}/>
               <div class="back_to_top_text">Back To Top</div>
             </div>
           </div>

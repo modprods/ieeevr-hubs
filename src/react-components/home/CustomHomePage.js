@@ -11,8 +11,11 @@ import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import { useRouter } from "../misc/RouteHelper"
-import './stylesheets/common.css';
-import './stylesheets/home.css';
+import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/home.css';
+import IconFile from '../../assets/images/home/IconFile.svg';
+import IconRocket from '../../assets/images/home/IconRocket.svg';
+import IconPeople from '../../assets/images/home/IconPeople.svg';
 
 //import './stylesheets/loading.css';
 
@@ -57,7 +60,7 @@ export function CustomHomePage() {
         <div class="starfield"></div>
         <div class="flex_vertical">
             <div class="header flex_horizontal">
-                <img class="header_logo" src="./assets/Logo.svg" />
+                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
                 <img />
                 <div class="growing_div"></div>
                 <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
@@ -70,7 +73,7 @@ export function CustomHomePage() {
             </div>
             <div class="flex_horizontal instructions_div">
                 <div class="growing_div"></div>
-                <img class="rocket_image" src="./assets/home/LargeRocket.svg" />
+                <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
                 <div class="growing_div"></div>
                 <div class="flex_vertical welcome_instructions">
                     <div class="flex_vertical flex_center_vertically instructions_title">
@@ -82,7 +85,7 @@ export function CustomHomePage() {
                         </div>
                     </div>
                     <div class="flex_horizontal">
-                        <div class="instruction_icon" style={{backgroundImage: "url('assets/home/IconFile.svg')"}}></div>
+                        <div class="instruction_icon" style={{background: "url(" + IconFile +") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 1. Signing In</h3>
                             <div class="instructions_text">
@@ -93,7 +96,7 @@ export function CustomHomePage() {
                         </div>
                     </div>
                     <div class="flex_horizontal">
-                        <div class="instruction_icon" style={{backgroundImage: "url('assets/home/IconRocket.svg')"}}></div>
+                        <div class="instruction_icon" style={{background: "url("+ IconRocket + ") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 2. Entering A Room</h3>
                             <div class="instructions_text">
@@ -105,7 +108,7 @@ export function CustomHomePage() {
                         </div>
                     </div>
                     <div class="flex_horizontal">
-                        <div class="instruction_icon" style={{backgroundImage: "url('assets/home/IconPeople.svg')"}}></div>
+                        <div class="instruction_icon" style={{background: "url(" + IconPeople + ") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 3. Network</h3>
                             <div class="instructions_text">
@@ -145,7 +148,7 @@ export function CustomHomePage() {
             </div>
             <div class="back_to_top_container flex_vertical flex_center_vertically">
               <div class="flex_vertical flex_center_vertically" onClick={scrollToTop}>
-                <img src="./assets/ArrowUp.svg" />
+                <img src={"../../assets/images/ArrowUp.svg"}/>
                 <div class="back_to_top_text">Back To Top</div>
               </div>
             </div>

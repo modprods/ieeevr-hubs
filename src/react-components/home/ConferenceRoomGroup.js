@@ -8,6 +8,9 @@ import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
 import configs from "../../utils/configs";
 import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import "../../assets/stylesheets/loader.scss";
+import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/help.css';
+import '../../assets/stylesheets/home.css';
 
 const maxRoomCap = configs.feature("max_room_cap") || 50;
 
@@ -42,7 +45,7 @@ function RoomItem({ room }) {
     <div class="room_div flex_horizontal">
         <div class="room_title">{room.name}</div>
         <div class="growing_div"></div>
-        <img src="./assets/home/IconPeople.svg" />
+        <img src={"../../assets/images/home/IconPeople.svg"}/>
         <div class="room_count">{`${room.member_count} / ${room.room_size}`}</div>
         {canSpectate ? (
           <button class="blue_button join_room_button" onClick={() => {location.href=room.url}}>
