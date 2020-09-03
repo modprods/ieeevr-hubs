@@ -39,20 +39,19 @@ function RoomItem({ room }) {
   }
 
   return (
-    <li key={room.id}>
-      <p className={styles.roomTitle}>{room.name}</p>
-      <span>
-        <FontAwesomeIcon icon={faUsers}/>
-        <b>{`${room.member_count} / ${room.room_size}`}</b>
+    <div class="room_div flex_horizontal">
+        <div class="room_title">{room.name}</div>
+        <div class="growing_div"></div>
+        <img src="./assets/home/IconPeople.svg" />
+        <div class="room_count">{`${room.member_count} / ${room.room_size}`}</div>
         {canSpectate ? (
-          <a className={classNames(styles.joinButton)} href={room.url}>
+          <button class="blue_button join_room_button" onClick={() => {location.href=room.url}}>
             {canJoin ? "Join" : "Spectate"}
-          </a>
+          </button>
         ) : (
           <p className={classNames(styles.joinButton, styles.joinButtonDisabled)}>Full</p>
         )}
-      </span>
-    </li>
+    </div>
   );
 }
 
@@ -107,21 +106,9 @@ class ConferenceRoomGroup extends Component {
     }
 
     return (
-      <div className={styles.item12}>
-        <div className={styles.groupLeft}>
-          <ul className={styles.roomList}>
-            {rooms.map(room => <RoomItem key={room.id} room={room}/>)}
-            {!this.state.open &&
-            rooms.length !== group.rooms.length && (
-              <li key="show-more">
-                <a href="#" onClick={this.showMore}>
-                  Show more...
-                </a>
-              </li>
-            )}
-          </ul>
-        </div>
-      </div>
+      <>
+        {rooms.map(room => <RoomItem key={room.id} room={room}/>)}
+      </>
     );
   }
 }

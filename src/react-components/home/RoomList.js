@@ -3,11 +3,14 @@ import PropTypes from "prop-types";
 import customStyles from "../../assets/stylesheets/conference-content.scss";
 import ConferenceRoomGroup from "./ConferenceRoomGroup";
 import { Loader } from "../misc/Loader";
+import './stylesheets/common.css';
+import './stylesheets/help.css';
+import './stylesheets/home.css';
 
 export function RoomList({rooms, ...rest}) {
   console.log(rooms);
   return (
-    <div className="rooms" {...rest}>
+    <>
     {
       rooms.length > 0 ?
         (
@@ -18,7 +21,7 @@ export function RoomList({rooms, ...rest}) {
           </div>
       )
     }
-    </div>
+    </>
   );
 }
 

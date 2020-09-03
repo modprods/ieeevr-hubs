@@ -12,7 +12,6 @@ import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import { useRouter } from "../misc/RouteHelper"
 import './stylesheets/common.css';
-import './stylesheets/help.css';
 import './stylesheets/home.css';
 
 //import './stylesheets/loading.css';
@@ -119,7 +118,7 @@ export function CustomHomePage() {
                 </div>
                 <div class="growing_div"></div>
             </div>
-            <div class="content">
+            <div class="home_content">
                 <h2>Keynote</h2>
                 <div class="h2_subtilte">Sept. 23, 6:30-7:00 pm ET</div>
                 <div class="room_collection_description">
@@ -127,41 +126,7 @@ export function CustomHomePage() {
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
                 <div class="room_list flex_horizontal">
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #1</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #2</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #3</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #4</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #5</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
+                    <RoomList rooms={groupedPublicRooms}/>
                 </div>
                 <h2>Networking</h2>
                 <div class="h2_subtilte">Sept. 23, 6:30-7:00 pm ET</div>
@@ -170,41 +135,7 @@ export function CustomHomePage() {
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
                 <div class="room_list flex_horizontal">
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #1</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #2</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #3</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #4</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
-                    <div class="room_div flex_horizontal">
-                        <div class="room_title">Mother Ship #5</div>
-                        <div class="growing_div"></div>
-                        <img src="./assets/home/IconPeople.svg" />
-                        <div class="room_count">0/20</div>
-                        <button class="blue_button join_room_button">Join</button>
-                    </div>
+                    <RoomList rooms={groupedPublicRooms}/>
                 </div>
             </div>
             <div class="flex_vertical">

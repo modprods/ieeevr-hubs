@@ -12,7 +12,6 @@ import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import './stylesheets/common.css';
 import './stylesheets/help.css';
-import './stylesheets/home.css';
 import { useRouter } from "../misc/RouteHelper"
 
 addLocaleData([...en]);
@@ -78,7 +77,7 @@ export function CustomHelpPage() {
           {/* End Heading */}
 
           {/* Body */}
-          <div class="flex_vertical content">
+          <div class="flex_vertical help_content">
               <div class="flex_horizontal help_dotpoint_container">
                   <div class="help_dotpoint_num">
                       1.
