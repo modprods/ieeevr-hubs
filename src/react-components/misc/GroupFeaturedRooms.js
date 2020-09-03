@@ -8,6 +8,7 @@ export function GroupFeaturedRooms(featuredRooms) {
   let groups = [];
 
   for (const room of featuredRooms) {
+    console.log(featuredRooms);
     const parts = room.name.split(" | ");
 
     if (parts.length === 2) {

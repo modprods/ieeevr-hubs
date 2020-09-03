@@ -1,64 +1,36 @@
-import React, { useContext, useEffect, useMemo } from "react";
-import { FormattedMessage, addLocaleData } from "react-intl";
+import React, { useContext } from "react";
+import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
-import classNames from "classnames";
-import { Page } from "../layout/Page";
 import { usePublicRooms } from "./usePublicRooms";
-import styles from "./HomePage.scss";
-import customStyles from "../../assets/stylesheets/conference-content.scss";
-import { AuthContext } from "../auth/AuthContext";
-import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import { useRouter } from "../misc/RouteHelper"
-import '../../assets/stylesheets/common.css';
-import '../../assets/stylesheets/home.css';
 import IconFile from '../../assets/images/home/IconFile.svg';
 import IconRocket from '../../assets/images/home/IconRocket.svg';
 import IconPeople from '../../assets/images/home/IconPeople.svg';
-
-//import './stylesheets/loading.css';
+import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/home.css';
 
 addLocaleData([...en]);
 
 export function CustomHomePage() {
-  const auth = useContext(AuthContext);
   const router = useRouter();
-
   const { results: publicRooms } = usePublicRooms();
   const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
 
   const scrollToTop = () => {
-    console.log("Scrolling");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    };
-
-  useEffect(() => {
-    const qs = new URLSearchParams(location.search);
-
-    // Support legacy sign in urls.
-    if (qs.has("sign_in")) {
-      const redirectUrl = new URL("/signin", window.location);
-      redirectUrl.search = location.search;
-      window.location = redirectUrl;
-    } else if (qs.has("auth_topic")) {
-      const redirectUrl = new URL("/verify", window.location);
-      redirectUrl.search = location.search;
-      window.location = redirectUrl;
-    }
-
-    if (qs.has("new")) {
-      createAndRedirectToNewHub(null, null, true);
-    }
-  }, []);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
   return (
     <>
         <div class="starfield"></div>
         <div class="flex_vertical">
+
+            {/* Heading */}
             <div class="header flex_horizontal">
                 <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
                 <img />
@@ -71,6 +43,9 @@ export function CustomHomePage() {
                     Event Home
                 </button>
             </div>
+            {/* End of Heading */}
+
+            {/* Body */}
             <div class="flex_horizontal instructions_div">
                 <div class="growing_div"></div>
                 <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
@@ -146,12 +121,17 @@ export function CustomHomePage() {
                 <h1 class="h1_subtitle">Click below for full instructions.</h1>
                 <button class="blue_button help_button_bottom" onClick={(e) => router.push('/help')}>Help</button>
             </div>
+            {/* End of Body */}
+
+            {/* Footer */}
             <div class="back_to_top_container flex_vertical flex_center_vertically">
               <div class="flex_vertical flex_center_vertically" onClick={scrollToTop}>
                 <img src={"../../assets/images/ArrowUp.svg"}/>
                 <div class="back_to_top_text">Back To Top</div>
               </div>
             </div>
+
+            {/* End of Footer */}
         </div>
       </>
   );

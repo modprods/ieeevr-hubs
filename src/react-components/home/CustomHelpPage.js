@@ -1,59 +1,33 @@
 import React, { useContext, useEffect } from "react";
-import { FormattedMessage, addLocaleData } from "react-intl";
+import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
-import classNames from "classnames";
-import { Page } from "../layout/Page";
 import { usePublicRooms } from "./usePublicRooms";
-import styles from "./HomePage.scss";
-import customStyles from "../../assets/stylesheets/conference-content.scss";
-import { AuthContext } from "../auth/AuthContext";
-import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
+import { useRouter } from "../misc/RouteHelper"
 import '../../assets/stylesheets/common.css';
 import '../../assets/stylesheets/help.css';
-import { useRouter } from "../misc/RouteHelper"
 
 addLocaleData([...en]);
 
 export function CustomHelpPage() {
-  const auth = useContext(AuthContext);
   const router = useRouter();
-
   const { results: publicRooms } = usePublicRooms();
   const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
 
   const scrollToTop = () => {
-    console.log("Scrolling");
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-    };
-
-  useEffect(() => {
-    const qs = new URLSearchParams(location.search);
-
-    // Support legacy sign in urls.
-    if (qs.has("sign_in")) {
-      const redirectUrl = new URL("/signin", window.location);
-      redirectUrl.search = location.search;
-      window.location = redirectUrl;
-    } else if (qs.has("auth_topic")) {
-      const redirectUrl = new URL("/verify", window.location);
-      redirectUrl.search = location.search;
-      window.location = redirectUrl;
-    }
-
-    if (qs.has("new")) {
-      createAndRedirectToNewHub(null, null, true);
-    }
-  }, []);
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
 
   return (
     <>
       <div class="starfield"></div>
       <div class="flex_vertical">
+
+          {/* Heading */}
           <div class="header flex_horizontal">
               <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
               <img />
@@ -65,7 +39,9 @@ export function CustomHelpPage() {
                   Event Home
               </button>
           </div>
-          {/* Heading */}
+          {/* End of Heading */}
+
+          {/* Body */}
           <div class="flex_vertical heading_container">
               <h1 style={{fontSize: "5.8rem"}}>Having Trouble?</h1>
               <h1 style={{fontSize: "5.8rem"}}>We Can help.</h1>
@@ -74,9 +50,6 @@ export function CustomHelpPage() {
                   <br />tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
               </div>
           </div>
-          {/* End Heading */}
-
-          {/* Body */}
           <div class="flex_vertical help_content">
               <div class="flex_horizontal help_dotpoint_container">
                   <div class="help_dotpoint_num">
@@ -208,16 +181,16 @@ export function CustomHelpPage() {
                   </div>
               </div>
           </div>
-          {/* End Body */}
+          {/* End of Body */}
 
-          {/* Back to top */}
+          {/* Footer */}
           <div class="back_to_top_container flex_vertical flex_center_vertically">
             <div class="flex_vertical flex_center_vertically" onClick={scrollToTop}>
               <img src={"../../assets/images/ArrowUp.svg"}/>
               <div class="back_to_top_text">Back To Top</div>
             </div>
           </div>
-          {/* End Back to top */}
+          {/* End of Footer */}
       </div>
     </>
   );
