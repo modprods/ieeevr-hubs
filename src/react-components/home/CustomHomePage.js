@@ -19,13 +19,6 @@ export function CustomHomePage() {
   const { results: publicRooms } = usePublicRooms();
   const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
-
   return (
     <>
       <Page>
@@ -108,7 +101,7 @@ export function CustomHomePage() {
                 <button class="blue_button help_button_bottom" onClick={(e) => router.push('/help')}>Help</button>
             </div>
             {/* End of Body */}
-            
+
         </div>
       </Page>
       </>
