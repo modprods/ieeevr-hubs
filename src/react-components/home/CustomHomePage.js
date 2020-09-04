@@ -12,7 +12,9 @@ import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import { useRouter } from "../misc/RouteHelper"
 import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/common_mobile.css';
 import '../../assets/stylesheets/home.css';
+import '../../assets/stylesheets/home_mobile.css';
 import IconFile from '../../assets/images/home/IconFile.svg';
 import IconRocket from '../../assets/images/home/IconRocket.svg';
 import IconPeople from '../../assets/images/home/IconPeople.svg';
@@ -63,15 +65,34 @@ export function CustomHomePage() {
                 <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
                 <img />
                 <div class="growing_div"></div>
-                <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
+                <button class="header_button transparent_header_button desktop_only" onClick={(e) => router.push('/help')}>
                     Help
                 </button>
 
-                <button class="header_button blue_button" onClick={(e) => router.push('/')}>
+                <button class="header_button blue_button desktop_only" onClick={(e) => router.push('/')}>
                     Event Home
                 </button>
+				
+				<div class="mobile_only">
+					{/* Look at that high-quality placeholder.*/}
+					{/* TODO: Replace high-quality placeholder.*/}
+					=
+					{/* Then if the menu is open: 
+					X
+					*/}
+				</div>
             </div>
-            <div class="flex_horizontal instructions_div">
+			{/* Then if the menu is open: 
+			<div class="flex_vertical">
+                <button class="mobile_menu_item mobile_only" onClick={(e) => router.push('/help')}>
+                    Help
+                </button>
+				<button class="mobile_menu_item mobile_only" onClick={(e) => router.push('/')}>
+                    Event Home
+                </button>
+			</div>
+			*/}
+            <div class="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
                 <div class="growing_div"></div>
                 <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
                 <div class="growing_div"></div>
@@ -84,7 +105,7 @@ export function CustomHomePage() {
                             <br />labore et dolore magna aliquyam erat, sed diam voluptua.
                         </div>
                     </div>
-                    <div class="flex_horizontal">
+                    <div class="flex_horizontal mobile_vertical">
                         <div class="instruction_icon" style={{background: "url(" + IconFile +") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 1. Signing In</h3>
@@ -95,7 +116,7 @@ export function CustomHomePage() {
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal">
+                    <div class="flex_horizontal mobile_vertical">
                         <div class="instruction_icon" style={{background: "url("+ IconRocket + ") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 2. Entering A Room</h3>
@@ -107,7 +128,7 @@ export function CustomHomePage() {
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal">
+                    <div class="flex_horizontal mobile_vertical">
                         <div class="instruction_icon" style={{background: "url(" + IconPeople + ") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 3. Network</h3>
@@ -121,9 +142,9 @@ export function CustomHomePage() {
                 </div>
                 <div class="growing_div"></div>
             </div>
-            <div class="home_content">
+            <div class="home_content mobile_vertically_centered">
                 <h2>Keynote</h2>
-                <div class="h2_subtilte">Sept. 23, 6:30-7:00 pm ET</div>
+                <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
                 <div class="room_collection_description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
@@ -132,7 +153,7 @@ export function CustomHomePage() {
                     <RoomList rooms={groupedPublicRooms}/>
                 </div>
                 <h2>Networking</h2>
-                <div class="h2_subtilte">Sept. 23, 6:30-7:00 pm ET</div>
+                <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
                 <div class="room_collection_description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.

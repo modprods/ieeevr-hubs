@@ -1,0 +1,65 @@
+.mobile_only{
+  display: none !important;
+}
+
+@media only screen and (max-device-width: 600px) {
+	.h1_large {
+		font-size: 13vw;
+	}
+	h2{
+		font-size: 10vw;
+	}
+	.h2_subtitle{
+		font-size: 6vw;
+	}
+	.header_logo{
+		width:50%;
+	}
+	.header{
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-top:11%;
+	}
+	.mobile_vertically_centered{
+		text-align: center;
+		align-items: center;
+	}
+    .mobile_only {
+        display:inline !important;
+    }
+    .desktop_only{
+        display:none;
+    }
+	.mobile_vertical{
+        flex-direction: column !important;
+    }
+    .mobile_horizontal{
+        flex-direction: row !important;
+    }
+    .tooltip_title {
+        color: #9D9D9B;
+        font-size: 16px;
+        font-style: bold;
+    }
+    .tooltip {
+        font-size: 28px;
+    }
+    .custom_radio_container label:before {
+        margin-right: 14px;
+        width: 22px;
+        height: 22px;
+        padding: 4px;
+        border-radius: 50%;
+        border: 1px solid #707070;
+    }
+	.mobile_menu_item{
+		height: 50px;
+		border: none;
+		background: none;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 10vw;
+		font-weight: bold;
+		color: white;
+		text-align:left;
+	}
+}

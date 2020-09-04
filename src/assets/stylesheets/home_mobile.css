@@ -1,0 +1,31 @@
+@media only screen and (max-device-width: 600px) {
+	.welcome_instructions{
+		width: 80%;
+		max-width: 80%;
+	}
+	.rocket_image{
+		width: 50%;
+		max-width: 50%;
+		margin-bottom:60px;
+	}
+	.room_list{
+		left:-10%;
+	}
+	.room_div{
+		width: 90%;
+		min-width: 90%;
+		max-width: 90%;
+	}
+	.room_title{
+		font-size:12px;
+	}
+	.instruction_icon{
+		height:83px;
+		max-height:83px;
+		min-height:83px;
+		width:auto;
+		min-width:auto;
+		margin-right:0px;
+		margin-bottom: 50px;
+	}
+}

@@ -11,7 +11,9 @@ import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/common_mobile.css';
 import '../../assets/stylesheets/help.css';
+import '../../assets/stylesheets/help_mobile.css';
 import { useRouter } from "../misc/RouteHelper"
 
 addLocaleData([...en]);
