@@ -6,6 +6,9 @@
 		font-size: 7vw;
 		font-weight: normal;
 	}
+	.h1_large {
+		font-size: 13vw;
+	}
 	.room_list {
 		margin-left: 0px;
 		margin-right: 0px;
