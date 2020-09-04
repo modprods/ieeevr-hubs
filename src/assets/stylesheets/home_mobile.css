@@ -1,4 +1,15 @@
 @media only screen and (max-device-width: 600px) {
+	h1 {
+		font-size: 10.5vw;
+	}
+	.h1_subtitle {
+		font-size: 7vw;
+		font-weight: normal;
+	}
+	.room_list {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
 	.welcome_instructions {
 		width: 80%;
 		max-width: 80%;
@@ -6,10 +17,7 @@
 	.rocket_image {
 		width: 50%;
 		max-width: 50%;
-		margin-bottom: 60px;
-	}
-	.room_list {
-		left: -10%;
+		margin-top: 60px;
 	}
 	.room_div {
 		width: calc(100% - 20px);
@@ -44,5 +52,12 @@
 		padding-right: 20px;
 		margin-left: 10px;
 		height: 65%;
+	}
+	.instructions_title {
+		margin-top: 50px;
+		margin-bottom: 110px;
+	}
+	.help_button_bottom {
+		width: 70%;
 	}
 }
