@@ -21,19 +21,21 @@ export function Header() {
                 <img />
                 <div class="growing_div"></div>
                 {auth.isSignedIn ? (
-              <div>
+              <button style={{cursor:"auto"}} class="header_button transparent_header_button desktop_only">
                 <span>
                   <FormattedMessage id="sign-in.as" /> {maskEmail(auth.email)}
                 </span>{" "}
                 <a href="#" onClick={auth.signOut}>
                   <FormattedMessage id="sign-in.out" />
                 </a>
-              </div>
+              </button>
             ) : (
-              <a href="/signin" rel="noreferrer noopener">
+              
+              <button class="header_button transparent_header_button desktop_only" onClick={(e) => router.push('/signin')}>
                 <FormattedMessage id="sign-in.in" />
-              </a>
+              </button>
             )}
+
                 <button class="header_button transparent_header_button desktop_only" onClick={(e) => router.push('/help')}>
                     Help
                 </button>
