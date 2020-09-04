@@ -8,7 +8,10 @@ export function Page({ children, ...rest }) {
   return (
     <>
       <Header />
-      <main {...rest}>{children}</main>
+        <main {...rest}>
+          <div class="starfield"></div>
+          {children}
+        </main>
       <Footer />
     </>
   );

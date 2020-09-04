@@ -10,6 +10,7 @@ import IconRocket from '../../assets/images/home/IconRocket.svg';
 import IconPeople from '../../assets/images/home/IconPeople.svg';
 import '../../assets/stylesheets/common.css';
 import '../../assets/stylesheets/home.css';
+import { Page } from '../layout/Page'
 
 addLocaleData([...en]);
 
@@ -27,23 +28,8 @@ export function CustomHomePage() {
 
   return (
     <>
-        <div class="starfield"></div>
+      <Page>
         <div class="flex_vertical">
-
-            {/* Heading */}
-            <div class="header flex_horizontal">
-                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
-                <img />
-                <div class="growing_div"></div>
-                <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
-                    Help
-                </button>
-
-                <button class="header_button blue_button" onClick={(e) => router.push('/')}>
-                    Event Home
-                </button>
-            </div>
-            {/* End of Heading */}
 
             {/* Body */}
             <div class="flex_horizontal instructions_div">
@@ -122,17 +108,9 @@ export function CustomHomePage() {
                 <button class="blue_button help_button_bottom" onClick={(e) => router.push('/help')}>Help</button>
             </div>
             {/* End of Body */}
-
-            {/* Footer */}
-            <div class="back_to_top_container flex_vertical flex_center_vertically">
-              <div class="flex_vertical flex_center_vertically" onClick={scrollToTop}>
-                <img src={"../../assets/images/ArrowUp.svg"}/>
-                <div class="back_to_top_text">Back To Top</div>
-              </div>
-            </div>
-
-            {/* End of Footer */}
+            
         </div>
+      </Page>
       </>
   );
 }
