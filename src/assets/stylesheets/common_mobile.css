@@ -69,4 +69,20 @@
 		color: white;
 		text-align: left;
 	}
+	@keyframes move_bg {
+		0% {
+			background-position-y: -100%;
+		}
+		100% {
+			background-position-y: 0%;
+		}
+	}
+	.starfield {
+		background-image: url("../images/Starfield.png");
+		background-repeat: repeat;
+		background-size: 150%;
+		animation-duration: 800s;
+		z-index: -1;
+		opacity: 0.5;
+	}
 }

@@ -25,6 +25,7 @@ export function CustomHomePage() {
     <>
       <Page>
         <div class="flex_vertical">
+            {/* Body */}
             <div class="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
                 <div class="growing_div"></div>
                 <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
@@ -82,18 +83,20 @@ export function CustomHomePage() {
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
-                <div class="room_list flex_horizontal">
-                    <RoomList rooms={groupedPublicRooms}/>
-                </div>
+            </div>
+            <div class="room_list flex_horizontal">
+                <RoomList rooms={groupedPublicRooms}/>
+            </div>
+            <div class="home_content mobile_vertically_centered">
                 <h2>Networking</h2>
                 <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
                 <div class="room_collection_description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
-                <div class="room_list flex_horizontal">
-                    <RoomList rooms={groupedPublicRooms}/>
-                </div>
+            </div>
+            <div class="room_list flex_horizontal">
+                <RoomList rooms={groupedPublicRooms}/>
             </div>
             <div class="flex_vertical">
                 <h1>Need Help Accessing the VR World?</h1>
