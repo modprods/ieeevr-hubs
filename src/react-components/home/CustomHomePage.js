@@ -25,37 +25,6 @@ export function CustomHomePage() {
     <>
       <Page>
         <div class="flex_vertical">
-            <div class="header flex_horizontal">
-                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
-                <img />
-                <div class="growing_div"></div>
-                <button class="header_button transparent_header_button desktop_only" onClick={(e) => router.push('/help')}>
-                    Help
-                </button>
-
-                <button class="header_button blue_button desktop_only" onClick={(e) => router.push('/')}>
-                    Event Home
-                </button>
-				
-				<div class="mobile_only">
-					{/* Look at that high-quality placeholder.*/}
-					{/* TODO: Replace high-quality placeholder.*/}
-					=
-					{/* Then if the menu is open: 
-					X
-					*/}
-				</div>
-            </div>
-			{/* Then if the menu is open: 
-			<div class="flex_vertical">
-                <button class="mobile_menu_item mobile_only" onClick={(e) => router.push('/help')}>
-                    Help
-                </button>
-				<button class="mobile_menu_item mobile_only" onClick={(e) => router.push('/')}>
-                    Event Home
-                </button>
-			</div>
-			*/}
             <div class="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
                 <div class="growing_div"></div>
                 <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>

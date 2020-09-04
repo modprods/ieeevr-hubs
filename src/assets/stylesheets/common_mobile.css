@@ -3,6 +3,11 @@
 }
 
 @media only screen and (max-device-width: 600px) {
+	html,body{
+		overflow-x:hidden !important;
+		width:100%;
+		margin:0px;
+	}
 	.h1_large {
 		font-size: 13vw;
 	}

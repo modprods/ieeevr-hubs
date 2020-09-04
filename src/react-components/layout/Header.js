@@ -17,11 +17,10 @@ export function Header() {
     <>
       {/* Heading */}
       <div class="header flex_horizontal">
-          <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
-          <img />
-          <div class="growing_div"></div>
-
-            {auth.isSignedIn ? (
+                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
+                <img />
+                <div class="growing_div"></div>
+                {auth.isSignedIn ? (
               <div>
                 <span>
                   <FormattedMessage id="sign-in.as" /> {maskEmail(auth.email)}
@@ -35,16 +34,33 @@ export function Header() {
                 <FormattedMessage id="sign-in.in" />
               </a>
             )}
+                <button class="header_button transparent_header_button desktop_only" onClick={(e) => router.push('/help')}>
+                    Help
+                </button>
 
-          <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
-              Help
+                <button class="header_button blue_button desktop_only" onClick={(e) => router.push('/')}>
+                    Event Home
+                </button>
+
+				  <div class="mobile_only">
+					  {/* Look at that high-quality placeholder.*/}
+					  {/* TODO: Replace high-quality placeholder.*/}
+					  =
+					  {/* Then if the menu is open: 
+					  X
+					  */}
+				  </div>
+				</div>
+			  {/* Then if the menu is open: 
+			  <div class="flex_vertical">
+          <button class="mobile_menu_item mobile_only" onClick={(e) => router.push('/help')}>
+            Help
           </button>
-
-          <button class="header_button blue_button" onClick={(e) => router.push('/')}>
-              Event Home
+				  <button class="mobile_menu_item mobile_only" onClick={(e) => router.push('/')}>
+            Event Home
           </button>
-
-      </div>
+			  </div>
+			  */}
       {/* End of Heading */}
       </>
   );
