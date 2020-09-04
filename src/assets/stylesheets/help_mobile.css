@@ -1,0 +1,11 @@
+@media only screen and (max-device-width: 600px) {
+    .help_content {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .help_dotpoint_num {
+        padding-left: 0px;
+        width: 3rem;
+        margin-right: 0px;
+    }
+}
