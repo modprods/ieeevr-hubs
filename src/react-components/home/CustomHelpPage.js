@@ -28,6 +28,21 @@ export function CustomHelpPage() {
       <Page>
         <div class="flex_vertical">
 
+            {/* Heading */}
+            <div class="header flex_horizontal">
+                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
+                <img />
+                <div class="growing_div"></div>
+                <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
+                    Help
+                </button>
+
+                <button class="header_button blue_button" onClick={(e) => router.push('/')}>
+                    Event Home
+                </button>
+            </div>
+            {/* End of Heading */}
+            
             {/* Body */}
             <div class="flex_vertical heading_container">
                 <h1 style={{fontSize: "5.8rem"}}>Having Trouble?</h1>

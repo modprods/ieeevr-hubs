@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
 import { usePublicRooms } from "./usePublicRooms";
@@ -11,18 +11,61 @@ import IconPeople from '../../assets/images/home/IconPeople.svg';
 import '../../assets/stylesheets/common.css';
 import '../../assets/stylesheets/home.css';
 import { Page } from '../layout/Page'
+import { AuthContext } from "../auth/AuthContext";
 
 addLocaleData([...en]);
 
 export function CustomHomePage() {
   const router = useRouter();
+  const auth = useContext(AuthContext);
   const { results: publicRooms } = usePublicRooms();
   const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  useEffect(() => {
+    const qs = new URLSearchParams(location.search);
+
+    // Support legacy sign in urls.
+    if (qs.has("sign_in")) {
+      const redirectUrl = new URL("/signin", window.location);
+      redirectUrl.search = location.search;
+      window.location = redirectUrl;
+    } else if (qs.has("auth_topic")) {
+      const redirectUrl = new URL("/verify", window.location);
+      redirectUrl.search = location.search;
+      window.location = redirectUrl;
+    }
+
+    if (qs.has("new")) {
+      createAndRedirectToNewHub(null, null, true);
+    }
+  }, []);
 
   return (
     <>
       <Page>
         <div class="flex_vertical">
+
+            {/* Heading */}
+            <div class="header flex_horizontal">
+                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
+                <img />
+                <div class="growing_div"></div>
+                <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
+                    Help
+                </button>
+
+                <button class="header_button blue_button" onClick={(e) => router.push('/')}>
+                    Event Home
+                </button>
+            </div>
+            {/* End of Heading */}
 
             {/* Body */}
             <div class="flex_horizontal instructions_div">

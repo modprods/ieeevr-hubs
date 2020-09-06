@@ -8,7 +8,6 @@ import '../../assets/stylesheets/help.css';
 import '../../assets/stylesheets/home.css';
 
 export function RoomList({rooms, ...rest}) {
-  console.log(rooms);
   return (
     <>
     {

@@ -284,6 +284,8 @@ function mountUI(props = {}) {
   const hasActiveCamera = scene && !!scene.systems["camera-tools"].getMyCamera();
   const forcedVREntryType = qsVREntryType;
 
+  // This is to allow a custom front end not affected by theme CSS but still allow
+  // our Theme in the HUBS UX
   if (window.APP_CONFIG && window.APP_CONFIG.theme && window.APP_CONFIG.theme["dark-theme"]) {
     document.body.classList.add("dark-theme");
   } else {
