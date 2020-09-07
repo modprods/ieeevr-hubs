@@ -9,7 +9,9 @@ import IconFile from '../../assets/images/home/IconFile.svg';
 import IconRocket from '../../assets/images/home/IconRocket.svg';
 import IconPeople from '../../assets/images/home/IconPeople.svg';
 import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/common_mobile.css';
 import '../../assets/stylesheets/home.css';
+import '../../assets/stylesheets/home_mobile.css';
 import { Page } from '../layout/Page'
 import { AuthContext } from "../auth/AuthContext";
 
@@ -52,23 +54,8 @@ export function CustomHomePage() {
       <Page>
         <div class="flex_vertical">
 
-            {/* Heading */}
-            <div class="header flex_horizontal">
-                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
-                <img />
-                <div class="growing_div"></div>
-                <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
-                    Help
-                </button>
-
-                <button class="header_button blue_button" onClick={(e) => router.push('/')}>
-                    Event Home
-                </button>
-            </div>
-            {/* End of Heading */}
-
             {/* Body */}
-            <div class="flex_horizontal instructions_div">
+            <div class="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
                 <div class="growing_div"></div>
                 <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
                 <div class="growing_div"></div>
@@ -81,7 +68,7 @@ export function CustomHomePage() {
                             <br />labore et dolore magna aliquyam erat, sed diam voluptua.
                         </div>
                     </div>
-                    <div class="flex_horizontal">
+                    <div class="flex_horizontal mobile_vertical">
                         <div class="instruction_icon" style={{background: "url(" + IconFile +") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 1. Signing In</h3>
@@ -92,7 +79,7 @@ export function CustomHomePage() {
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal">
+                    <div class="flex_horizontal mobile_vertical">
                         <div class="instruction_icon" style={{background: "url("+ IconRocket + ") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 2. Entering A Room</h3>
@@ -104,7 +91,7 @@ export function CustomHomePage() {
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal">
+                    <div class="flex_horizontal mobile_vertical">
                         <div class="instruction_icon" style={{background: "url(" + IconPeople + ") no-repeat center/contain"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 3. Network</h3>
@@ -118,25 +105,27 @@ export function CustomHomePage() {
                 </div>
                 <div class="growing_div"></div>
             </div>
-            <div class="home_content">
+            <div class="home_content mobile_vertically_centered">
                 <h2>Keynote</h2>
-                <div class="h2_subtilte">Sept. 23, 6:30-7:00 pm ET</div>
+                <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
                 <div class="room_collection_description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
-                <div class="room_list flex_horizontal">
-                    <RoomList rooms={groupedPublicRooms}/>
-                </div>
+            </div>
+            <div class="room_list flex_horizontal">
+                <RoomList rooms={groupedPublicRooms}/>
+            </div>
+            <div class="home_content mobile_vertically_centered">
                 <h2>Networking</h2>
-                <div class="h2_subtilte">Sept. 23, 6:30-7:00 pm ET</div>
+                <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
                 <div class="room_collection_description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
-                <div class="room_list flex_horizontal">
-                    <RoomList rooms={groupedPublicRooms}/>
-                </div>
+            </div>
+            <div class="room_list flex_horizontal">
+                <RoomList rooms={groupedPublicRooms}/>
             </div>
             <div class="flex_vertical">
                 <h1>Need Help Accessing the VR World?</h1>

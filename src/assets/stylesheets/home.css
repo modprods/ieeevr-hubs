@@ -1,23 +1,23 @@
-.rocket_image{
+.rocket_image {
     width: 18%;
     max-width: 18%;
 }
 
-.welcome_instructions{
-    max-width:42%;
-    width:42%;
+.welcome_instructions {
+    max-width: 42%;
+    width: 42%;
 }
 
-.home_content{
-	margin-left: 13%;
+.home_content {
+    margin-left: 13%;
     margin-right: 13%;
 }
 
-.room_div{
-    padding-left:23px;
-    padding-right:23px;
-    padding-top:4px;
-    padding-bottom:4px;
+.room_div {
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 4px;
+    padding-bottom: 4px;
     background-color: #01679A;
     width: 37%;
     min-width: 37%;
@@ -26,76 +26,82 @@
     align-items: center;
 }
 
-.room_div img{
-    height:30%;
+.room_div img {
+    height: 30%;
 }
 
-.room_title{
+.room_title {
     font-size: 25px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
 }
 
-.room_list{
+.room_list {
     margin-bottom: 60px;
     margin-top: 80px;
     flex-wrap: wrap;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-.join_room_button{
+.room_list {
+    margin-left: 13%;
+    margin-right: 13%;
+}
+
+.join_room_button {
     font-weight: bold;
     font-family: 'Helvetica Neue', Arial;
-    height:100%;
+    height: 100%;
     padding-left: 30px;
     padding-right: 30px;
     margin-left: 20px;
-    height:65%;
+    height: 65%;
 }
 
-.room_count{
+.room_count {
     font-size: 17px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     margin-left: 10px;
 }
 
-.instructions_div{
+.instructions_div {
     margin-bottom: 10px;
     font-size: 13px;
 }
 
-.instruction_icon{
-    width:83px;
-    min-width:83px;
-    margin-right:50px;
+.instruction_icon {
+    width: 83px;
+    min-width: 83px;
+    margin-right: 50px;
     background-repeat: no-repeat;
     background-size: contain;
     margin-top: 20px;
 }
 
-.instructions_title{
+.instructions_title {
     margin-bottom: 40px;
 }
 
-.instructions_text{
+.instructions_text {
     margin-top: 10px;
     margin-bottom: 60px;
 }
 
-.room_collection_description{
+.room_collection_description {
     margin-top: 40px;
 }
 
-.help_button_bottom{
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 24px;
-	font-weight: bold;
-    color:white;
+.help_button_bottom {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
     width: 307px;
     padding-top: 20px;
     padding-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-    margin-top:50px;
+    margin-top: 50px;
 }

@@ -4,15 +4,15 @@ import en from "react-intl/locale-data/en";
 import { usePublicRooms } from "./usePublicRooms";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
-import { useRouter } from "../misc/RouteHelper"
-import '../../assets/stylesheets/common.css';
-import '../../assets/stylesheets/help.css';
 import { Page } from '../layout/Page'
+import '../../assets/stylesheets/common.css';
+import '../../assets/stylesheets/common_mobile.css';
+import '../../assets/stylesheets/help.css';
+import '../../assets/stylesheets/help_mobile.css';
 
 addLocaleData([...en]);
 
 export function CustomHelpPage() {
-  const router = useRouter();
   const { results: publicRooms } = usePublicRooms();
   const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
 
@@ -28,32 +28,17 @@ export function CustomHelpPage() {
       <Page>
         <div class="flex_vertical">
 
-            {/* Heading */}
-            <div class="header flex_horizontal">
-                <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
-                <img />
-                <div class="growing_div"></div>
-                <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
-                    Help
-                </button>
-
-                <button class="header_button blue_button" onClick={(e) => router.push('/')}>
-                    Event Home
-                </button>
-            </div>
-            {/* End of Heading */}
-            
             {/* Body */}
             <div class="flex_vertical heading_container">
-                <h1 style={{fontSize: "5.8rem"}}>Having Trouble?</h1>
-                <h1 style={{fontSize: "5.8rem"}}>We Can help.</h1>
+                <h1 class="h1_large">Having Trouble?</h1>
+                <h1 class="h1_large">We Can help.</h1>
                 <div class="centered_subtitle_text">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
                     <br />tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
             </div>
-            <div class="flex_vertical help_content">
-                <div class="flex_horizontal help_dotpoint_container">
+            <div class="flex_vertical help_content mobile_vertically_centered">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         1.
                     </div>
@@ -72,7 +57,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         2.
                     </div>
@@ -85,7 +70,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         3.
                     </div>
@@ -98,7 +83,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         4.
                     </div>
@@ -109,7 +94,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         5.
                     </div>
@@ -120,7 +105,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         6.
                     </div>
@@ -140,7 +125,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         7.
                     </div>
@@ -156,7 +141,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         8.
                     </div>
@@ -169,7 +154,7 @@ export function CustomHelpPage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal help_dotpoint_container">
+                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
                     <div class="help_dotpoint_num">
                         9.
                     </div>

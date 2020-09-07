@@ -7,6 +7,7 @@ import "./utils/theme";
 import { HomePage } from "./react-components/home/HomePage";
 import { CustomHomePage } from "./react-components/home/CustomHomePage";
 import { CustomHelpPage } from "./react-components/home/CustomHelpPage";
+import { SignInPage } from "./react-components/auth/SignInPage";
 
 import { lang, messages } from "./utils/i18n";
 //import "./assets/stylesheets/globals.scss";
@@ -31,6 +32,9 @@ function Root() {
               </Route>
               <Route path="/help">
                 <CustomHelpPage />
+              </Route>
+              <Route path="/signin">
+                <SignInPage />
               </Route>
             </Switch>
           </ScrollToTop>
