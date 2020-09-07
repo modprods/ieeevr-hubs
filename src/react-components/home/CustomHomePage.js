@@ -4,7 +4,6 @@ import en from "react-intl/locale-data/en";
 import { usePublicRooms } from "./usePublicRooms";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
-import { useRouter } from "../misc/RouteHelper"
 import IconFile from '../../assets/images/home/IconFile.svg';
 import IconRocket from '../../assets/images/home/IconRocket.svg';
 import IconPeople from '../../assets/images/home/IconPeople.svg';
@@ -18,7 +17,6 @@ import { AuthContext } from "../auth/AuthContext";
 addLocaleData([...en]);
 
 export function CustomHomePage() {
-  const router = useRouter();
   const auth = useContext(AuthContext);
   const { results: publicRooms } = usePublicRooms();
   const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
@@ -130,7 +128,10 @@ export function CustomHomePage() {
             <div class="flex_vertical">
                 <h1>Need Help Accessing the VR World?</h1>
                 <h1 class="h1_subtitle">Click below for full instructions.</h1>
-                <button class="blue_button help_button_bottom" onClick={(e) => router.push('/help')}>Help</button>
+                <button class="blue_button help_button_bottom" onClick={(e) => {
+                                                                            e.preventDefault();
+                                                                            window.location.href='/help';
+                                                                            }}>Help</button>
             </div>
             {/* End of Body */}
 

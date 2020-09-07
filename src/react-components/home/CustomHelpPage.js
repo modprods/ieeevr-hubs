@@ -13,8 +13,6 @@ import '../../assets/stylesheets/help_mobile.css';
 addLocaleData([...en]);
 
 export function CustomHelpPage() {
-  const { results: publicRooms } = usePublicRooms();
-  const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -24,7 +22,7 @@ export function CustomHelpPage() {
   };
 
   return (
-    <>
+
       <Page>
         <div class="flex_vertical">
 
@@ -172,6 +170,6 @@ export function CustomHelpPage() {
 
         </div>
       </Page>
-    </>
+
   );
 }

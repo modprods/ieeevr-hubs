@@ -7,11 +7,9 @@ import configs from "../../utils/configs";
 import maskEmail from "../../utils/mask-email";
 import styles from "./Header.scss";
 import { AuthContext } from "../auth/AuthContext";
-import { useRouter } from "../misc/RouteHelper"
 
 export function Header() {
   const auth = useContext(AuthContext);
-  const router = useRouter();
 
   return (
     <>
@@ -31,16 +29,25 @@ export function Header() {
                 </a>
               </div>
             ) : (
-              <button class="header_button transparent_header_button" onClick={(e) => router.push('/signin')}>
+              <button class="header_button transparent_header_button" onClick={(e) => {
+                                                                                        e.preventDefault();
+                                                                                        window.location.href='/signin';
+                                                                                        }}>
                   Sign In
               </button>
             )}
 
-          <button class="header_button transparent_header_button" onClick={(e) => router.push('/help')}>
+          <button class="header_button transparent_header_button" onClick={(e) => {
+                                                                                    e.preventDefault();
+                                                                                    window.location.href='/help';
+                                                                                    }}>
               Help
           </button>
 
-          <button class="header_button blue_button" onClick={(e) => router.push('/')}>
+          <button class="header_button blue_button" onClick={(e) => {
+                                                                      e.preventDefault();
+                                                                      window.location.href='/';
+                                                                      }}>
               Event Home
           </button>
 
