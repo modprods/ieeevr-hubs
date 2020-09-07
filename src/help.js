@@ -23,4 +23,4 @@ function Root() {
   );
 }
 
-ReactDOM.render(<Root />, document.getElementById("home-root"));
+ReactDOM.render(<Root />, document.getElementById("help-root"));
