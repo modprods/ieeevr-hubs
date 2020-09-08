@@ -8,7 +8,6 @@ export function Page({ children, ...rest }) {
   return (
     <>
     <div class="starfield"></div>
-      <Header />
         <main {...rest}>
 
           {children}
