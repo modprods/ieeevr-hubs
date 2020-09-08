@@ -13,6 +13,9 @@ import '../../assets/stylesheets/home.css';
 import '../../assets/stylesheets/home_mobile.css';
 import { Page } from '../layout/Page'
 import { AuthContext } from "../auth/AuthContext";
+import { FormattedMessage } from "react-intl";
+import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
+import maskEmail from "../../utils/mask-email";
 
 addLocaleData([...en]);
 
