@@ -4,25 +4,23 @@ import { IntlProvider } from "react-intl";
 import registerTelemetry from "./telemetry";
 import Store from "./storage/store";
 import "./utils/theme";
-import { HomePage } from "./react-components/home/HomePage";
-import { CustomHomePage } from "./react-components/home/CustomHomePage";
 import { lang, messages } from "./utils/i18n";
 import { AuthContextProvider } from "./react-components/auth/AuthContext";
+import { CustomHelpPage } from "./react-components/home/CustomHelpPage";
 
-registerTelemetry("/home", "Hubs Home Page");
+registerTelemetry("/help", "Help Page");
 
 const store = new Store();
 window.APP = { store };
 
 function Root() {
-  console.log("Loaidng Home Root")
   return (
     <IntlProvider locale={lang} messages={messages}>
       <AuthContextProvider store={store}>
-        <CustomHomePage />
+        <CustomHelpPage />
       </AuthContextProvider>
     </IntlProvider>
   );
 }
 
-ReactDOM.render(<Root />, document.getElementById("home-root"));
+ReactDOM.render(<Root />, document.getElementById("help-root"));

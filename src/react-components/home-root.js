@@ -27,7 +27,7 @@ import styles from "../assets/stylesheets/index.scss";
 import AuthDialog from "./auth-dialog.js";
 import SignInDialog from "./sign-in-dialog.js";
 import MediaTiles from "./media-tiles";
-import ConferenceContent from "./conference-content";
+import CustomHomePage from "./home/CustomHomePage";
 
 addLocaleData([...en]);
 
@@ -400,7 +400,7 @@ class HomeRoot extends Component {
       <div className={styles.heroPanel} key={2}>
         <div className={classNames([mediaBrowserStyles.mediaBrowser, mediaBrowserStyles.mediaBrowserInline])}>
           <div className={classNames([mediaBrowserStyles.box, mediaBrowserStyles.darkened])}>
-            <ConferenceContent publicRooms={this.props.featuredRooms}/>
+            <CustomHomePage/>
           </div>
         </div>
       </div>

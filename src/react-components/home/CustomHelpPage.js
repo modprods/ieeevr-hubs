@@ -4,19 +4,15 @@ import en from "react-intl/locale-data/en";
 import { usePublicRooms } from "./usePublicRooms";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
-import { useRouter } from "../misc/RouteHelper"
+import { Page } from '../layout/Page'
 import '../../assets/stylesheets/common.css';
 import '../../assets/stylesheets/common_mobile.css';
 import '../../assets/stylesheets/help.css';
 import '../../assets/stylesheets/help_mobile.css';
-import { Page } from '../layout/Page'
 
 addLocaleData([...en]);
 
 export function CustomHelpPage() {
-  const router = useRouter();
-  const { results: publicRooms } = usePublicRooms();
-  const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -26,7 +22,7 @@ export function CustomHelpPage() {
   };
 
   return (
-    <>
+
       <Page>
         <div class="flex_vertical">
 
@@ -174,6 +170,6 @@ export function CustomHelpPage() {
 
         </div>
       </Page>
-    </>
+
   );
 }

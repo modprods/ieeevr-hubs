@@ -245,6 +245,7 @@ module.exports = async (env, argv) => {
     entry: {
       support: path.join(__dirname, "src", "support.js"),
       index: path.join(__dirname, "src", "index.js"),
+      help: path.join(__dirname, "src", "help.js"),
       hub: path.join(__dirname, "src", "hub.js"),
       scene: path.join(__dirname, "src", "scene.js"),
       avatar: path.join(__dirname, "src", "avatar.js"),
@@ -276,6 +277,7 @@ module.exports = async (env, argv) => {
           { from: /^\/discord/, to: "/discord.html" },
           { from: /^\/cloud/, to: "/cloud.html" },
           { from: /^\/verify/, to: "/verify.html" },
+          { from: /^\/help/, to: "/help.html" },
           { from: /^\/whats-new/, to: "/whats-new.html" }
         ]
       },
@@ -479,6 +481,15 @@ module.exports = async (env, argv) => {
         filename: "index.html",
         template: path.join(__dirname, "src", "index.html"),
         chunks: ["support", "index"],
+        chunksSortMode: "manual",
+        minify: {
+          removeComments: false
+        }
+      }),
+      new HTMLWebpackPlugin({
+        filename: "help.html",
+        template: path.join(__dirname, "src", "help.html"),
+        chunks: ["support", "help"],
         chunksSortMode: "manual",
         minify: {
           removeComments: false
