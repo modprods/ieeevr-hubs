@@ -105,7 +105,7 @@ export function CustomHomePage() {
                         </div>
                     </div>
                     <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{background: "url(" + IconFile +") no-repeat center/contain"}}></div>
+                        <div class="instruction_icon" style={{backgroundImage: "url(" + IconFile +")"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 1. Signing In</h3>
                             <div class="instructions_text">
@@ -116,7 +116,7 @@ export function CustomHomePage() {
                         </div>
                     </div>
                     <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{background: "url("+ IconRocket + ") no-repeat center/contain"}}></div>
+                        <div class="instruction_icon" style={{backgroundImage: "url("+ IconRocket + ")"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 2. Entering A Room</h3>
                             <div class="instructions_text">
@@ -128,7 +128,7 @@ export function CustomHomePage() {
                         </div>
                     </div>
                     <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{background: "url(" + IconPeople + ") no-repeat center/contain"}}></div>
+                        <div class="instruction_icon" style={{backgroundImage: "url(" + IconPeople + ")"}}></div>
                         <div class="flex_vertical">
                             <h3>Step 3. Network</h3>
                             <div class="instructions_text">
