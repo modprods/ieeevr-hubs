@@ -64,6 +64,7 @@ export function CustomHomePage() {
 
   return (
     <>
+    {/* Header */}
     <div class="header flex_horizontal">
         <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
         <img />
@@ -96,12 +97,13 @@ export function CustomHomePage() {
         </button>
 
         <div class="mobile_only" onClick={openNav}>
-          X
+          X {/* PLaceholder for icon */}
         </div>
 
+        {/* Mobile Menu */}
         <div id="myNav" class="overlay">
           <div class="mobile_only" onClick={closeNav}>
-            X
+            X {/* PLaceholder for icon */}
           </div>
           <button class="mobile_menu_item mobile_only" onClick={(e) => {
                                                                         e.preventDefault();
@@ -116,12 +118,12 @@ export function CustomHomePage() {
             Event Home
           </button>
         </div>
+        {/* End of Mobile Menu */}
 
+      </div>
+      {/* End of Header */}
 
-
-
-    </div>
-
+      {/* Main Page */}
       {showHome ?
       <Page>
         <div class="flex_vertical">
