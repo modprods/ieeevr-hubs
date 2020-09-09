@@ -24,6 +24,7 @@ export function CustomHomePage() {
   const { results: publicRooms } = usePublicRooms();
   const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
   const [showHome, setShowHome] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -31,6 +32,15 @@ export function CustomHomePage() {
       behavior: "smooth"
     });
   };
+
+  function openNav() {
+    document.getElementById("myNav").style.width = "100%";
+  }
+
+  /* Close when someone clicks on the "x" symbol inside the overlay */
+  function closeNav() {
+    document.getElementById("myNav").style.width = "0%";
+  }
 
   useEffect(() => {
     const qs = new URLSearchParams(location.search);
@@ -69,7 +79,7 @@ export function CustomHomePage() {
               </a>
             </div>
           ) : (
-            <button class="header_button transparent_header_button" onClick={(e) => {
+            <button class="header_button transparent_header_button desktop_only" onClick={(e) => {
                                                                                       e.preventDefault();
                                                                                       window.location.href='/signin';
                                                                                       }}>
@@ -77,15 +87,41 @@ export function CustomHomePage() {
             </button>
           )}
 
-        <button class="header_button transparent_header_button" onClick={() => {setShowHome(false)}}>
+        <button class="header_button transparent_header_button desktop_only" onClick={() => {setShowHome(false)}}>
             Help
         </button>
 
-        <button class="header_button blue_button" onClick={() => {setShowHome(true)}}>
+        <button class="header_button blue_button desktop_only" onClick={() => {setShowHome(true)}}>
             Event Home
         </button>
 
+        <div class="mobile_only" onClick={openNav}>
+          X
+        </div>
+
+        <div id="myNav" class="overlay">
+          <div class="mobile_only" onClick={closeNav}>
+            X
+          </div>
+          <button class="mobile_menu_item mobile_only" onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        window.location.href='/signin';
+                                                                        closeNav();}}>
+            Sign In
+          </button>
+          <button class="mobile_menu_item mobile_only" onClick={() => {setShowHome(false); closeNav()}}>
+            Help
+          </button>
+          <button class="mobile_menu_item mobile_only" onClick={() => {setShowHome(true); closeNav();}}>
+            Event Home
+          </button>
+        </div>
+
+
+
+
     </div>
+
       {showHome ?
       <Page>
         <div class="flex_vertical">
