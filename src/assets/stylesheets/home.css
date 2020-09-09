@@ -26,6 +26,10 @@
     align-items: center;
 }
 
+h2 {
+    font-size: 3.25vw;
+}
+
 .room_div img {
     height: 30%;
 }
