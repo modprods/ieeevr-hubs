@@ -103,23 +103,7 @@ export function CustomHomePage() {
 
         <img class="mobile_only" onClick={openNav} src={Menu}/>
 
-        {/* Mobile Menu */}
-        <div id="myNav" class="overlay">
-          <img class="mobile_only" onClick={closeNav} src={CloseMenu}/>
-          <button class="mobile_menu_item mobile_only" onClick={(e) => {
-                                                                        e.preventDefault();
-                                                                        window.location.href='/signin';
-                                                                        closeNav();}}>
-            Sign In
-          </button>
-          <button class="mobile_menu_item mobile_only" onClick={() => {setShowHome(false); closeNav()}}>
-            Help
-          </button>
-          <button class="mobile_menu_item mobile_only" onClick={() => {setShowHome(true); closeNav();}}>
-            Event Home
-          </button>
-        </div>
-        {/* End of Mobile Menu */}
+
 
       </div>
       {/* End of Header */}
@@ -127,6 +111,23 @@ export function CustomHomePage() {
       {/* Main Page */}
       {showHome ?
       <Page>
+        {/* Mobile Menu */}
+        <div id="myNav" class="overlay">
+          <img class="mobile_only" onClick={closeNav} src={CloseMenu}/>
+          <button class="mobile_menu_item mobile_menu_only" onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        window.location.href='/signin';
+                                                                        closeNav();}}>
+            Sign In
+          </button>
+          <button class="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(false); closeNav()}}>
+            Help
+          </button>
+          <button class="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(true); closeNav();}}>
+            Event Home
+          </button>
+        </div>
+        {/* End of Mobile Menu */}
         <div class="flex_vertical">
 
             {/* Body */}
