@@ -7,17 +7,19 @@ import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import IconFile from '../../assets/images/home/IconFile.svg';
 import IconRocket from '../../assets/images/home/IconRocket.svg';
 import IconPeople from '../../assets/images/home/IconPeople.svg';
+import Menu from '../../assets/images/hamburger.svg'
+import CloseMenu from '../../assets/images/exit_menu.svg'
+import { Page } from '../layout/Page'
+import { AuthContext } from "../auth/AuthContext";
+import { FormattedMessage } from "react-intl";
+import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
+import maskEmail from "../../utils/mask-email";
 import '../../assets/stylesheets/common.css';
 import '../../assets/stylesheets/common_mobile.css';
 import '../../assets/stylesheets/home.css';
 import '../../assets/stylesheets/home_mobile.css';
 import '../../assets/stylesheets/help.css';
 import '../../assets/stylesheets/help_mobile.css';
-import { Page } from '../layout/Page'
-import { AuthContext } from "../auth/AuthContext";
-import { FormattedMessage } from "react-intl";
-import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
-import maskEmail from "../../utils/mask-email";
 
 addLocaleData([...en]);
 
@@ -25,7 +27,6 @@ export function CustomHomePage() {
   const auth = useContext(AuthContext);
   const { results: publicRooms } = usePublicRooms();
   const [groupedKeynoteRooms, groupedNetworkRooms] = GroupFeaturedRooms(publicRooms, 'keynote');
-  //const groupedNetworkRooms = GroupFeaturedRooms(publicRooms, ''); // Network is everything else so no filtering
 
   const [showHome, setShowHome] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
@@ -100,15 +101,11 @@ export function CustomHomePage() {
             Event Home
         </button>
 
-        <div class="mobile_only" onClick={openNav}>
-          X {/* PLaceholder for icon */}
-        </div>
+        <img class="mobile_only" onClick={openNav} src={Menu}/>
 
         {/* Mobile Menu */}
         <div id="myNav" class="overlay">
-          <div class="mobile_only" onClick={closeNav}>
-            X {/* PLaceholder for icon */}
-          </div>
+          <img class="mobile_only" onClick={closeNav} src={CloseMenu}/>
           <button class="mobile_menu_item mobile_only" onClick={(e) => {
                                                                         e.preventDefault();
                                                                         window.location.href='/signin';
