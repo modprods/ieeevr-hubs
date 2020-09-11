@@ -23,7 +23,7 @@ export function CustomHomePage() {
   const auth = useContext(AuthContext);
   const { results: publicRooms } = usePublicRooms();
   const groupedKeynoteRooms = GroupFeaturedRooms(publicRooms, 'keynote');
-  const groupedNetworkRooms = GroupFeaturedRooms(publicRooms, 'network');
+  const groupedNetworkRooms = GroupFeaturedRooms(publicRooms, ''); // Network is everything else so no filtering
 
   const [showHome, setShowHome] = useState(true);
   const [showMenu, setShowMenu] = useState(false);

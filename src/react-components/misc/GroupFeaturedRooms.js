@@ -10,7 +10,13 @@ export function GroupFeaturedRooms(featuredRooms, lobbyType) {
 
   // Iterating through all the rooms
   for (const room of featuredRooms) {
-    if( RoomInfo[lobbyType].includes(room.name) ) {
+    if( lobbyType ) {
+      // Filter on provided lobby type
+      if( RoomInfo[lobbyType].includes(room.name) ) {
+        filterRoom(room, groups)
+      }
+    } else {
+      // Everything else
       filterRoom(room, groups)
     }
   }
