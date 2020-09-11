@@ -22,7 +22,9 @@ addLocaleData([...en]);
 export function CustomHomePage() {
   const auth = useContext(AuthContext);
   const { results: publicRooms } = usePublicRooms();
-  const groupedPublicRooms = GroupFeaturedRooms(publicRooms);
+  const groupedKeynoteRooms = GroupFeaturedRooms(publicRooms, 'keynote');
+  const groupedNetworkRooms = GroupFeaturedRooms(publicRooms, 'network');
+
   const [showHome, setShowHome] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
 
@@ -188,7 +190,7 @@ export function CustomHomePage() {
                 </div>
             </div>
             <div class="room_list flex_horizontal">
-                <RoomList rooms={groupedPublicRooms}/>
+                <RoomList rooms={groupedKeynoteRooms}/>
             </div>
             <div class="home_content mobile_vertically_centered">
                 <h2>Networking</h2>
@@ -199,7 +201,7 @@ export function CustomHomePage() {
                 </div>
             </div>
             <div class="room_list flex_horizontal">
-                <RoomList rooms={groupedPublicRooms}/>
+                <RoomList rooms={groupedNetworkRooms}/>
             </div>
             <div class="flex_vertical">
                 <h1>Need Help Accessing the VR World?</h1>

@@ -1,9 +1,7 @@
-const GroupFeaturedRooms = require('../react-components/misc/GroupFeaturedRooms.js');
+import { GroupFeaturedRooms } from "../react-components/misc/GroupFeaturedRooms"
+const rooms = require('./room.json')
 
 test('TEST', () => {
-  console.log("Hello World");
-});
-
-test('TEST2', () => {
-  console.log("Hello World");
+  const groupedKeynoteRooms = GroupFeaturedRooms(rooms.results, 'keynote');
+  console.log(groupedKeynoteRooms);
 });

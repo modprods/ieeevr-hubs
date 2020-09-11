@@ -1,0 +1,20 @@
+{
+  "results": [{
+    "description": null,
+    "id": "Jt5AY24",
+    "images": {
+      "preview": {
+        "url": "https://hubs-modstudio-internal-com-proxy.michela.workers.dev/files/84d4c243-9089-4180-a1bc-1b69fec76a46.jpg"
+      }
+    },
+    "lobby_count": 0,
+    "member_count": 0,
+    "name": "CB Insights 1",
+    "room_size": 24,
+    "scene_id": "qjvkzA4",
+    "type": "room",
+    "url": "https://hubs.mod.studio/Jt5AY24/cb-insights-1",
+    "user_data": null,
+    "lobbyType": "keynote"
+    }]
+}

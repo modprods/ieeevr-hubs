@@ -1,76 +1,81 @@
 import React from "react";
 
-export function GroupFeaturedRooms(featuredRooms) {
+export function GroupFeaturedRooms(featuredRooms, lobbyType) {
   if (!featuredRooms) {
     return [];
   }
 
   let groups = [];
 
+  // Iterating through all the rooms
   for (const room of featuredRooms) {
-    console.log(featuredRooms);
-    const parts = room.name.split(" | ");
-
-    if (parts.length === 2) {
-      const [groupName, roomName] = parts;
-
-      let group = groups.find(g => g.name === groupName);
-
-      if (group) {
-        group.rooms.push({ ...room, name: roomName });
-      } else {
-        groups.push({
-          name: groupName,
-          rooms: [{ ...room, name: roomName }],
-          user_data: room.user_data
-        });
-      }
-    } else {
-      groups.push({
-        name: room.name,
-        rooms: [room],
-        user_data: room.user_data
-      });
+    if( room.lobbyType == lobbyType ) {
+      filterRoom(room, groups)
     }
   }
 
+  // Sort the group order
   groups = groups.sort((a, b) => {
-    if (a.user_data && a.user_data.group_order !== undefined && b.user_data && b.user_data.group_order !== undefined) {
-      return a.user_data.group_order - b.user_data.group_order;
-    }
-
-    if (a.user_data && a.user_data.group_order !== undefined) {
-      return -1;
-    }
-
-    if (b.user_data && b.user_data.group_order !== undefined) {
-      return 1;
-    }
-
-    return 0;
+    sortComparator(a, b, 'group_order')
   });
 
+  // Sort the room order
   for (const group of groups) {
     group.rooms = group.rooms.sort((a, b) => {
-      if (a.user_data && a.user_data.room_order !== undefined && b.user_data && b.user_data.room_order !== undefined) {
-        return a.user_data.room_order - b.user_data.room_order;
-      }
-
-      if (a.user_data && a.user_data.room_order !== undefined) {
-        return -1;
-      }
-
-      if (b.user_data && b.user_data.room_order !== undefined) {
-        return 1;
-      }
-
-      return 0;
+      sortComparator(a, b, 'room_order')
     });
 
+    // Grab the main thumbnail and description
     const mainRoom = group.rooms[0];
     group.description = mainRoom.description;
     group.thumbnail = mainRoom.images && mainRoom.images.preview && mainRoom.images.preview.url;
   }
 
   return groups;
+}
+
+function sortComparator(a, b, filterOption) {
+  if (a.user_data && a.user_data[filterOption] !== undefined && b.user_data && b.user_data[filterOption] !== undefined) {
+    return a.user_data[filterOption] - b.user_data[filterOption];
+  }
+
+  if (a.user_data && a.user_data[filterOption] !== undefined) {
+    return -1;
+  }
+
+  if (b.user_data && b.user_data[filterOption] !== undefined) {
+    return 1;
+  }
+
+  return 0;
+}
+
+function filterRoom(room, groups) {
+  const parts = room.name.split(" | ");
+
+  if (parts.length === 2) {
+    // Room is part of a group
+    const [groupName, roomName] = parts;
+
+    let group = groups.find(g => g.name === groupName);
+
+    if (group) {
+      // Group already exists, append this room
+      group.rooms.push({ ...room, name: roomName });
+    } else {
+      // Create a new group
+      groups.push({
+        name: groupName,
+        rooms: [{ ...room, name: roomName }],
+        user_data: room.user_data
+      });
+    }
+  } else {
+    // Room is not part of a group
+    groups.push({
+      name: room.name,
+      rooms: [room],
+      user_data: room.user_data
+    });
+  }
 }
