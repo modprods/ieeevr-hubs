@@ -6,28 +6,31 @@ export function GroupFeaturedRooms(featuredRooms, lobbyType) {
     return [];
   }
 
-  let groups = [];
+  let filterGroups = [];
+  let nonFilterGroups = [];
 
   // Iterating through all the rooms
   for (const room of featuredRooms) {
-    if( lobbyType ) {
-      // Filter on provided lobby type
-      if( RoomInfo[lobbyType].includes(room.name) ) {
-        filterRoom(room, groups)
-      }
+    // Filter on provided lobby type
+    if( RoomInfo[lobbyType].includes(room.name) ) {
+      filterRoom(room, filterGroups)
     } else {
       // Everything else
-      filterRoom(room, groups)
+      filterRoom(room, nonFilterGroups)
     }
   }
 
   // Sort the group order
-  groups = groups.sort((a, b) => {
+  filterGroups = filterGroups.sort((a, b) => {
     sortComparator(a, b, 'group_order')
   });
 
-  // Sort the room order
-  for (const group of groups) {
+  nonFilterGroups = nonFilterGroups.sort((a, b) => {
+    sortComparator(a, b, 'group_order')
+  });
+
+  // Sort the filtered groups room order
+  for (const group of filterGroups) {
     group.rooms = group.rooms.sort((a, b) => {
       sortComparator(a, b, 'room_order')
     });
@@ -38,7 +41,19 @@ export function GroupFeaturedRooms(featuredRooms, lobbyType) {
     group.thumbnail = mainRoom.images && mainRoom.images.preview && mainRoom.images.preview.url;
   }
 
-  return groups;
+  // Sort the non filtered groups room order
+  for (const group of nonFilterGroups) {
+    group.rooms = group.rooms.sort((a, b) => {
+      sortComparator(a, b, 'room_order')
+    });
+
+    // Grab the main thumbnail and description
+    const mainRoom = group.rooms[0];
+    group.description = mainRoom.description;
+    group.thumbnail = mainRoom.images && mainRoom.images.preview && mainRoom.images.preview.url;
+  }
+
+  return [filterGroups, nonFilterGroups];
 }
 
 function sortComparator(a, b, filterOption) {
