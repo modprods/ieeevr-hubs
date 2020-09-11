@@ -1,4 +1,5 @@
 import React from "react";
+import RoomInfo from '../home/rooms.json'
 
 export function GroupFeaturedRooms(featuredRooms, lobbyType) {
   if (!featuredRooms) {
@@ -9,7 +10,7 @@ export function GroupFeaturedRooms(featuredRooms, lobbyType) {
 
   // Iterating through all the rooms
   for (const room of featuredRooms) {
-    if( room.lobbyType == lobbyType ) {
+    if( RoomInfo[lobbyType].includes(room.name) ) {
       filterRoom(room, groups)
     }
   }
