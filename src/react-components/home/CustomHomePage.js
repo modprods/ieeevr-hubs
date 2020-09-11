@@ -11,6 +11,8 @@ import '../../assets/stylesheets/common.css';
 import '../../assets/stylesheets/common_mobile.css';
 import '../../assets/stylesheets/home.css';
 import '../../assets/stylesheets/home_mobile.css';
+import '../../assets/stylesheets/help.css';
+import '../../assets/stylesheets/help_mobile.css';
 import { Page } from '../layout/Page'
 import { AuthContext } from "../auth/AuthContext";
 import { FormattedMessage } from "react-intl";
