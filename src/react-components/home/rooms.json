@@ -1,10 +1,10 @@
 {
 	"keynote": [
-		"CB Insights 1",
-		"StoneHinged"
-	],
-  "network": [
     "Mod lobby",
     "MIami OH"
+	],
+  "network": [
+    "CB Insights 1",
+		"StoneHinged"
   ]
 }
