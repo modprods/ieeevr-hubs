@@ -216,7 +216,7 @@ export function CustomHomePage() {
             </div>
             <div className="home_content mobile_vertically_centered">
                 <h2>Topic Meetups & Networking</h2>
-                <div className="h2_subtitle">7:00-8:00 PM ET</div>
+                <div className="h2_subtitle">7:00-8:00 pm ET</div>
                 <div className="room_collection_description">
                     Explore other virtual worlds and meet and voice chat with other attendees who have similar interests.
                 </div>
