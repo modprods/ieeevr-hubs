@@ -76,14 +76,11 @@ export function CustomHomePage() {
         <div class="growing_div"></div>
 
           {auth.isSignedIn ? (
-            <div>
-              <span>
-                <FormattedMessage id="sign-in.as" /> {maskEmail(auth.email)}
-              </span>{" "}
-              <a href="#" onClick={auth.signOut}>
-                <FormattedMessage id="sign-in.out" />
-              </a>
-            </div>
+
+              <button class="header_button transparent_header_button desktop_only" onClick={auth.signOut}>
+                  Sign Out
+              </button>
+
           ) : (
             <button class="header_button transparent_header_button desktop_only" onClick={(e) => {
                                                                                       e.preventDefault();
@@ -114,12 +111,18 @@ export function CustomHomePage() {
         {/* Mobile Menu */}
         <div id="myNav" class="overlay">
           <img class="mobile_only" onClick={closeNav} src={CloseMenu}/>
-          <button class="mobile_menu_item mobile_menu_only" onClick={(e) => {
-                                                                        e.preventDefault();
-                                                                        window.location.href='/signin';
-                                                                        closeNav();}}>
-            Sign In
-          </button>
+          {auth.isSignedIn ? (
+            <button class="mobile_menu_item mobile_menu_only" onClick={auth.signOut}>
+                Sign Out
+            </button>
+          ) : (
+            <button class="mobile_menu_item mobile_menu_only" onClick={(e) => {
+                                                                          e.preventDefault();
+                                                                          window.location.href='/signin';
+                                                                          closeNav();}}>
+              Sign In
+            </button>
+          )}
           <button class="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(false); closeNav()}}>
             Help
           </button>
