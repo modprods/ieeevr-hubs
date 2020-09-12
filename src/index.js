@@ -15,7 +15,6 @@ const store = new Store();
 window.APP = { store };
 
 function Root() {
-  console.log("Loaidng Home Root")
   return (
     <IntlProvider locale={lang} messages={messages}>
       <AuthContextProvider store={store}>

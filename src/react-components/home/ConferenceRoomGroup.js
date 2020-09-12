@@ -42,13 +42,13 @@ function RoomItem({ room }) {
   }
 
   return (
-    <div class="room_div flex_horizontal">
-        <div class="room_title">{room.name}</div>
-        <div class="growing_div"></div>
+    <div className="room_div flex_horizontal">
+        <div className="room_title">{room.name}</div>
+        <div className="growing_div"></div>
         <img src={"../../assets/images/home/IconPeople.svg"}/>
-        <div class="room_count">{`${room.member_count} / ${room.room_size}`}</div>
+        <div className="room_count">{`${room.member_count} / ${room.room_size}`}</div>
         {canSpectate ? (
-          <button class="blue_button join_room_button" onClick={() => {location.href=room.url}}>
+          <button className="blue_button join_room_button" onClick={() => {location.href=room.url}}>
             {canJoin ? "Join" : "Spectate"}
           </button>
         ) : (

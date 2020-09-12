@@ -70,10 +70,10 @@ export function CustomHomePage() {
   return (
     <>
     {/* Header */}
-    <div class="header flex_horizontal">
-        <img class="header_logo" src={"../../assets/images/Logo.svg"}/>
+    <div className="header flex_horizontal">
+        <img className="header_logo" src={"../../assets/images/Logo.svg"}/>
         <img />
-        <div class="growing_div"></div>
+        <div className="growing_div"></div>
 
           {auth.isSignedIn ? (
             <div>
@@ -85,7 +85,7 @@ export function CustomHomePage() {
               </a>
             </div>
           ) : (
-            <button class="header_button transparent_header_button desktop_only" onClick={(e) => {
+            <button className="header_button transparent_header_button desktop_only" onClick={(e) => {
                                                                                       e.preventDefault();
                                                                                       window.location.href='/signin';
                                                                                       }}>
@@ -93,15 +93,15 @@ export function CustomHomePage() {
             </button>
           )}
 
-        <button class="header_button transparent_header_button desktop_only" onClick={() => {setShowHome(false)}}>
+        <button className="header_button transparent_header_button desktop_only" onClick={() => {setShowHome(false)}}>
             Help
         </button>
 
-        <button class="header_button blue_button desktop_only" onClick={() => {setShowHome(true)}}>
+        <button className="header_button blue_button desktop_only" onClick={() => {setShowHome(true)}}>
             Event Home
         </button>
 
-        <img class="mobile_only" onClick={openNav} src={Menu}/>
+        <img className="mobile_only" onClick={openNav} src={Menu}/>
 
 
 
@@ -112,54 +112,54 @@ export function CustomHomePage() {
       {showHome ?
       <Page>
         {/* Mobile Menu */}
-        <div id="myNav" class="overlay">
-          <img class="mobile_only" onClick={closeNav} src={CloseMenu}/>
-          <button class="mobile_menu_item mobile_menu_only" onClick={(e) => {
+        <div id="myNav" className="overlay">
+          <img className="mobile_only" onClick={closeNav} src={CloseMenu}/>
+          <button className="mobile_menu_item mobile_menu_only" onClick={(e) => {
                                                                         e.preventDefault();
                                                                         window.location.href='/signin';
                                                                         closeNav();}}>
             Sign In
           </button>
-          <button class="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(false); closeNav()}}>
+          <button className="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(false); closeNav()}}>
             Help
           </button>
-          <button class="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(true); closeNav();}}>
+          <button className="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(true); closeNav();}}>
             Event Home
           </button>
         </div>
         {/* End of Mobile Menu */}
-        <div class="flex_vertical">
+        <div className="flex_vertical">
 
             {/* Body */}
-            <div class="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
-                <div class="growing_div"></div>
-                <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
-                <div class="growing_div"></div>
-                <div class="flex_vertical welcome_instructions">
-                    <div class="flex_vertical flex_center_vertically instructions_title">
-                        <h1 class="h1_large">Welcome</h1>
-                        <div class="centered_subtitle_text" style={{marginTop: '0px'}}>
+            <div className="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
+                <div className="growing_div"></div>
+                <img className="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
+                <div className="growing_div"></div>
+                <div className="flex_vertical welcome_instructions">
+                    <div className="flex_vertical flex_center_vertically instructions_title">
+                        <h1 className="h1_large">Welcome</h1>
+                        <div className="centered_subtitle_text" style={{marginTop: '0px'}}>
                             Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt
                             ut
                             <br />labore et dolore magna aliquyam erat, sed diam voluptua.
                         </div>
                     </div>
-                    <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{backgroundImage: "url(" + IconFile +")"}}></div>
-                        <div class="flex_vertical">
+                    <div className="flex_horizontal mobile_vertical">
+                        <div className="instruction_icon" style={{backgroundImage: "url(" + IconFile +")"}}></div>
+                        <div className="flex_vertical">
                             <h3>Step 1. Signing In</h3>
-                            <div class="instructions_text">
+                            <div className="instructions_text">
                                 Know your unique id email address and have your email open/ready to access. For the best
                                 experience possible, we recommend using a relatively new laptop or desktop computer with a
                                 reliable internet connection
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{backgroundImage: "url("+ IconRocket + ")"}}></div>
-                        <div class="flex_vertical">
+                    <div className="flex_horizontal mobile_vertical">
+                        <div className="instruction_icon" style={{backgroundImage: "url("+ IconRocket + ")"}}></div>
+                        <div className="flex_vertical">
                             <h3>Step 2. Entering A Room</h3>
-                            <div class="instructions_text">
+                            <div className="instructions_text">
                                 To choose a room, scroll to the bottom of the page where you will see a list of rooms and
                                 how many people are in each (out of the 20 person max). Once you’ve clicked “Join”, you will
                                 be asked to enter your CB Insights unique ID email address to log in. You will receive an
@@ -167,11 +167,11 @@ export function CustomHomePage() {
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{backgroundImage: "url(" + IconPeople + ")"}}></div>
-                        <div class="flex_vertical">
+                    <div className="flex_horizontal mobile_vertical">
+                        <div className="instruction_icon" style={{backgroundImage: "url(" + IconPeople + ")"}}></div>
+                        <div className="flex_vertical">
                             <h3>Step 3. Network</h3>
-                            <div class="instructions_text">
+                            <div className="instructions_text">
                                 Once inside your room, you will be asked to enter your name and choose your avatar, both of
                                 which will be visible to others in the room. Once you have created a name and chosen an
                                 avatar, click “Enter on Screen” You will then be asked to grant mic permissions.
@@ -179,34 +179,34 @@ export function CustomHomePage() {
                         </div>
                     </div>
                 </div>
-                <div class="growing_div"></div>
+                <div className="growing_div"></div>
             </div>
-            <div class="home_content mobile_vertically_centered">
+            <div className="home_content mobile_vertically_centered">
                 <h2>Keynote</h2>
-                <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
-                <div class="room_collection_description">
+                <div className="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
+                <div className="room_collection_description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
             </div>
-            <div class="room_list flex_horizontal">
+            <div className="room_list flex_horizontal">
                 <RoomList rooms={groupedKeynoteRooms}/>
             </div>
-            <div class="home_content mobile_vertically_centered">
+            <div className="home_content mobile_vertically_centered">
                 <h2>Networking</h2>
-                <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
-                <div class="room_collection_description">
+                <div className="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
+                <div className="room_collection_description">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
                     <br/>invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
             </div>
-            <div class="room_list flex_horizontal">
+            <div className="room_list flex_horizontal">
                 <RoomList rooms={groupedNetworkRooms}/>
             </div>
-            <div class="flex_vertical">
+            <div className="flex_vertical">
                 <h1>Need Help Accessing the VR World?</h1>
-                <h1 class="h1_subtitle">Click below for full instructions.</h1>
-                <button class="blue_button help_button_bottom" onClick={() => {setShowHome(false)}}>Help</button>
+                <h1 className="h1_subtitle">Click below for full instructions.</h1>
+                <button className="blue_button help_button_bottom" onClick={() => {setShowHome(false)}}>Help</button>
             </div>
             {/* End of Body */}
 
@@ -214,23 +214,23 @@ export function CustomHomePage() {
       </Page> :
 
       <Page>
-        <div class="flex_vertical">
+        <div className="flex_vertical">
 
             {/* Body */}
-            <div class="flex_vertical heading_container">
-                <h1 class="h1_large">Having Trouble?</h1>
-                <h1 class="h1_large">We Can help.</h1>
-                <div class="centered_subtitle_text">
+            <div className="flex_vertical heading_container">
+                <h1 className="h1_large">Having Trouble?</h1>
+                <h1 className="h1_large">We Can help.</h1>
+                <div className="centered_subtitle_text">
                     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
                     <br />tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                 </div>
             </div>
-            <div class="flex_vertical help_content mobile_vertically_centered">
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+            <div className="flex_vertical help_content mobile_vertically_centered">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         1.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Before You Get Started</h2>
                         <div>
                             Know your unique id email address and have your email open/ready to access.
@@ -245,11 +245,11 @@ export function CustomHomePage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         2.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Find A Room</h2>
                         <div>
                             You can experience commencement in any of the identical virtual rooms. Each room can hold up to 20 people. Think of these as different sections of the same auditorium. All of the rooms will see the same content, but you will only be able to interact with people in the same room as you.
@@ -258,11 +258,11 @@ export function CustomHomePage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         3.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Logging On To Virtual Room</h2>
                         <div>
                             Once you’ve clicked “Join”, you will be asked to enter your Miami University unique ID email address to log in. You will receive an email with the subject “Your Miami University Virtual Commencement Sign-In Link” that will contain a login link. Clicking the login link will open a new browser tab/window where you should get a message saying “Email Verified”. You can then close the verification tab tab/window and navigate back to the virtual room tab and click “Enter Room”.
@@ -271,33 +271,33 @@ export function CustomHomePage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         4.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Creating A Name & Avatar</h2>
                         <div>
                             Once inside your room, you will be asked to enter your name and choose your avatar, both of which will be visible to others in the room. We recommend you use your real First and Last name to help others identify you. To see available avatar options, click “Browse Avatars” and click on your desired choice.
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         5.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Setting Up Communication</h2>
                         <div>
                             Once you have created a name and chosen an avatar, click “Enter on Screen” (or “Connect VR Headset” for VR headset users). You will then be asked to grant mic permissions. To grant mic permissions, click “Allow”, (Clicking “Block” will prevent you from using your microphone to communicate to others in the room) then click “Next”. If you have multiple microphones, this screen will allow you to choose which one to use. If you don’t know what to select, simply continue with Default. If your microphone is working, you should see a blue level indicator inside the microphone icon when you speak. Click the speaker to test your speakers or headphones. When you are done, click “Enter Now”
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         6.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Moving Around</h2>
                         <div>
                             Once you are in a virtual room, use the controls below to move around the room
@@ -313,11 +313,11 @@ export function CustomHomePage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         7.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Communicating With Others</h2>
                         <div>
                             Please Note: The ceremony includes a live text or audio chat feature. We recommend using the text chat feature to ensure the most accessible experience for all participants.
@@ -329,11 +329,11 @@ export function CustomHomePage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         8.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Changing And Leaving Rooms</h2>
                         <div>
                             To move to a different room, simply navigate back to this page, by either hitting the back button, or by going to miamioh-gradify.com, and select “Join” another room. You will not need to repeat the sign in process.
@@ -342,11 +342,11 @@ export function CustomHomePage() {
                         </div>
                     </div>
                 </div>
-                <div class="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
-                    <div class="help_dotpoint_num">
+                <div className="flex_horizontal mobile_vertical help_dotpoint_container mobile_vertically_centered">
+                    <div className="help_dotpoint_num">
                         9.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Support And Reporting Conduct</h2>
                         <div>
                             If you are having trouble, try refreshing the page and re-entering the room. If you are still having trouble, you can chat with us at subvrsive.com/miami-university or by emailing support@subvrsive.com
