@@ -97,6 +97,16 @@ h3 {
     margin-top: 10px;
 }
 
+.instruction_icon_file {
+    width: 60px;
+    min-width: 60px;
+    margin-right: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: top;
+    margin-top: 10px;
+}
+
 .instructions_title {
     margin-bottom: 40px;
 }

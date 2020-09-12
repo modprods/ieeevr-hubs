@@ -158,7 +158,7 @@ export function CustomHomePage() {
                       <h4>HOW TO PARTICIPATE:</h4>
                     </div>
                     <div className="flex_horizontal mobile_vertical">
-                        <div className="instruction_icon" style={{backgroundImage: "url(" + IconFile +")"}}></div>
+                        <div className="instruction_icon_file" style={{backgroundImage: "url(" + IconFile +")"}}></div>
                         <div className="flex_vertical">
                             <h3>Step 1.</h3>
                             <div className="instructions_text">

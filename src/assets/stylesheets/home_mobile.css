@@ -45,7 +45,18 @@
 		width: auto;
 		min-width: auto;
 		margin-right: 0px;
-		margin-bottom: 50px;
+		margin-bottom: 30px;
+		margin-left: 24vw;
+	}
+	.instruction_icon_file {
+		height: 83pZx;
+		max-height: 83px;
+		min-height: 83px;
+		width: auto;
+		min-width: auto;
+		margin-right: 0px;
+		margin-bottom: 30px;
+		margin-left: 28vw;
 	}
 	.join_room_button {
 		font-weight: bold;
