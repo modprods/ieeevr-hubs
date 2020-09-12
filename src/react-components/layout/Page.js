@@ -7,7 +7,7 @@ import { Footer } from "./Footer";
 export function Page({ children, ...rest }) {
   return (
     <>
-    <div class="starfield"></div>
+    <div className="starfield"></div>
         <main {...rest}>
 
           {children}

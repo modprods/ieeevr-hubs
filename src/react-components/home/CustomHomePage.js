@@ -76,9 +76,10 @@ export function CustomHomePage() {
         <img />
         <div className="growing_div"></div>
 
+        {/* Sign in functionality for Desktop */}
           {auth.isSignedIn ? (
 
-              <button class="header_button transparent_header_button desktop_only" onClick={auth.signOut}>
+              <button className="header_button transparent_header_button desktop_only" onClick={auth.signOut}>
                   Sign Out
               </button>
 
@@ -90,6 +91,7 @@ export function CustomHomePage() {
                 Sign In
             </button>
           )}
+        {/* End of sign in functionality for Desktop */}
 
         <button className="header_button transparent_header_button desktop_only" onClick={() => {setShowHome(false)}}>
             Help
@@ -102,21 +104,25 @@ export function CustomHomePage() {
         <img className="mobile_only" onClick={openNav} src={Menu}/>
 
         {/* Mobile Menu */}
-        <div id="myNav" class="overlay">
-          <img class="mobile_only" onClick={closeNav} src={CloseMenu}/>
+        <div id="myNav" className="overlay">
+          <img className="mobile_only" onClick={closeNav} src={CloseMenu}/>
+
+          {/* Sign in functionality for Mobile */}
           {auth.isSignedIn ? (
-            <button class="mobile_menu_item mobile_menu_only" onClick={auth.signOut}>
+            <button className="mobile_menu_item mobile_menu_only" onClick={auth.signOut}>
                 Sign Out
             </button>
           ) : (
-            <button class="mobile_menu_item mobile_menu_only" onClick={(e) => {
+            <button className="mobile_menu_item mobile_menu_only" onClick={(e) => {
                                                                           e.preventDefault();
                                                                           window.location.href='/signin';
                                                                           closeNav();}}>
               Sign In
             </button>
           )}
-          <button class="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(false); closeNav()}}>
+          {/* End of sign in functionality for Mobile */}
+
+          <button className="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(false); closeNav()}}>
             Help
           </button>
           <button className="mobile_menu_item mobile_menu_only" onClick={() => {setShowHome(true); closeNav();}}>
@@ -132,40 +138,40 @@ export function CustomHomePage() {
       {/* Main Page */}
       {showHome ?
       <Page>
-        <div class="flex_vertical">
+        <div className="flex_vertical">
 
             {/* Body */}
-            <div class="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
-                <div class="growing_div"></div>
-                <img class="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
-                <div class="growing_div"></div>
-                <div class="flex_vertical welcome_instructions">
-                    <div class="flex_vertical flex_center_vertically instructions_title">
-                        <h1 class="h1_large">Welcome</h1>
-                        <div class="centered_subtitle_text" style={{marginTop: '0px'}}>
+            <div className="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
+                <div className="growing_div"></div>
+                <img className="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
+                <div className="growing_div"></div>
+                <div className="flex_vertical welcome_instructions">
+                    <div className="flex_vertical flex_center_vertically instructions_title">
+                        <h1 className="h1_large">Welcome</h1>
+                        <div className="centered_subtitle_text" style={{marginTop: '0px'}}>
                           The next phase in your journey to the Future of Health takes place in a virtual world.
                           With or without a 3D headset, get ready to hear from Karen DeSalvo, Chief Health Officer
                           at Google (6:30-7:00pm) and join topic-oriented meetups with other attendees (7:00-8:00pm)
                         </div>
                     </div>
-                    <div class="flex_horizontal mobile_vertical">
+                    <div className="flex_horizontal mobile_vertical">
                       <h4>HOW TO PARTICIPATE:</h4>
                     </div>
-                    <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{backgroundImage: "url(" + IconFile +")"}}></div>
-                        <div class="flex_vertical">
+                    <div className="flex_horizontal mobile_vertical">
+                        <div className="instruction_icon" style={{backgroundImage: "url(" + IconFile +")"}}></div>
+                        <div className="flex_vertical">
                             <h3>Step 1.</h3>
-                            <div class="instructions_text">
+                            <div className="instructions_text">
                                 Begin your journey by boarding a keynote ship (listed below).
                                 Look for one that hasn’t reached the 20 person capacity.
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{backgroundImage: "url("+ IconRoom + ")"}}></div>
-                        <div class="flex_vertical">
+                    <div className="flex_horizontal mobile_vertical">
+                        <div className="instruction_icon" style={{backgroundImage: "url("+ IconRoom + ")"}}></div>
+                        <div className="flex_vertical">
                             <h3>Step 2.</h3>
-                            <div class="instructions_text">
+                            <div className="instructions_text">
                                 Select the “Join” button and from there you will be asked to select your name and an avatar.
                                 We encourage you to use your real name and company!
                             </div>
@@ -175,13 +181,7 @@ export function CustomHomePage() {
                         <div className="instruction_icon" style={{backgroundImage: "url(" + IconPeople + ")"}}></div>
                         <div className="flex_vertical">
                             <h3>Step 3. Network</h3>
-<<<<<<< HEAD
                             <div className="instructions_text">
-                                Once inside your room, you will be asked to enter your name and choose your avatar, both of
-                                which will be visible to others in the room. Once you have created a name and chosen an
-                                avatar, click “Enter on Screen” You will then be asked to grant mic permissions.
-=======
-                            <div class="instructions_text">
                               Follow the entry screen prompts and your avatar will be dropped into the bridge of the spaceship.
                               Walk to the front of the room and tune in for the keynote address.
                               Use W-A-S-D keys or the arrow keys on your keyboard to move around.
@@ -189,36 +189,35 @@ export function CustomHomePage() {
                             </div>
                         </div>
                     </div>
-                    <div class="flex_horizontal mobile_vertical">
-                        <div class="instruction_icon" style={{backgroundImage: "url(" + IconUnicorn + ")"}}></div>
-                        <div class="flex_vertical">
+                    <div className="flex_horizontal mobile_vertical">
+                        <div className="instruction_icon" style={{backgroundImage: "url(" + IconUnicorn + ")"}}></div>
+                        <div className="flex_vertical">
                             <h3>Step 4.</h3>
-                            <div class="instructions_text">
+                            <div className="instructions_text">
                               After the keynote, use the back arrow in your browser to return to this page.
                               Scroll down to find the topic meetup locations and get ready to explore other
                               virtual worlds and meet and voice chat with other attendees who have similar interests.
                               You can visit different rooms by using the back button and re-entering.
->>>>>>> mod-subvrsive-cbinsights
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="growing_div"></div>
             </div>
-            <div class="home_content mobile_vertically_centered">
+            <div className="home_content mobile_vertically_centered">
                 <h2>Keynote: Karen DeSalvo, <br/>Chief Health Officer, Google</h2>
-                <div class="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
-                <div class="room_collection_description">
+                <div className="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
+                <div className="room_collection_description">
                     Choose a ship for your journey and follow the instructions on screen.
                 </div>
             </div>
             <div className="room_list flex_horizontal">
                 <RoomList rooms={groupedKeynoteRooms}/>
             </div>
-            <div class="home_content mobile_vertically_centered">
+            <div className="home_content mobile_vertically_centered">
                 <h2>Topic Meetups & Networking</h2>
-                <div class="h2_subtitle">7:00-8:00 PM ET</div>
-                <div class="room_collection_description">
+                <div className="h2_subtitle">7:00-8:00 PM ET</div>
+                <div className="room_collection_description">
                     Explore other virtual worlds and meet and voice chat with other attendees who have similar interests.
                 </div>
             </div>
@@ -239,10 +238,10 @@ export function CustomHomePage() {
         <div className="flex_vertical">
 
             {/* Body */}
-            <div class="flex_vertical heading_container">
-                <h1 class="h1_large">Having Trouble?</h1>
-                <h1 class="h1_large">We Can help.</h1>
-                <div class="centered_subtitle_text">
+            <div className="flex_vertical heading_container">
+                <h1 className="h1_large">Having Trouble?</h1>
+                <h1 className="h1_large">We Can help.</h1>
+                <div className="centered_subtitle_text">
                     Here are some help instructions to guide you through our virtual experience.
                 </div>
             </div>
@@ -278,7 +277,7 @@ export function CustomHomePage() {
                     <div className="help_dotpoint_num">
                         3.
                     </div>
-                    <div class="flex_vertical">
+                    <div className="flex_vertical">
                         <h2>Entering the Virtual Room</h2>
                         <div>
                           You will then be introduced to the <b>Lobby</b> of the room where you will have several options to gain access.
