@@ -1,6 +1,6 @@
 .rocket_image {
-    width: 18%;
-    max-width: 18%;
+    width: 30%;
+    max-width: 30%;
 }
 
 .welcome_instructions {
@@ -88,8 +88,8 @@ h3 {
 }
 
 .instruction_icon {
-    width: 83px;
-    min-width: 83px;
+    width: 60px;
+    min-width: 60px;
     margin-right: 50px;
     background-repeat: no-repeat;
     background-size: contain;
@@ -121,4 +121,8 @@ h3 {
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+}
+
+h4 {
+  font-size: 16px;
 }
