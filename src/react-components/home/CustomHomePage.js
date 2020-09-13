@@ -28,6 +28,7 @@ addLocaleData([...en]);
 export function CustomHomePage() {
   const auth = useContext(AuthContext);
   const { results: publicRooms } = usePublicRooms();
+  console.log(publicRooms);
   const [groupedKeynoteRooms, groupedNetworkRooms] = GroupFeaturedRooms(publicRooms, 'keynote');
 
   const [showHome, setShowHome] = useState(true);
