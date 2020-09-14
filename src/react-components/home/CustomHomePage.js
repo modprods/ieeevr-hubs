@@ -169,7 +169,7 @@ export function CustomHomePage() {
                     <div className="flex_horizontal mobile_vertical">
                         <div className="instruction_icon" style={{backgroundImage: "url(" + IconPeople + ")"}}></div>
                         <div className="flex_vertical">
-                            <h3>Step 3. Network</h3>
+                            <h3>Step 3.</h3>
                             <div className="instructions_text">
                               Follow the entry screen prompts and your avatar will be dropped into the bridge of the spaceship.
                               Walk to the front of the room and tune in for the keynote address.

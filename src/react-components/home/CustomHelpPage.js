@@ -26,7 +26,7 @@ export function CustomHelpPage() {
             {/* Body */}
             <div className="flex_vertical heading_container">
                 <h1 className="h1_large">Having Trouble?</h1>
-                <h1 className="h1_large">We Can help.</h1>
+                <h1 className="h1_large">We Can Help.</h1>
                 <div className="centered_subtitle_text">
                     Here are some help instructions to guide you through our virtual experience.
                 </div>
@@ -68,9 +68,11 @@ export function CustomHelpPage() {
                         <div>
                           You will then be introduced to the <b>Lobby</b> of the room where you will have several options to gain access.
                           <br/><br/>
-                          If you are using a VR Headset select the <b>“Enter on Stand Alone VR Headset.”</b><br/>
-                          If you merely wish to spectate the room you can select <b>“Watch from Lobby”</b><br/>
-                          If you are entering from a normal browser or web device you can select <b>“Enter Room”</b>
+
+                          -If you are using a VR Headset select the <b>“Enter on Stand Alone VR Headset”</b><br/> 
+                          -If you merely wish to spectate the room you can select <b>“Watch from Lobby”</b><br/>
+                          -If you are entering from a normal browser or web device you can select <b>“Enter Room”</b><br/>
+
                         </div>
                     </div>
                 </div>
@@ -95,11 +97,11 @@ export function CustomHelpPage() {
                     <div className="flex_vertical">
                         <h2>Setting Up Communication</h2>
                         <div>
-                          Once you have created a name and chosen an avatar, click on <b>“Enter on Screen”</b> (or <b>“Connect VR Headset”</b>
+                          Once you have created a name and chosen an avatar, click on <b>“Enter on Screen”</b> (or <b>“Connect VR Headset”</b>&nbsp;
                           for VR headset users). You will then be asked to grant mic permissions.
                           <br/><br/>
                           To grant mic permissions, click <b>“Allow”</b> on the pop up in the left hand corner of your browser,
-                          (Clicking <b>“Block”</b> will prevent you from using your microphone to communicate to others in the room).
+                          (clicking <b>“Block”</b> will prevent you from using your microphone to communicate to others in the room).
                           <br/><br/>
                           Then click <b>“Next”</b>. If you have multiple microphones, this screen will allow you to choose
                           which one to use. If you don’t know what to select, simply continue with <b>“Default”</b>.
@@ -119,9 +121,9 @@ export function CustomHelpPage() {
                           <br/><br/>
                           <b>Laptop / Desktop Controls:</b><br/>
                           -To walk, use W-A-S-D keys<br/>
-                          (W moves forward, A moves left, S moves backward, D moves right.)<br/>
-                          -To move faster, hold down SHIFT as you move.<br/>
-                          -To look left, right, up and down, CLICK AND DRAG using the LEFT MOUSE BUTTON.
+                          (W moves forward, A moves left, S moves backward, D moves right)<br/>
+                          -To move faster, hold down SHIFT as you move<br/>
+                          -To look left, right, up and down, CLICK AND DRAG using the LEFT MOUSE BUTTON
                           <br/><br/>
                           <b>Mobile Controls:</b><br/>
                           -To walk, use two fingers to MAKE A PINCH OPEN GESTURE<br/>
@@ -140,7 +142,7 @@ export function CustomHelpPage() {
                           To talk to others via text chat, type in the translucent text bar at the bottom of the screen
                           and press the <b>“ENTER KEY”</b>. Your message will then be displayed in the main chat window to the rest of the room.
                           <br/><br/>
-                          To Adjust the volume of the video, hover your mouse over the middle screen and click on the “+” and “-“ buttons
+                          To adjust the volume of the video, hover your mouse over the middle screen and click on the “+” and “-“ buttons.
                           <br/><br/>
                           To adjust your Name and Avatar Preferences (and additional settings),
                           click on the Menu button in the top left corner of your window.
@@ -169,8 +171,7 @@ export function CustomHelpPage() {
                         <h2>Support And Reporting Conduct</h2>
                         <div>
                             If you are having trouble, try refreshing the page and re-entering the room.
-                            If you are still having trouble, you can chat with us at subvrsive.com/miami-university
-                            or by emailing <i>events@cbinsights.com</i>
+                            If you are still having trouble, you can email <i>events@cbinsights.com</i>
                         </div>
                     </div>
                 </div>
