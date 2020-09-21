@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
-import { usePublicRooms } from "./usePublicRooms";
+//import { usePublicRooms } from "./usePublicRooms";
 import { RoomList } from "./RoomList";
 import { GroupFeaturedRooms } from "../misc/GroupFeaturedRooms"
 import IconFile from '../../assets/images/home/IconFile.svg';
@@ -16,6 +16,7 @@ import { FormattedMessage } from "react-intl";
 import { createAndRedirectToNewHub } from "../../utils/phoenix-utils";
 import { CustomHelpPage } from './CustomHelpPage';
 import maskEmail from "../../utils/mask-email";
+import { fetchReticulumAuthenticated } from "../../utils/phoenix-utils";
 import '../../assets/stylesheets/common.css';
 import '../../assets/stylesheets/common_mobile.css';
 import '../../assets/stylesheets/home.css';
@@ -27,9 +28,28 @@ addLocaleData([...en]);
 
 export function CustomHomePage() {
   const auth = useContext(AuthContext);
-  const { results: publicRooms } = usePublicRooms();
-  console.log(publicRooms);
-  const [groupedKeynoteRooms, groupedNetworkRooms] = GroupFeaturedRooms(publicRooms, 'keynote');
+  const [groupedKeynoteRooms, setGroupedKeynoteRooms] = useState([]);
+  const [groupedNetworkRooms, setGroupedNetworkRooms] = useState([]);
+
+  useEffect(() => {
+    async function GetAllRooms(){
+      var nextCursor = 1;
+      var allRooms = [];
+      do {
+        const room_request_result = await fetchReticulumAuthenticated(`/api/v1/media/search?source=rooms&filter=public&cursor=${nextCursor}`);
+        nextCursor = room_request_result.meta.next_cursor;
+        for(var entry of room_request_result.entries){
+          allRooms.push(entry);
+        }
+      } while(nextCursor != null);
+      var groupedRooms = GroupFeaturedRooms(allRooms, 'keynote');
+      setGroupedKeynoteRooms(groupedRooms[0]);
+      setGroupedNetworkRooms(groupedRooms[1]);
+      console.log("Rooms:");
+      console.log(allRooms);
+    }
+    GetAllRooms();
+  }, [])
 
   const [showHome, setShowHome] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
