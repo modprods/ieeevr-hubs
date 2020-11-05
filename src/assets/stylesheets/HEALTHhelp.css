@@ -1,0 +1,35 @@
+.help_content {
+    margin-left: 23%;
+    margin-right: 23%;
+    margin-top: 150px;
+}
+
+.heading_container {
+    margin-top: 40px;
+}
+
+.help_dotpoint_container {
+    margin-bottom: 60px;
+}
+
+.help_dotpoint_container h2 {
+    margin-bottom: 30px;
+}
+
+.help_dotpoint_num {
+    margin-right: 50px;
+    background-color: rgba(76, 171, 204, 1);
+    border-radius: 50%;
+    min-width: 2.3rem;
+    width: 2.3rem;
+    padding-left: 0.7rem;
+    padding-top: 0.15rem;
+    height: 2.85rem;
+    font-size: 36.00px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 700;
+    font-style: normal;
+    font-family: 'Helvetica Neue', Arial;
+    align-items: center;
+    justify-content: center;
+}

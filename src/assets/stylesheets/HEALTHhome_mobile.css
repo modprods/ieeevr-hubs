@@ -1,0 +1,77 @@
+@media only screen and (max-device-width: 600px) {
+	h1 {
+		font-size: 10.5vw;
+	}
+	.h1_subtitle {
+		font-size: 7vw;
+		font-weight: normal;
+	}
+	.h1_large {
+		font-size: 13vw;
+	}
+	.room_list {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	.welcome_instructions {
+		width: 80%;
+		max-width: 80%;
+	}
+	.rocket_image {
+		width: 50%;
+		max-width: 50%;
+		margin-top: 60px;
+	}
+	.room_div {
+		width: calc(100% - 20px);
+		min-width: calc(100% - 20px);
+		max-width: calc(100% - 20px);
+		padding-left: 10px;
+		padding-right: 10px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+		height: 2.5rem;
+	}
+	.room_title {
+		font-size: 12px;
+	}
+	.room_count {
+		font-size: 10px;
+	}
+	.instruction_icon {
+		height: 83pZx;
+		max-height: 83px;
+		min-height: 83px;
+		width: auto;
+		min-width: auto;
+		margin-right: 0px;
+		margin-bottom: 30px;
+		margin-left: 24vw;
+	}
+	.instruction_icon_file {
+		height: 83pZx;
+		max-height: 83px;
+		min-height: 83px;
+		width: auto;
+		min-width: auto;
+		margin-right: 0px;
+		margin-bottom: 30px;
+		margin-left: 28vw;
+	}
+	.join_room_button {
+		font-weight: bold;
+		font-family: "Helvetica Neue", Arial;
+		height: 100%;
+		padding-left: 20px;
+		padding-right: 20px;
+		margin-left: 10px;
+		height: 65%;
+	}
+	.instructions_title {
+		margin-top: 50px;
+		margin-bottom: 110px;
+	}
+	.help_button_bottom {
+		width: 70%;
+	}
+}
