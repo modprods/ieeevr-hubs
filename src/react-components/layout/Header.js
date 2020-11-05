@@ -44,7 +44,7 @@ export function Header() {
               Help
           </button>
 
-          <button class="header_button blue_button" onClick={(e) => {
+          <button class="header_button pink_button" onClick={(e) => {
                                                                       e.preventDefault();
                                                                       window.location.href='/';
                                                                       }}>

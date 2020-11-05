@@ -48,7 +48,7 @@ function RoomItem({ room }) {
         <img src={"../../assets/images/home/IconPeople.svg"}/>
         <div className="room_count">{`${room.member_count} / ${room.room_size}`}</div>
         {canSpectate ? (
-          <button className="blue_button join_room_button" onClick={() => {location.href=room.url}}>
+          <button className="pink_button join_room_button" onClick={() => {location.href=room.url}}>
             {canJoin ? "Join" : "Spectate"}
           </button>
         ) : (

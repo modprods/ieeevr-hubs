@@ -36,6 +36,15 @@ button {
 	margin-right: 5%;
 }
 
+.pink_button {
+	border: none;
+	background-color: rgba(215, 114, 174, 1);
+	border-radius: 50px;
+	color: white;
+	padding-left: 60px;
+	padding-right: 60px;
+}
+
 .blue_button {
 	border: none;
 	background-color: rgba(76, 171, 204, 1);
@@ -74,7 +83,7 @@ h1 {
 }
 
 h2 {
-	color: rgba(76, 171, 204, 1);
+	color: white;
 	font-size: 3vw;
 	font-weight: 700;
 	font-style: normal;
@@ -107,7 +116,7 @@ h3 {
 
 .centered_subtitle_text {
 	text-align: center;
-	font-size: 14px;
+	font-size: 18px;
 	margin-top: 30px;
 }
 

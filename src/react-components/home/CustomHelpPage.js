@@ -53,9 +53,7 @@ export function CustomHelpPage() {
                     <div className="flex_vertical">
                         <h2>Find A Room</h2>
                         <div>
-                            You can watch the keynote in any of the rooms marked below Keynote header.
-                            Each room can hold up to 20 people. All of the rooms will see the same content,
-                            but you will only be able to interact with people in the same room as you. Simply hit “Join” to enter any of the rooms.
+                        Each room can hold up to 20 people. You will only be able to interact with people in the same room as you. Simply hit “Join” to enter any of the rooms.
                         </div>
                     </div>
                 </div>
@@ -156,10 +154,9 @@ export function CustomHelpPage() {
                     <div className="flex_vertical">
                         <h2>Changing And Leaving Rooms</h2>
                         <div>
-                          To move to the Networking rooms once the Keynote is over to, simply navigate back to this page,
-                          by either hitting the back button, or by going to hubs-cbinsights.com, and select “Join” another room.
-                          <br/><br/>
-                          To leave the room and experience simply close the tab or window in your browser.
+                            To move into another room, simply navigate back to this page, by either hitting the back button, or by going to hubs-cbinsights.com, and select “Join” another room. 
+                            <br/><br/>
+                            To leave the room and experience simply close the tab or window in your browser.
                         </div>
                     </div>
                 </div>

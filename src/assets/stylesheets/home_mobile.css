@@ -9,13 +9,20 @@
 	.h1_large {
 		font-size: 13vw;
 	}
+	.step_div {
+		width: auto;
+		max-width: none;
+	}
 	.room_list {
 		margin-left: 0px;
 		margin-right: 0px;
 	}
+	.instructions_title {
+		max-width: none;
+	}
 	.welcome_instructions {
-		width: 80%;
-		max-width: 80%;
+		width: 80vw;
+		max-width: 80vw;
 	}
 	.rocket_image {
 		width: 50%;

@@ -85,7 +85,7 @@ export function CustomHomePage() {
     <>
     {/* Header */}
     <div className="header flex_horizontal">
-        <img className="header_logo" src={"../../assets/images/Logo.svg"}/>
+        <img className="header_logo" src={"../../assets/images/FintechHeaderLogo.svg"}/>
         <img />
         <div className="growing_div"></div>
 
@@ -110,7 +110,7 @@ export function CustomHomePage() {
             Help
         </button>
 
-        <button className="header_button blue_button desktop_only" onClick={() => {setShowHome(true)}}>
+        <button className="header_button pink_button desktop_only" onClick={() => {setShowHome(true)}}>
             Event Home
         </button>
 
@@ -152,91 +152,80 @@ export function CustomHomePage() {
             {/* Body */}
             <div className="flex_horizontal instructions_div mobile_vertical mobile_vertically_centered">
                 <div className="growing_div"></div>
-                <img className="rocket_image" src={"../../assets/images/home/LargeRocket.svg"}/>
+                <img className="rocket_image" src={"../../assets/images/home/UnicornWelcome.svg"}/>
                 <div className="growing_div"></div>
                 <div className="flex_vertical welcome_instructions">
                     <div className="flex_vertical flex_center_vertically instructions_title">
                         <h1 className="h1_large">Welcome</h1>
                         <div className="centered_subtitle_text" style={{marginTop: '0px'}}>
-                          The next phase in your journey to the Future of Health takes place in a virtual world.
-                          With or without a 3D headset, get ready to hear from Karen DeSalvo, Chief Health Officer
-                          at Google (6:30-7:00pm) and join topic-oriented meetups with other attendees (7:00-8:00pm)
+                          No one misses in-person networking more than we do! For this networking session we decided to get you off Zoom and into a virtual world for conversations and exploration. 
+                          <br/>
+                          <br/>
+                          No VR Headset? No problem. This VR experience works well on a regular browser. Got a VR Headset? Direct your browser to hubs-cbinsights.com and enter that way. 
+                          <br/>
+                          <br/>
+                          Once you’re in, see who’s there and say hello. You’ll be amazed at how much it really feels like in-person networking.  Don’t forget to find the Fintech Hall of Fame to see who’s been voted in this year. 
                         </div>
                     </div>
-                    <div className="flex_horizontal mobile_vertical">
-                      <h4>HOW TO PARTICIPATE:</h4>
-                    </div>
-                    <div className="flex_horizontal mobile_vertical">
-                        <div className="instruction_icon_file" style={{backgroundImage: "url(" + IconFile +")"}}></div>
-                        <div className="flex_vertical">
-                            <h3>Step 1.</h3>
-                            <div className="instructions_text">
-                                Begin your journey by boarding a keynote ship (listed below).
-                                Look for one that hasn’t reached the 20 person capacity.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex_horizontal mobile_vertical">
-                        <div className="instruction_icon" style={{backgroundImage: "url("+ IconRoom + ")"}}></div>
-                        <div className="flex_vertical">
-                            <h3>Step 2.</h3>
-                            <div className="instructions_text">
-                                Select the “Join” button and from there you will be asked to select your name and an avatar.
-                                We encourage you to use your real name and company!
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex_horizontal mobile_vertical">
-                        <div className="instruction_icon" style={{backgroundImage: "url(" + IconPeople + ")"}}></div>
-                        <div className="flex_vertical">
-                            <h3>Step 3.</h3>
-                            <div className="instructions_text">
-                              Follow the entry screen prompts and your avatar will be dropped into the bridge of the spaceship.
-                              Walk to the front of the room and tune in for the keynote address.
-                              Use W-A-S-D keys or the arrow keys on your keyboard to move around.
-                              Enable your microphone for proximity-based voice chat or use the text box down below.
-                            </div>
-                        </div>
-                    </div>
-                    <div className="flex_horizontal mobile_vertical">
-                        <div className="instruction_icon" style={{backgroundImage: "url(" + IconUnicorn + ")"}}></div>
-                        <div className="flex_vertical">
-                            <h3>Step 4.</h3>
-                            <div className="instructions_text">
-                              After the keynote, use the back arrow in your browser to return to this page.
-                              Scroll down to find the topic meetup locations and get ready to explore other
-                              virtual worlds and meet and voice chat with other attendees who have similar interests.
-                              You can visit different rooms by using the back button and re-entering.
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                  </div>
                 <div className="growing_div"></div>
             </div>
+            <div className="flex_horizontal mobile_vertical step_div_container">
+              <div className="flex_horizontal mobile_vertical step_div">
+                  <div className="flex_vertical">
+                      <h3>Step 1.</h3>
+                      <div className="instructions_text">
+                      Choose a destination from the rooms listed below. Each room has a capacity of 20 people at a time, so choose one that’s not full. 
+                      </div>
+                  </div>
+              </div>
+              <div className="flex_horizontal mobile_vertical step_div">
+                  <div className="flex_vertical">
+                      <h3>Step 2.</h3>
+                      <div className="instructions_text">
+                      Select the “Join” button and from there you will be asked to select your name and an avatar. We encourage you to use your real name and company!
+                      </div>
+                  </div>
+              </div>
+              <div className="flex_horizontal mobile_vertical step_div">
+                  <div className="flex_vertical">
+                      <h3>Step 3.</h3>
+                      <div className="instructions_text">
+                      Follow the entry screen prompts and your avatar will enter one of the virtual worlds. Use W-A-S-D keys or the arrow keys on your keyboard to move around. Enable your microphone for proximity-based voice chat or use the text box at the bottom of the screen. 
+                      </div>
+                  </div>
+              </div>
+              <div className="flex_horizontal mobile_vertical step_div">
+                  <div className="flex_vertical">
+                      <h3>Step 4.</h3>
+                      <div className="instructions_text">
+                      After you’ve talked to everyone in that room, exit by using the back button, and try another. There are three different virtual reality environments to explore. 
+                      </div>
+                  </div>
+              </div>
+            </div>
             <div className="home_content mobile_vertically_centered">
-                <h2>Keynote: Karen DeSalvo, <br/>Chief Health Officer, Google</h2>
-                <div className="h2_subtitle">Sept. 23, 6:30-7:00 pm ET</div>
+                <h2>Unicorn Lounge + <br/>Fintech Hall of Fame</h2>
                 <div className="room_collection_description">
-                    Choose a ship for your journey and follow the instructions on screen.
+                  Choose a room to explore and follow the instructions on screen.
                 </div>
             </div>
-            <div className="room_list flex_horizontal">
+            <div className="room_list flex_vertical">
                 <RoomList rooms={groupedKeynoteRooms}/>
             </div>
             <div className="home_content mobile_vertically_centered">
-                <h2>Topic Meetups & Networking</h2>
-                <div className="h2_subtitle">7:00-8:00 pm ET</div>
+                <h2>Additional Rooms</h2>
                 <div className="room_collection_description">
-                    Explore other virtual worlds and meet and voice chat with other attendees who have similar interests.
+                  Choose a room to explore and follow the instructions on screen.
                 </div>
             </div>
-            <div className="room_list flex_horizontal">
+            <div className="room_list flex_vertical">
                 <RoomList rooms={groupedNetworkRooms}/>
             </div>
             <div className="flex_vertical">
                 <h1>Need Help Accessing the VR World?</h1>
                 <h1 className="h1_subtitle">Click below for full instructions.</h1>
-                <button className="blue_button help_button_bottom" onClick={() => {setShowHome(false)}}>Help</button>
+                <button className="pink_button help_button_bottom" onClick={() => {setShowHome(false)}}>Help</button>
             </div>
             {/* End of Body */}
 

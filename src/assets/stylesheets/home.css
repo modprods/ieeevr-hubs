@@ -11,6 +11,7 @@
 .home_content {
     margin-left: 13%;
     margin-right: 13%;
+    text-align: center;
 }
 
 .room_div {
@@ -18,7 +19,7 @@
     padding-right: 23px;
     padding-top: 4px;
     padding-bottom: 4px;
-    background-color: #01679A;
+    background-color: #A02386;
     width: 37%;
     min-width: 37%;
     max-width: 37%;
@@ -40,6 +41,17 @@ h2 {
 
 h3 {
     font-size: 26px;
+}
+
+.step_div {
+    width: 16vw;
+    max-width: 16vw;
+}
+
+.step_div_container {
+    justify-content: space-between;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 
 .room_div img {
@@ -109,6 +121,7 @@ h3 {
 
 .instructions_title {
     margin-bottom: 40px;
+    max-width: 33vw;
 }
 
 .instructions_text {
@@ -134,5 +147,5 @@ h3 {
 }
 
 h4 {
-  font-size: 16px;
+    font-size: 16px;
 }
