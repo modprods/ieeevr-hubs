@@ -39,10 +39,7 @@ export function CustomHelpPage() {
                     <div className="flex_vertical">
                         <h2>Before You Get Started</h2>
                         <div>
-                            For the best experience possible, we recommend using: A relatively new laptop or desktop computer
-                            with a reliable internet connection The latest Firefox browser. While the virtual rooms work with
-                            most devices and web browsers, including Google Chrome and Safari, using low-powered devices such
-                            as mobile phones, tablets, and laptops (2015 and older) is not recommended.
+                        For the best experience possible, we recommend using: A relatively new laptop or desktop computer with a reliable internet connection The latest Firefox browser. While the virtual rooms work with most devices and web browsers, including Google Chrome and Safari, using low-powered devices such as mobile phones, tablets, and laptops (2015 and older) is not recommended.
                         </div>
                     </div>
                 </div>
