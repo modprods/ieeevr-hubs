@@ -207,7 +207,7 @@ export function CustomHomePage() {
             <div className="home_content mobile_vertically_centered">
                 <h2>Unicorn Lounge + <br/>Fintech Hall of Fame</h2>
                 <div className="room_collection_description">
-                  Choose a room to explore and follow the instructions on screen.
+                  Click the Join button and follow the instructions on screen.
                 </div>
             </div>
             <div className="room_list flex_vertical">
